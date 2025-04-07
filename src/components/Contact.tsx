@@ -1,6 +1,8 @@
 
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
+import { CalendarClock, Mail, Phone } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -8,7 +10,6 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    service: "Individual Therapy",
     message: "",
   });
 
@@ -21,7 +22,6 @@ const Contact = () => {
     e.preventDefault();
     
     // Here you would typically handle form submission to a server
-    // This is just a placeholder to show toast notification
     console.log("Form data submitted:", formData);
     
     toast({
@@ -35,7 +35,6 @@ const Contact = () => {
       name: "",
       email: "",
       phone: "",
-      service: "Individual Therapy",
       message: "",
     });
   };
@@ -50,7 +49,7 @@ const Contact = () => {
             </h2>
             <p className="text-white/80">
               Ready to start your journey toward peace and wellbeing? 
-              Reach out to schedule a consultation or learn more about our services.
+              Reach out with any questions or to learn more about our services.
             </p>
           </div>
           
@@ -89,41 +88,18 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block font-bookmania mb-1">
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-md bg-white/10 border border-white/20 focus:border-gold focus:outline-none text-white"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="service" className="block font-bookmania mb-1">
-                      Service Interest
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-md bg-white/10 border border-white/20 focus:border-gold focus:outline-none text-white"
-                      style={{ WebkitAppearance: "menulist" }}
-                    >
-                      <option value="Individual Therapy">Individual Therapy</option>
-                      <option value="Couples Counseling">Couples Counseling</option>
-                      <option value="Family Therapy">Family Therapy</option>
-                      <option value="Anxiety Management">Anxiety Management</option>
-                      <option value="Trauma Recovery">Trauma Recovery</option>
-                      <option value="Mindfulness Training">Mindfulness Training</option>
-                    </select>
-                  </div>
+                <div>
+                  <label htmlFor="phone" className="block font-bookmania mb-1">
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-md bg-white/10 border border-white/20 focus:border-gold focus:outline-none text-white"
+                  />
                 </div>
                 
                 <div>
@@ -141,12 +117,18 @@ const Contact = () => {
                   ></textarea>
                 </div>
                 
-                <button
-                  type="submit"
-                  className="btn-primary"
-                >
-                  Send Message
-                </button>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    type="submit"
+                    className="btn-primary"
+                  >
+                    Send Message
+                  </button>
+                  
+                  <Link to="/schedule" className="btn-secondary">
+                    Schedule Consultation
+                  </Link>
+                </div>
               </form>
             </div>
             
@@ -157,37 +139,46 @@ const Contact = () => {
                 </h3>
                 
                 <div className="space-y-6">
-                  <div>
-                    <p className="text-sm text-white/70 mb-1">Email</p>
-                    <a href="mailto:contact@thegiftofpeace.com" className="text-white hover:text-gold">
-                      contact@thegiftofpeace.com
-                    </a>
+                  <div className="flex items-start">
+                    <Mail className="text-gold mr-3 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm text-white/70 mb-1">Email</p>
+                      <a href="mailto:contact@thegiftofpeace.com" className="text-white hover:text-gold">
+                        contact@thegiftofpeace.com
+                      </a>
+                    </div>
                   </div>
                   
-                  <div>
-                    <p className="text-sm text-white/70 mb-1">Phone</p>
-                    <a href="tel:+11234567890" className="text-white hover:text-gold">
-                      (123) 456-7890
-                    </a>
+                  <div className="flex items-start">
+                    <Phone className="text-gold mr-3 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm text-white/70 mb-1">Phone</p>
+                      <a href="tel:+11234567890" className="text-white hover:text-gold">
+                        (123) 456-7890
+                      </a>
+                    </div>
                   </div>
                   
-                  <div>
-                    <p className="text-sm text-white/70 mb-1">Office</p>
-                    <address className="not-italic text-white">
-                      123 Serenity Avenue<br />
-                      Suite 101<br />
-                      Peaceful City, PC 12345
-                    </address>
+                  <div className="flex items-start">
+                    <CalendarClock className="text-gold mr-3 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm text-white/70 mb-1">Office Hours</p>
+                      <p className="text-white">
+                        Monday - Friday: 9am - 7pm<br />
+                        Saturday: By appointment<br />
+                        Sunday: 10am - 2pm (New clients)
+                      </p>
+                    </div>
                   </div>
-                  
-                  <div>
-                    <p className="text-sm text-white/70 mb-1">Hours</p>
-                    <p className="text-white">
-                      Monday - Friday: 9am - 7pm<br />
-                      Saturday: 10am - 2pm<br />
-                      Sunday: Closed
-                    </p>
-                  </div>
+                </div>
+                
+                <div className="mt-8 pt-6 border-t border-white/20">
+                  <p className="text-white/70 mb-3 text-sm">
+                    For faster service:
+                  </p>
+                  <Link to="/schedule" className="btn-primary w-full justify-center flex items-center">
+                    Book Online
+                  </Link>
                 </div>
               </div>
             </div>

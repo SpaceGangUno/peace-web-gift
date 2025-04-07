@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,10 +27,11 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/#services" },
+    { name: "Books", href: "/books" },
+    { name: "About", href: "/#about" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -41,7 +43,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between">
-        <a href="#home" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img 
             src="/lovable-uploads/d88841e0-4a57-4364-87af-91cbdd1142cf.png" 
             alt="The Gift of Peace" 
@@ -55,25 +57,31 @@ const Navbar = () => {
               of Peace
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.name}
-              href={item.href}
+              to={item.href}
               className="font-bookmania text-emerald-green hover:text-gold transition-colors"
             >
               {item.name}
-            </a>
+            </Link>
           ))}
-          <a
-            href="#contact"
+          <Link
+            to="/schedule"
             className="btn-primary"
           >
             Book Session
-          </a>
+          </Link>
+          <Link
+            to="/portal"
+            className="btn-secondary"
+          >
+            Client Portal
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -91,22 +99,29 @@ const Navbar = () => {
         <div className="md:hidden bg-white shadow-lg">
           <div className="container-custom py-4 flex flex-col space-y-4">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="font-bookmania text-emerald-green py-2"
                 onClick={toggleMobileMenu}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              to="/schedule"
               className="btn-primary inline-block text-center"
               onClick={toggleMobileMenu}
             >
               Book Session
-            </a>
+            </Link>
+            <Link
+              to="/portal"
+              className="btn-secondary inline-block text-center"
+              onClick={toggleMobileMenu}
+            >
+              Client Portal
+            </Link>
           </div>
         </div>
       )}
