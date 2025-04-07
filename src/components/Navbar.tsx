@@ -38,7 +38,7 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/90 backdrop-blur-sm shadow-sm py-3"
+          ? "bg-white/80 backdrop-blur-sm shadow-sm py-3"
           : "bg-transparent py-6"
       }`}
     >
@@ -72,13 +72,13 @@ const Navbar = () => {
           ))}
           <Link
             to="/schedule"
-            className="btn-primary"
+            className="btn-primary rounded-full"
           >
             Book Session
           </Link>
           <Link
             to="/portal"
-            className="btn-secondary"
+            className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10"
           >
             Client Portal
           </Link>
@@ -96,7 +96,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
+        <div className="md:hidden bg-white/90 backdrop-blur-sm shadow-lg">
           <div className="container-custom py-4 flex flex-col space-y-4">
             {navItems.map((item) => (
               <Link
@@ -110,14 +110,14 @@ const Navbar = () => {
             ))}
             <Link
               to="/schedule"
-              className="btn-primary inline-block text-center"
+              className="btn-primary inline-block text-center rounded-full"
               onClick={toggleMobileMenu}
             >
               Book Session
             </Link>
             <Link
               to="/portal"
-              className="btn-secondary inline-block text-center"
+              className="btn-secondary inline-block text-center rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10"
               onClick={toggleMobileMenu}
             >
               Client Portal

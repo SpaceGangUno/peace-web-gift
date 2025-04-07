@@ -5,11 +5,11 @@ const Hero = () => {
       id="home" 
       className="relative min-h-screen flex items-center pt-24 pb-12"
       style={{
-        background: "linear-gradient(to bottom, rgba(38, 65, 57, 0.9), rgba(17, 26, 24, 0.85))"
+        background: "linear-gradient(to bottom, rgba(139, 144, 120, 0.9), rgba(38, 65, 57, 0.8))"
       }}
     >
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-30"
+        className="absolute inset-0 z-0 bg-cover bg-center opacity-40"
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1536623975707-c4b3b2af565d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"
         }}
@@ -30,15 +30,15 @@ const Hero = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-white/90 mb-8 animate-fade-in-slow">
-            Professional therapy services guiding you toward mental wellness, 
-            emotional balance, and personal growth in a supportive environment.
+            Compassionate therapy services guiding you toward wellness, 
+            emotional balance, and personal growth in a nurturing environment.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-slow">
-            <a href="#services" className="btn-primary">
+            <a href="#services" className="btn-primary rounded-full">
               Explore Services
             </a>
-            <a href="#contact" className="btn-secondary">
+            <a href="#contact" className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10">
               Schedule Consultation
             </a>
           </div>

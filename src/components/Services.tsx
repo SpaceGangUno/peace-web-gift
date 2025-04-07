@@ -36,15 +36,15 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="section bg-wasabi/10">
+    <section id="services" className="section bg-[#f2fce2]/30">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bookmania mb-4 text-emerald-green">
             Our <span className="gold-text">Services</span>
           </h2>
           <p className="text-wasabi text-lg">
-            We offer a range of professional therapy and counseling services 
-            to support your mental health journey and personal growth.
+            We offer a range of healing therapy and counseling services 
+            to support your journey toward wellness and growth.
           </p>
         </div>
         
@@ -63,7 +63,7 @@ const Services = () => {
                 target.style.animation = "fade-in 0.5s ease-out forwards";
               }}
             >
-              <Card className="h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md">
+              <Card className="h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md bg-white/50 backdrop-blur-sm rounded-xl">
                 <div className="text-4xl mb-4">
                   {service.icon}
                 </div>
@@ -79,7 +79,7 @@ const Services = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <a href="#contact" className="btn-primary">
+          <a href="#contact" className="btn-primary rounded-full">
             Book Your Session
           </a>
         </div>
