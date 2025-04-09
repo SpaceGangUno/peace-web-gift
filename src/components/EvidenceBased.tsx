@@ -63,22 +63,14 @@ const EvidenceBased = () => {
                 <CarouselItem key={index} className="md:basis-4/5">
                   <div className="p-1">
                     <Card className="border-wasabi/30 shadow-lg overflow-hidden h-full">
-                      <div 
-                        className="bg-gradient-to-br from-emerald-green/90 to-emerald-green/70 text-white p-8 rounded-lg h-full"
-                        style={{
-                          backgroundImage: practice.image ? `url(${practice.image})` : 'none',
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                          backgroundBlendMode: 'overlay'
-                        }}
-                      >
+                      <div className="bg-gradient-to-br from-emerald-green/10 to-emerald-green/5 p-8 rounded-lg h-full">
                         <CardHeader className="pb-2">
-                          <CardTitle className="text-2xl md:text-3xl text-creased-khaki">
+                          <CardTitle className="text-2xl md:text-3xl text-gold">
                             {practice.name}
                           </CardTitle>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-white/90">{practice.description}</p>
+                          <p className="text-noir-vigne">{practice.description}</p>
                         </CardContent>
                       </div>
                     </Card>
