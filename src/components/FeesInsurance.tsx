@@ -41,12 +41,20 @@ const FeesInsurance = () => {
                 
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Individual Session (53-60 min)</span>
-                    <span className="font-bookmania text-emerald-green">$130</span>
+                    <span className="font-medium">Individual Counseling (60 min)</span>
+                    <span className="font-bookmania text-emerald-green">$150</span>
                   </div>
                   <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Couples Therapy (80 min)</span>
-                    <span className="font-bookmania text-emerald-green">$180</span>
+                    <span className="font-medium">Individual Counseling Intake</span>
+                    <span className="font-bookmania text-emerald-green">$175</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-2 border-b border-border">
+                    <span className="font-medium">Couples Counseling (60 min)</span>
+                    <span className="font-bookmania text-emerald-green">$200</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-2 border-b border-border">
+                    <span className="font-medium">Couples Counseling Intake</span>
+                    <span className="font-bookmania text-emerald-green">$225</span>
                   </div>
                   <div className="flex justify-between items-center pb-2 border-b border-border">
                     <span className="font-medium">Family Therapy (80 min)</span>
