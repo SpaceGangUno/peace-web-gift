@@ -30,7 +30,7 @@ const FeesInsurance = () => {
               Fees & <span className="gold-text">Insurance</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              We strive to make therapy accessible while providing high-quality care.
+              We accept clients in Washington DC, Virginia, North Carolina, and South Carolina.
             </p>
           </div>
 
