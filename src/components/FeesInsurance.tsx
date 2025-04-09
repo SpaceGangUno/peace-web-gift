@@ -2,12 +2,23 @@
 import { Check } from "lucide-react";
 
 const FeesInsurance = () => {
-  const insuranceList = [
-    "Blue Cross Blue Shield",
-    "Aetna",
-    "United Healthcare",
-    "Cigna",
-    "Medicare"
+  const insuranceByRegion = [
+    {
+      region: "Washington DC",
+      plans: ["Quest CarePlan", "Kaiser", "Aetna", "Cigna", "Anthem", "Optum"]
+    },
+    {
+      region: "Virginia",
+      plans: ["Quest CarePlan", "Kaiser", "Aetna", "Cigna", "Anthem", "Optum"]
+    },
+    {
+      region: "North Carolina",
+      plans: ["Optum", "Cigna", "Aetna", "BCBS"]
+    },
+    {
+      region: "South Carolina",
+      plans: ["Quest", "CarePlan", "Aetna", "Cigna", "Anthem", "Optum"]
+    }
   ];
 
   return (
@@ -57,14 +68,21 @@ const FeesInsurance = () => {
               <div className="p-6">
                 <h3 className="font-bookmania text-2xl mb-4">Insurance Accepted</h3>
                 
-                <ul className="space-y-3">
-                  {insuranceList.map((insurance, index) => (
-                    <li key={index} className="flex items-center">
-                      <Check className="text-gold mr-2 h-5 w-5 flex-shrink-0" />
-                      <span>{insurance}</span>
-                    </li>
+                <div className="space-y-5">
+                  {insuranceByRegion.map((region, index) => (
+                    <div key={index} className="pb-4 border-b border-border last:border-b-0 last:pb-0">
+                      <h4 className="font-bookmania text-lg mb-2">{region.region}</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {region.plans.map((plan, planIndex) => (
+                          <span key={planIndex} className="inline-flex items-center bg-wasabi/10 px-3 py-1 rounded-full text-sm">
+                            <Check className="text-gold mr-1 h-4 w-4 flex-shrink-0" />
+                            {plan}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
                 
                 <div className="mt-6 p-4 bg-muted/30 rounded-md">
                   <h4 className="font-bookmania text-lg mb-2">Sliding Scale</h4>
@@ -73,11 +91,6 @@ const FeesInsurance = () => {
                     experiencing financial hardship. Please inquire during your initial consultation.
                   </p>
                 </div>
-                
-                <p className="mt-6 text-sm text-muted-foreground">
-                  We'll verify your benefits before your first appointment and discuss 
-                  any expected out-of-pocket costs.
-                </p>
               </div>
             </div>
           </div>

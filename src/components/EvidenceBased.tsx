@@ -44,10 +44,6 @@ const EvidenceBased = () => {
           <h2 className="text-3xl md:text-4xl font-bookmania mb-4">
             Evidence-Based <span className="gold-text">Practices</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            We utilize therapeutic approaches backed by scientific research to provide the most
-            effective treatment for your specific needs.
-          </p>
         </div>
 
         <div className="max-w-5xl mx-auto my-12 evidence-carousel">
