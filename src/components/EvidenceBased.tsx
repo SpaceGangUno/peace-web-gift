@@ -17,7 +17,7 @@ const EvidenceBased = () => {
       name: "Psychodynamic Therapy",
       description:
         "Psychodynamic therapy is based on the idea that our past experiences, especially those from our early childhood, have a significant impact on our present behavior, thoughts, and emotional patterns. In simpler terms, psychodynamic therapy helps people dig deep into their past to better understand why they think and act the way they do today to work through any emotional issues and improve their overall mental health.",
-      image: "/lovable-uploads/3d4db493-ae96-4b9b-8c69-1f2d8da78c89.png",
+      image: "/lovable-uploads/a5e8c605-ceed-4a5e-87c9-1fa466454940.png",
     },
     {
       name: "Cognitive Behavioral Therapy",
