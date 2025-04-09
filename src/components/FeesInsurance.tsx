@@ -41,11 +41,7 @@ const FeesInsurance = () => {
                 
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Initial Consultation (60 min)</span>
-                    <span className="font-bookmania text-emerald-green">$150</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Individual Session (50 min)</span>
+                    <span className="font-medium">Individual Session (53-60 min)</span>
                     <span className="font-bookmania text-emerald-green">$130</span>
                   </div>
                   <div className="flex justify-between items-center pb-2 border-b border-border">
@@ -82,14 +78,6 @@ const FeesInsurance = () => {
                       </div>
                     </div>
                   ))}
-                </div>
-                
-                <div className="mt-6 p-4 bg-muted/30 rounded-md">
-                  <h4 className="font-bookmania text-lg mb-2">Sliding Scale</h4>
-                  <p className="text-sm">
-                    A limited number of sliding scale spots are available for clients 
-                    experiencing financial hardship. Please inquire during your initial consultation.
-                  </p>
                 </div>
               </div>
             </div>
