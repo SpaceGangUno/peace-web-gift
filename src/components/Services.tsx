@@ -25,7 +25,8 @@ const services = [
     title: "Family Counseling",
     description: "Family dynamics significantly impact individual wellbeing and functioning. Our family counseling services help identify challenges within relationships that cause conflict, miscommunication, or dysfunction. Together, we work towards developing healthier ways of coexisting. Family therapy can accommodate as few as two or as many as four family members, ensuring personalized attention and support.",
     icon: "/lovable-uploads/217a179e-6020-4251-bd91-348812ee99b2.png",
-    showConsultButton: true
+    showConsultButton: true,
+    backgroundImage: "/lovable-uploads/77526680-57b4-4b21-a564-c8138ae65805.png"
   },
   {
     title: "Couples Counseling",
