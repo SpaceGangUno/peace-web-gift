@@ -2,7 +2,7 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CalendarClock, ChevronLeft, ChevronRight } from "lucide-react";
+import { CalendarClock, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -49,15 +49,15 @@ const Services = () => {
   const isMobile = useIsMobile();
   
   return (
-    <section id="services" className="section section-alt">
-      <div className="container-custom">
+    <section id="services" className="section section-alt py-16 md:py-24 lg:py-32">
+      <div className="container-custom max-w-7xl">
         <div className="section-title max-w-3xl mx-auto">
           <span className="section-title-pre">What We Offer</span>
-          <h2>
+          <h2 className="mb-4">
             Our <span className="gold-text">Services</span>
           </h2>
           <div className="section-title-divider"></div>
-          <p className="text-wasabi text-lg">
+          <p className="text-wasabi text-lg max-w-2xl mx-auto">
             We offer a range of healing therapy and counseling services 
             to support your journey toward wellness and growth.
           </p>
@@ -66,7 +66,7 @@ const Services = () => {
         {isMobile ? (
           // Mobile view with carousel
           <Carousel 
-            className="w-full max-w-sm mx-auto services-carousel" 
+            className="w-full max-w-sm mx-auto services-carousel mt-10" 
             opts={{ loop: true }}
           >
             <CarouselContent>
@@ -77,8 +77,8 @@ const Services = () => {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-4 mt-6">
-              <CarouselPrevious className="relative static translate-y-0 translate-x-0 left-0 top-0" />
-              <CarouselNext className="relative static translate-y-0 translate-x-0 right-0 top-0" />
+              <CarouselPrevious className="relative static translate-y-0 translate-x-0 left-0 top-0 border-gold text-gold hover:bg-gold/20 hover:text-gold-dark" />
+              <CarouselNext className="relative static translate-y-0 translate-x-0 right-0 top-0 border-gold text-gold hover:bg-gold/20 hover:text-gold-dark" />
             </div>
           </Carousel>
         ) : (
@@ -95,11 +95,13 @@ const Services = () => {
         )}
         
         <div className="mt-16 text-center flex flex-col sm:flex-row justify-center gap-4">
-          <Link to="/schedule" className="btn-primary inline-block">
+          <Link to="/schedule" className="btn-primary inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
             Book Your Consultation
+            <ArrowRight className="w-4 h-4" />
           </Link>
-          <Link to="/about-me" className="btn-secondary inline-block">
+          <Link to="/about-me" className="btn-secondary inline-flex items-center justify-center gap-2 shadow hover:shadow-md transform hover:-translate-y-1 transition-all duration-300">
             Meet Our Therapist
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
@@ -128,7 +130,7 @@ const ServiceCard = ({
     }}
   >
     <Card 
-      className={`hover-card h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md rounded-xl flex flex-col relative overflow-hidden ${service.backgroundImage ? 'text-white' : 'bg-white/80 backdrop-blur-sm'}`}
+      className={`hover-card h-full p-6 border-2 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-lg rounded-xl flex flex-col relative overflow-hidden ${service.backgroundImage ? 'text-white' : 'bg-white/80 backdrop-blur-sm'}`}
     >
       {service.backgroundImage && (
         <div className="absolute inset-0 z-0">
@@ -137,36 +139,40 @@ const ServiceCard = ({
             alt={service.title} 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-emerald-green/60 backdrop-blur-[1px]"></div>
+          <div className="absolute inset-0 bg-emerald-green/75 backdrop-blur-[1px]"></div>
         </div>
       )}
       
       <div className={`${service.backgroundImage ? 'relative z-10' : ''}`}>
-        <div className="mb-4 flex items-center justify-center">
+        <div className="mb-4 flex items-center justify-between">
           <img 
             src={service.icon} 
             alt={service.title} 
-            className="w-16 h-16 object-contain"
+            className="w-16 h-16 object-contain bg-gold/20 p-2 rounded-full"
           />
-        </div>
-        <h3 className={`text-xl font-bookmania mb-3 ${service.backgroundImage ? 'text-creased-khaki' : 'text-emerald-green group-hover:text-gold-dark'} transition-colors flex items-center gap-2`}>
-          {service.title}
+          
           {service.comingSoon && (
-            <span className="text-xs font-sans bg-gold-light/30 text-gold-dark px-2 py-0.5 rounded-full">
+            <span className="text-xs font-sans bg-gold-light/50 text-gold-dark px-3 py-1 rounded-full font-medium">
               Coming Soon
             </span>
           )}
+        </div>
+        <h3 className={`text-2xl font-bookmania mb-3 ${service.backgroundImage ? 'text-gold-light' : 'text-emerald-green group-hover:text-gold-dark'} transition-colors`}>
+          {service.title}
         </h3>
-        <p className={`mb-4 flex-grow ${service.backgroundImage ? 'text-white' : 'text-wasabi'}`}>
+        <p className={`mb-6 flex-grow ${service.backgroundImage ? 'text-white/90' : 'text-wasabi'}`}>
           {service.description}
         </p>
         {service.showConsultButton && (
-          <div className="mt-4">
+          <div className="mt-auto pt-4">
             <Link to="/schedule">
               <Button 
                 variant="outline" 
                 size="sm" 
-                className={`${service.backgroundImage ? 'border-gold hover:bg-gold/30 text-white' : 'border-gold hover:bg-gold/10 text-emerald-green'}`}
+                className={`w-full ${service.backgroundImage 
+                  ? 'border-gold bg-gold/30 hover:bg-gold/50 text-white' 
+                  : 'border-gold hover:bg-gold/20 text-emerald-green'} 
+                  font-medium py-5 transition-all duration-300 transform hover:translate-y-[-2px]`}
               >
                 <CalendarClock className="mr-2 h-4 w-4" />
                 Schedule Consultation
