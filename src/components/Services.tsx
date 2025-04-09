@@ -31,7 +31,7 @@ const services = [
     title: "Couples Counseling",
     description: "Strengthen your relationship with our couples counseling services. We help you develop improved communication skills, resolve conflicts effectively, and foster a deeper emotional connection with your partner. Our supportive approach creates a safe environment to address relationship challenges.",
     icon: "/lovable-uploads/af4f5b72-1ce8-4ee0-85f6-94ba223d8166.png",
-    backgroundImage: "/lovable-uploads/441aea25-bf9f-49bc-95fc-2cee7da7779a.png",
+    backgroundImage: "/lovable-uploads/aeb9c661-1bdf-460c-b5ff-9e50d0f183b5.png",
     showConsultButton: true
   },
   {
