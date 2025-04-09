@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -52,6 +53,14 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-bookmania;
   }
+  
+  h2 {
+    @apply text-3xl md:text-4xl font-bookmania;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl font-bookmania;
+  }
 }
 
 @layer components {
@@ -63,16 +72,32 @@
     @apply py-16 md:py-24;
   }
   
+  .section-alt {
+    @apply bg-[#f8fbf2];
+  }
+  
   .container-custom {
     @apply container mx-auto px-4 md:px-8;
   }
 
   .btn-primary {
-    @apply bg-gold-gradient text-noir-vigne font-medium py-3 px-6 transition-all hover:shadow-lg;
+    @apply bg-gold-gradient text-noir-vigne font-medium py-3 px-6 transition-all hover:shadow-lg rounded-md;
   }
   
   .btn-secondary {
-    @apply border-2 border-wasabi text-wasabi font-medium py-3 px-6 hover:bg-wasabi/10 transition-all;
+    @apply border-2 border-wasabi text-wasabi font-medium py-3 px-6 hover:bg-wasabi/10 transition-all rounded-md;
+  }
+  
+  .section-title {
+    @apply text-center mb-12;
+  }
+  
+  .section-title-pre {
+    @apply text-gold-dark text-sm uppercase tracking-wider font-medium mb-2 block;
+  }
+  
+  .section-title-divider {
+    @apply w-24 h-1 bg-gradient-to-r from-gold-light to-gold mx-auto mb-6;
   }
 
   /* Evidence-based carousel custom styles */
@@ -82,6 +107,11 @@
   
   .evidence-carousel .embla__slide.is-selected {
     @apply scale-105 z-10;
+  }
+  
+  /* Card hover effects */
+  .hover-card {
+    @apply transition-all duration-300 hover:shadow-lg hover:border-gold-light;
   }
 }
 
@@ -97,4 +127,30 @@
 
 ::-webkit-scrollbar-thumb {
   @apply bg-wasabi/50 hover:bg-wasabi rounded-full;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s forwards;
 }

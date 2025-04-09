@@ -45,12 +45,14 @@ const Services = () => {
   const isMobile = useIsMobile();
   
   return (
-    <section id="services" className="section bg-[#f2fce2]/30">
+    <section id="services" className="section section-alt">
       <div className="container-custom">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bookmania mb-4 text-emerald-green">
+        <div className="section-title max-w-3xl mx-auto">
+          <span className="section-title-pre">What We Offer</span>
+          <h2>
             Our <span className="gold-text">Services</span>
           </h2>
+          <div className="section-title-divider"></div>
           <p className="text-wasabi text-lg">
             We offer a range of healing therapy and counseling services 
             to support your journey toward wellness and growth.
@@ -67,14 +69,14 @@ const Services = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center gap-2 mt-6">
-              <CarouselPrevious className="static translate-y-0 h-9 w-9 border-gold hover:bg-gold/10" />
-              <CarouselNext className="static translate-y-0 h-9 w-9 border-gold hover:bg-gold/10" />
+            <div className="flex justify-center gap-4 mt-6">
+              <CarouselPrevious className="relative static translate-y-0 h-9 w-9 border-gold bg-gold/10 hover:bg-gold/20 text-emerald-green" />
+              <CarouselNext className="relative static translate-y-0 h-9 w-9 border-gold bg-gold/10 hover:bg-gold/20 text-emerald-green" />
             </div>
           </Carousel>
         ) : (
           // Desktop view with grid
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
             {services.map((service, index) => (
               <ServiceCard 
                 key={index} 
@@ -85,8 +87,8 @@ const Services = () => {
           </div>
         )}
         
-        <div className="mt-12 text-center">
-          <Link to="/schedule" className="btn-primary rounded-full">
+        <div className="mt-16 text-center">
+          <Link to="/schedule" className="btn-primary inline-block">
             Book Your Session
           </Link>
         </div>
@@ -110,13 +112,13 @@ const ServiceCard = ({
   animationDelay: number;
 }) => (
   <div 
-    className="group animate-fade-in"
+    className="group animate-fade-in-up"
     style={{ 
       animationDelay: `${animationDelay}s`
     }}
   >
-    <Card className="h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md bg-white/50 backdrop-blur-sm rounded-xl flex flex-col">
-      <div className="text-4xl mb-4">
+    <Card className="hover-card h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md bg-white/80 backdrop-blur-sm rounded-xl flex flex-col">
+      <div className="text-4xl mb-4 bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center">
         {service.icon}
       </div>
       <h3 className="text-xl font-bookmania mb-3 text-emerald-green group-hover:text-gold-dark transition-colors flex items-center gap-2">

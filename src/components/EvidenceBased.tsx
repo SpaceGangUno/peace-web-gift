@@ -38,12 +38,17 @@ const EvidenceBased = () => {
   ];
 
   return (
-    <section id="evidence-based" className="section bg-[#f2fce2]/20">
+    <section id="evidence-based" className="section py-20 bg-[#f8fbf2]">
       <div className="container-custom">
         <div className="text-center mb-12">
+          <span className="text-gold-dark text-sm uppercase tracking-wider font-medium mb-2 block">Our Approach</span>
           <h2 className="text-3xl md:text-4xl font-bookmania mb-4">
             Evidence-Based <span className="gold-text">Practices</span>
           </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-gold-light to-gold mx-auto mb-6"></div>
+          <p className="text-wasabi max-w-2xl mx-auto">
+            Our therapeutic techniques are rooted in scientifically validated approaches to mental wellness and personal growth.
+          </p>
         </div>
 
         <div className="max-w-5xl mx-auto my-12 evidence-carousel">
@@ -58,28 +63,39 @@ const EvidenceBased = () => {
               {practices.map((practice, index) => (
                 <CarouselItem key={index} className="md:basis-4/5">
                   <div className="p-1">
-                    <Card className="border-wasabi/30 shadow-lg overflow-hidden h-full">
-                      <div className="bg-gradient-to-br from-emerald-green/10 to-emerald-green/5 p-8 rounded-lg h-full">
-                        <CardHeader className="pb-2">
-                          <CardTitle className="text-2xl md:text-3xl text-gold">
-                            {practice.name}
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-noir-vigne">{practice.description}</p>
-                        </CardContent>
+                    <Card className="border-wasabi/30 shadow-md overflow-hidden h-full group hover:border-gold transition-all duration-300">
+                      <div className="grid md:grid-cols-5 h-full">
+                        <div className="md:col-span-2 bg-emerald-green/5 flex items-center justify-center p-4">
+                          <img 
+                            src={practice.image} 
+                            alt={practice.name} 
+                            className="w-24 h-24 md:w-32 md:h-32 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                          />
+                        </div>
+                        <div className="md:col-span-3 p-6">
+                          <CardHeader className="pb-2 px-0 pt-0">
+                            <CardTitle className="text-2xl md:text-2xl text-gold">
+                              {practice.name}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent className="px-0 pb-0">
+                            <p className="text-noir-vigne/90">{practice.description}</p>
+                          </CardContent>
+                        </div>
                       </div>
                     </Card>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious 
-              className="left-2 md:-left-10 bg-gold/80 hover:bg-gold text-noir-vigne border-none h-10 w-10"
-            />
-            <CarouselNext 
-              className="right-2 md:-right-10 bg-gold/80 hover:bg-gold text-noir-vigne border-none h-10 w-10" 
-            />
+            <div className="flex justify-center gap-4 mt-8">
+              <CarouselPrevious 
+                className="relative static translate-y-0 bg-gold/80 hover:bg-gold text-noir-vigne border-none h-10 w-10"
+              />
+              <CarouselNext 
+                className="relative static translate-y-0 bg-gold/80 hover:bg-gold text-noir-vigne border-none h-10 w-10" 
+              />
+            </div>
           </Carousel>
         </div>
       </div>
