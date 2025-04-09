@@ -18,18 +18,6 @@ const services = [
     showConsultButton: true
   },
   {
-    title: "Couples Counseling",
-    description: "Strengthen your relationship with improved communication, conflict resolution skills, and deeper emotional connection.",
-    icon: "❤️",
-    showConsultButton: false
-  },
-  {
-    title: "Anxiety Management",
-    description: "Learn effective techniques to manage anxiety, reduce stress, and regain control of your thoughts and emotions.",
-    icon: "🧘",
-    showConsultButton: false
-  },
-  {
     title: "Trauma Recovery",
     description: "Gentle, evidence-based approaches to process trauma and reclaim your sense of safety and well-being.",
     icon: "🌈",
@@ -57,7 +45,7 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <div 
               key={index} 
