@@ -1,69 +1,116 @@
 
-import { CheckCircle } from "lucide-react";
+import React from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const EvidenceBased = () => {
   const practices = [
     {
-      name: "Cognitive Behavioral Therapy (CBT)",
-      description: "A structured approach that helps identify and change negative thought patterns and behaviors."
+      name: "Psychodynamic Therapy",
+      description:
+        "Psychodynamic therapy is based on the idea that our past experiences, especially those from our early childhood, have a significant impact on our present behavior, thoughts, and emotional patterns. In simpler terms, psychodynamic therapy helps people dig deep into their past to better understand why they think and act the way they do today to work through any emotional issues and improve their overall mental health.",
+      image: "/lovable-uploads/3d4db493-ae96-4b9b-8c69-1f2d8da78c89.png",
     },
     {
-      name: "Dialectical Behavior Therapy (DBT)",
-      description: "Combines cognitive behavioral techniques with mindfulness practices to build emotional regulation skills."
+      name: "Cognitive Behavioral Therapy",
+      description:
+        "CBT focuses on identifying negative thinking patterns and teaching practical skills to cope with everyday challenges more effectively. The goal is to help individuals develop healthier thinking habits, improve emotional regulation, and engage in more constructive behaviors, leading to a better overall quality of life.",
+      image: "/lovable-uploads/10b860a6-a737-466f-a1aa-1ff1f9c5429b.png",
     },
     {
-      name: "Eye Movement Desensitization and Reprocessing (EMDR)",
-      description: "A specialized approach for processing traumatic memories and reducing their emotional impact."
+      name: "Emotion Focused Therapy",
+      description:
+        "EFT is based on the idea that unprocessed or unresolved emotions can lead to mental and emotional distress. EFT involves identifying emotional patterns, understanding their origins, and learning how to transform negative emotions into more adaptive ones. This therapeutic approach is particularly useful for individuals dealing with issues such as depression, anxiety, and relationship problems.",
+      image: "/lovable-uploads/217a179e-6020-4251-bd91-348812ee99b2.png",
     },
     {
-      name: "Acceptance and Commitment Therapy (ACT)",
-      description: "Focuses on accepting difficult feelings while committing to behaviors that improve and enrich life."
+      name: "Mindfulness Techniques",
+      description:
+        "Mindfulness combines various therapeutic approaches that emphasize cultivating present-moment awareness, non-judgmental acceptance, and self-compassion. These practices help individuals develop a deeper understanding of their thoughts, emotions, and physical sensations, and teach them to respond to life's challenges with a more balanced and focused mindset.",
+      image: "/lovable-uploads/af4f5b72-1ce8-4ee0-85f6-94ba223d8166.png",
     },
     {
-      name: "Mindfulness-Based Cognitive Therapy",
-      description: "Combines cognitive therapy with mindfulness strategies to help break negative thought patterns."
-    }
+      name: "Acceptance and Commitment Therapy",
+      description:
+        "ACT helps individuals accept difficult feelings while committing to behaviors that improve and enrich life. It combines mindfulness skills with the practice of self-acceptance, helping you develop a psychological flexibility that allows you to better connect with the present moment and take action based on your values.",
+    },
   ];
 
   return (
-    <section id="evidence-based" className="section bg-white">
-      <div className="container-custom">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bookmania mb-4">
-              Evidence-Based <span className="gold-text">Practices</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              We utilize therapeutic approaches backed by scientific research to provide the most 
-              effective treatment for your specific needs.
-            </p>
-          </div>
+    <section id="evidence-based" className="section relative overflow-hidden">
+      {/* Background curved shapes */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-[#492365] rounded-b-[50%] w-full transform translate-y-[-50%]" style={{ opacity: 0.3 }}></div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-[#492365] rounded-t-[50%] w-full transform translate-y-[50%]" style={{ opacity: 0.3 }}></div>
+      
+      <div className="container-custom relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bookmania mb-4">
+            Evidence-Based <span className="gold-text">Practices</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            We utilize therapeutic approaches backed by scientific research to provide the most
+            effective treatment for your specific needs.
+          </p>
+        </div>
 
-          <div className="space-y-6">
-            {practices.map((practice, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-lg shadow-sm p-6 border border-border hover:border-gold/50 transition-all"
-              >
-                <div className="flex items-start">
-                  <CheckCircle className="text-gold mr-4 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-bookmania text-xl mb-2">{practice.name}</h3>
-                    <p className="text-muted-foreground">{practice.description}</p>
+        <div className="max-w-5xl mx-auto my-12">
+          <Carousel
+            opts={{
+              align: "center",
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {practices.map((practice, index) => (
+                <CarouselItem key={index} className="md:basis-4/5">
+                  <div className="p-1">
+                    <Card className="border-0 shadow-lg overflow-hidden">
+                      <div 
+                        className="bg-[#492365] text-white p-8 rounded-lg"
+                        style={{
+                          backgroundImage: practice.image ? `url(${practice.image})` : 'none',
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                          backgroundBlendMode: 'overlay'
+                        }}
+                      >
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-2xl md:text-3xl text-[#f89b7e]">
+                            {practice.name}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-white/90">{practice.description}</p>
+                        </CardContent>
+                      </div>
+                    </Card>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious 
+              className="left-2 md:left-4 bg-[#f89b7e]/80 hover:bg-[#f89b7e] text-white border-none h-10 w-10"
+            />
+            <CarouselNext 
+              className="right-2 md:right-4 bg-[#f89b7e]/80 hover:bg-[#f89b7e] text-white border-none h-10 w-10" 
+            />
+          </Carousel>
+        </div>
 
-          <div className="mt-12 p-6 bg-muted/30 rounded-lg">
-            <h3 className="font-bookmania text-xl mb-3 text-center">Our Commitment to Quality Care</h3>
-            <p className="text-center max-w-3xl mx-auto">
-              We continuously stay updated on the latest research and best practices 
-              in mental health treatment. Our therapeutic approaches are tailored to your 
-              individual needs while being grounded in methods proven to be effective.
-            </p>
-          </div>
+        <div className="mt-12 p-6 bg-muted/30 rounded-lg max-w-3xl mx-auto">
+          <h3 className="font-bookmania text-xl mb-3 text-center">Our Commitment to Quality Care</h3>
+          <p className="text-center">
+            We continuously stay updated on the latest research and best practices 
+            in mental health treatment. Our therapeutic approaches are tailored to your 
+            individual needs while being grounded in methods proven to be effective.
+          </p>
         </div>
       </div>
     </section>
