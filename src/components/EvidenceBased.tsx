@@ -4,10 +4,10 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const EvidenceBased = () => {
@@ -91,30 +91,8 @@ const EvidenceBased = () => {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-4 mt-8">
-              <Button 
-                variant="outline" 
-                size="icon" 
-                className="bg-gold/80 hover:bg-gold text-noir-vigne border-none h-10 w-10 rounded-full"
-                onClick={() => {
-                  const prevButton = document.querySelector('.practices-carousel .embla__prev');
-                  if (prevButton instanceof HTMLElement) prevButton.click();
-                }}
-              >
-                <ChevronLeft className="h-4 w-4" />
-                <span className="sr-only">Previous</span>
-              </Button>
-              <Button 
-                variant="outline" 
-                size="icon" 
-                className="bg-gold/80 hover:bg-gold text-noir-vigne border-none h-10 w-10 rounded-full"
-                onClick={() => {
-                  const nextButton = document.querySelector('.practices-carousel .embla__next');
-                  if (nextButton instanceof HTMLElement) nextButton.click();
-                }}
-              >
-                <ChevronRight className="h-4 w-4" />
-                <span className="sr-only">Next</span>
-              </Button>
+              <CarouselPrevious className="relative static translate-y-0 translate-x-0 left-0 top-0 bg-gold/80 hover:bg-gold text-noir-vigne border-none" />
+              <CarouselNext className="relative static translate-y-0 translate-x-0 right-0 top-0 bg-gold/80 hover:bg-gold text-noir-vigne border-none" />
             </div>
           </Carousel>
         </div>

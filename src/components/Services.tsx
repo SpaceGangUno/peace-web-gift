@@ -61,7 +61,10 @@ const Services = () => {
         
         {isMobile ? (
           // Mobile view with carousel
-          <Carousel className="w-full max-w-sm mx-auto">
+          <Carousel 
+            className="w-full max-w-sm mx-auto services-carousel" 
+            opts={{ loop: true }}
+          >
             <CarouselContent>
               {services.map((service, index) => (
                 <CarouselItem key={index} className="pl-1 md:pl-4">
@@ -70,30 +73,8 @@ const Services = () => {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-4 mt-6">
-              <Button 
-                variant="outline" 
-                size="icon" 
-                className="border-gold bg-gold/10 hover:bg-gold/20 text-emerald-green h-9 w-9 rounded-full"
-                onClick={() => {
-                  const prevButton = document.querySelector('.services-carousel .embla__prev');
-                  if (prevButton instanceof HTMLElement) prevButton.click();
-                }}
-              >
-                <ChevronLeft className="h-4 w-4" />
-                <span className="sr-only">Previous</span>
-              </Button>
-              <Button 
-                variant="outline" 
-                size="icon" 
-                className="border-gold bg-gold/10 hover:bg-gold/20 text-emerald-green h-9 w-9 rounded-full"
-                onClick={() => {
-                  const nextButton = document.querySelector('.services-carousel .embla__next');
-                  if (nextButton instanceof HTMLElement) nextButton.click();
-                }}
-              >
-                <ChevronRight className="h-4 w-4" />
-                <span className="sr-only">Next</span>
-              </Button>
+              <CarouselPrevious className="relative static translate-y-0 translate-x-0 left-0 top-0" />
+              <CarouselNext className="relative static translate-y-0 translate-x-0 right-0 top-0" />
             </div>
           </Carousel>
         ) : (
