@@ -9,16 +9,31 @@ const BookingCalendar = () => {
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [time, setTime] = useState<string>("");
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
-    service: "Individual Therapy",
+    state: "",
+    insurance: "",
+    referralSource: "",
     message: "",
   });
 
   // Available time slots
   const availableTimes = [
-    "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", 
+    "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
+  ];
+
+  // Options for dropdowns
+  const stateOptions = ["North Carolina", "South Carolina", "Virginia", "Washington DC"];
+  const insuranceOptions = [
+    "Aetna", "Anthem", "BCBS", "Cigna", "Kaiser Permanente", 
+    "Optum/UHC", "Quest Behavioral Health", "Carelon Behavioral Health",
+    "Other", "Self-Pay"
+  ];
+  const referralOptions = [
+    "Google Search", "Social Media", "Friend/Family", "Insurance Provider", 
+    "Healthcare Provider", "Psychology Today", "Other"
   ];
 
   // Weekend check for calendar
@@ -61,10 +76,13 @@ const BookingCalendar = () => {
     
     // Reset form
     setFormData({
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       phone: "",
-      service: "Individual Therapy",
+      state: "",
+      insurance: "",
+      referralSource: "",
       message: "",
     });
     setDate(undefined);
@@ -81,7 +99,7 @@ const BookingCalendar = () => {
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Take the first step toward healing by scheduling a consultation. 
-              Sundays between 10am-2pm are currently available for new client consultations.
+              Monday through Friday consultations are available between 10am-6pm.
             </p>
           </div>
 
@@ -134,20 +152,37 @@ const BookingCalendar = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block font-bookmania mb-1">
-                        Name
+                      <label htmlFor="firstName" className="block font-bookmania mb-1">
+                        First Name
                       </label>
                       <input
                         type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-md border border-input focus:border-gold focus:outline-none"
                         required
                       />
                     </div>
                     
+                    <div>
+                      <label htmlFor="lastName" className="block font-bookmania mb-1">
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-md border border-input focus:border-gold focus:outline-none"
+                        required
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="email" className="block font-bookmania mb-1">
                         Email
@@ -162,9 +197,7 @@ const BookingCalendar = () => {
                         required
                       />
                     </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    
                     <div>
                       <label htmlFor="phone" className="block font-bookmania mb-1">
                         Phone
@@ -176,33 +209,73 @@ const BookingCalendar = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-md border border-input focus:border-gold focus:outline-none"
+                        required
                       />
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="state" className="block font-bookmania mb-1">
+                        State You Live In
+                      </label>
+                      <select
+                        id="state"
+                        name="state"
+                        value={formData.state}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-md border border-input focus:border-gold focus:outline-none"
+                        required
+                      >
+                        <option value="">Select Your State</option>
+                        {stateOptions.map((state) => (
+                          <option key={state} value={state}>{state}</option>
+                        ))}
+                      </select>
                     </div>
                     
                     <div>
-                      <label htmlFor="service" className="block font-bookmania mb-1">
-                        Service Interest
+                      <label htmlFor="insurance" className="block font-bookmania mb-1">
+                        Insurance
                       </label>
                       <select
-                        id="service"
-                        name="service"
-                        value={formData.service}
+                        id="insurance"
+                        name="insurance"
+                        value={formData.insurance}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-md border border-input focus:border-gold focus:outline-none"
+                        required
                       >
-                        <option value="Individual Therapy">Individual Therapy</option>
-                        <option value="Couples Counseling">Couples Counseling</option>
-                        <option value="Family Therapy">Family Therapy</option>
-                        <option value="Anxiety Management">Anxiety Management</option>
-                        <option value="Trauma Recovery">Trauma Recovery</option>
-                        <option value="Mindfulness Training">Mindfulness Training</option>
+                        <option value="">Select Your Insurance</option>
+                        {insuranceOptions.map((insurance) => (
+                          <option key={insurance} value={insurance}>{insurance}</option>
+                        ))}
                       </select>
                     </div>
                   </div>
                   
                   <div>
+                    <label htmlFor="referralSource" className="block font-bookmania mb-1">
+                      How Did You Hear About Us?
+                    </label>
+                    <select
+                      id="referralSource"
+                      name="referralSource"
+                      value={formData.referralSource}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-md border border-input focus:border-gold focus:outline-none"
+                      required
+                    >
+                      <option value="">Select An Option</option>
+                      {referralOptions.map((source) => (
+                        <option key={source} value={source}>{source}</option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  <div>
                     <label htmlFor="message" className="block font-bookmania mb-1">
-                      Additional Information
+                      Primary Concerns and Availability Monday through Friday
                     </label>
                     <textarea
                       id="message"
@@ -210,7 +283,9 @@ const BookingCalendar = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
+                      placeholder="Tell us your primary concerns and availability Monday through Friday"
                       className="w-full px-4 py-3 rounded-md border border-input focus:border-gold focus:outline-none"
+                      required
                     ></textarea>
                   </div>
 

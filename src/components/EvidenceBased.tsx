@@ -38,7 +38,7 @@ const EvidenceBased = () => {
   ];
 
   return (
-    <section id="evidence-based" className="section py-20 bg-[#f8fbf2]">
+    <section id="evidence-based" className="section py-20 bg-emerald-green/10">
       <div className="container-custom">
         <div className="text-center mb-12">
           <span className="text-gold-dark text-sm uppercase tracking-wider font-medium mb-2 block">Our Approach</span>

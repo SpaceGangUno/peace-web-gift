@@ -12,7 +12,7 @@ const About = () => {
             <p className="text-wasabi mb-4">
               Founded with a vision to provide a sanctuary for healing and growth, 
               The Gift of Peace is dedicated to helping individuals, couples, and families 
-              find their path to mental and emotional wellbeing.
+              find their path to increased self awareness and emotional stability.
             </p>
             
             <p className="text-wasabi mb-6">
@@ -30,17 +30,17 @@ const About = () => {
             </div>
             
             <h3 className="font-bookmania text-xl text-emerald-green mb-4">
-              Our Values
+              Core Principles
             </h3>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-1 gap-4 mb-8">
               <div className="flex items-start">
                 <div className="h-6 w-6 rounded-full bg-gold-gradient flex items-center justify-center text-white mr-3 mt-1">
                   ✓
                 </div>
                 <div>
-                  <h4 className="font-bookmania text-emerald-green">Compassion</h4>
-                  <p className="text-wasabi text-sm">Approaching each person with empathy and understanding</p>
+                  <h4 className="font-bookmania text-emerald-green">Emotional Safety</h4>
+                  <p className="text-wasabi text-sm">A safe, non-judgmental space where you can feel comfortable sharing your thoughts and emotions</p>
                 </div>
               </div>
               
@@ -49,8 +49,8 @@ const About = () => {
                   ✓
                 </div>
                 <div>
-                  <h4 className="font-bookmania text-emerald-green">Respect</h4>
-                  <p className="text-wasabi text-sm">Honoring your unique journey and perspective</p>
+                  <h4 className="font-bookmania text-emerald-green">Holistic Approach</h4>
+                  <p className="text-wasabi text-sm">We consider all aspects of your life – emotional, mental, physical, and social – to provide well-rounded and comprehensive care</p>
                 </div>
               </div>
               
@@ -59,18 +59,8 @@ const About = () => {
                   ✓
                 </div>
                 <div>
-                  <h4 className="font-bookmania text-emerald-green">Growth</h4>
-                  <p className="text-wasabi text-sm">Supporting continuous personal development</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="h-6 w-6 rounded-full bg-gold-gradient flex items-center justify-center text-white mr-3 mt-1">
-                  ✓
-                </div>
-                <div>
-                  <h4 className="font-bookmania text-emerald-green">Integrity</h4>
-                  <p className="text-wasabi text-sm">Maintaining the highest ethical standards</p>
+                  <h4 className="font-bookmania text-emerald-green">Transparency</h4>
+                  <p className="text-wasabi text-sm">This is key to fostering trust, openness and authentic collaboration between client and therapist</p>
                 </div>
               </div>
             </div>
@@ -84,16 +74,11 @@ const About = () => {
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold rounded-lg"></div>
               <img
-                src="/lovable-uploads/6cae21e5-5080-4d29-b814-f502644d67e4.png"
-                alt="Therapy environment"
+                src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Healing environment"
                 className="rounded-lg w-full h-auto object-cover shadow-lg"
                 style={{ maxHeight: "600px" }}
               />
-              <div className="absolute -bottom-6 -right-6 bg-gold-gradient p-4 rounded-lg shadow-lg">
-                <p className="font-bookmania text-noir-vigne text-lg">
-                  15+ Years of Experience
-                </p>
-              </div>
             </div>
           </div>
         </div>

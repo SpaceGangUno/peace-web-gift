@@ -1,16 +1,18 @@
 
 import { Check } from "lucide-react";
+import React, { useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const FeesInsurance = () => {
+  const [activeRegion, setActiveRegion] = useState<string>("North Carolina");
+  
   const insuranceByRegion = [
-    {
-      region: "Washington DC",
-      plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Kaiser Permanente", "Aetna", "Cigna", "Anthem", "Optum/UHC"]
-    },
-    {
-      region: "Virginia",
-      plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Kaiser Permanente", "Aetna", "Cigna", "Anthem", "Optum/UHC"]
-    },
     {
       region: "North Carolina",
       plans: ["Optum/UHC", "Cigna", "Aetna", "BCBS"]
@@ -18,6 +20,14 @@ const FeesInsurance = () => {
     {
       region: "South Carolina",
       plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Aetna", "Cigna", "Anthem", "Optum/UHC"]
+    },
+    {
+      region: "Washington DC",
+      plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Kaiser Permanente", "Aetna", "Cigna", "Anthem", "Optum/UHC"]
+    },
+    {
+      region: "Virginia",
+      plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Kaiser Permanente", "Aetna", "Cigna", "Anthem", "Optum/UHC"]
     }
   ];
 
@@ -37,7 +47,7 @@ const FeesInsurance = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="bg-white rounded-lg shadow-md overflow-hidden border border-border">
               <div className="p-6">
-                <h3 className="font-bookmania text-2xl mb-4">Standard Fees</h3>
+                <h3 className="font-bookmania text-2xl mb-4">Private Pay Rates</h3>
                 
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-2 border-b border-border">
@@ -76,20 +86,40 @@ const FeesInsurance = () => {
               <div className="p-6">
                 <h3 className="font-bookmania text-2xl mb-4">Insurance Accepted</h3>
                 
-                <div className="space-y-5">
-                  {insuranceByRegion.map((region, index) => (
-                    <div key={index} className="pb-4 border-b border-border last:border-b-0 last:pb-0">
-                      <h4 className="font-bookmania text-lg mb-2">{region.region}</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {region.plans.map((plan, planIndex) => (
-                          <span key={planIndex} className="inline-flex items-center bg-wasabi/10 px-3 py-1 rounded-full text-sm">
-                            <Check className="text-gold mr-1 h-4 w-4 flex-shrink-0" />
-                            {plan}
-                          </span>
-                        ))}
+                <div className="mb-6">
+                  <div className="flex overflow-x-auto space-x-2 pb-2">
+                    {insuranceByRegion.map((region, idx) => (
+                      <button 
+                        key={idx} 
+                        className={`px-4 py-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors 
+                          ${activeRegion === region.region 
+                            ? "bg-gold-gradient text-noir-vigne" 
+                            : "bg-wasabi/10 text-wasabi hover:bg-wasabi/20"
+                          }`}
+                        onClick={() => setActiveRegion(region.region)}
+                      >
+                        {region.region}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="space-y-2 min-h-[200px]">
+                  {insuranceByRegion
+                    .filter(region => region.region === activeRegion)
+                    .map((region, index) => (
+                      <div key={index}>
+                        <h4 className="font-bookmania text-lg mb-2">{region.region}</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {region.plans.map((plan, planIndex) => (
+                            <span key={planIndex} className="inline-flex items-center bg-wasabi/10 px-3 py-1 rounded-full text-sm">
+                              <Check className="text-gold mr-1 h-4 w-4 flex-shrink-0" />
+                              {plan}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               </div>
             </div>

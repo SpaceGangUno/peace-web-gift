@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Books from "./pages/Books";
 import Schedule from "./pages/Schedule";
+import AboutMe from "./pages/AboutMe";
 
 const queryClient = new QueryClient();
 const CLIENT_PORTAL_URL = "https://thegiftofpeacecw.clientsecure.me/";
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/books" element={<Books />} />
           <Route path="/schedule" element={<Schedule />} />
+          <Route path="/about-me" element={<AboutMe />} />
           <Route path="/portal" element={<ClientPortalRedirect />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

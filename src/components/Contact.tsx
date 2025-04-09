@@ -120,12 +120,12 @@ const Contact = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     type="submit"
-                    className="btn-primary"
+                    className="btn-primary w-full sm:w-auto"
                   >
                     Send Message
                   </button>
                   
-                  <Link to="/schedule" className="btn-secondary">
+                  <Link to="/schedule" className="btn-secondary w-full sm:w-auto text-center">
                     Schedule Consultation
                   </Link>
                 </div>
@@ -164,9 +164,7 @@ const Contact = () => {
                     <div>
                       <p className="text-sm text-white/70 mb-1">Office Hours</p>
                       <p className="text-white">
-                        Monday - Friday: 9am - 7pm<br />
-                        Saturday: By appointment<br />
-                        Sunday: 10am - 2pm (New clients)
+                        Monday - Friday: 10am - 6pm
                       </p>
                     </div>
                   </div>

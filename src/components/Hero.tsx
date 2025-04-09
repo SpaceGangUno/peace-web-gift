@@ -1,4 +1,6 @@
 
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <section 
@@ -38,9 +40,9 @@ const Hero = () => {
             <a href="#services" className="btn-primary rounded-full">
               Explore Services
             </a>
-            <a href="#contact" className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10">
+            <Link to="/schedule" className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10">
               Schedule Consultation
-            </a>
+            </Link>
           </div>
         </div>
       </div>

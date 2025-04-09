@@ -17,25 +17,25 @@ const services = [
   {
     title: "Individual Counseling",
     description: "Our individual counseling services are tailored to help you achieve your personal goals, improve mental wellbeing, and become a healthier version of yourself. By identifying the sources of your stressors, we work together to develop new patterns and more effective ways of managing life's challenges. Embrace change and unlock your full potential with our dedicated support.",
-    icon: "🌱",
+    icon: "/lovable-uploads/3d4db493-ae96-4b9b-8c69-1f2d8da78c89.png",
     showConsultButton: true
   },
   {
     title: "Family Counseling",
     description: "Family dynamics significantly impact individual wellbeing and functioning. Our family counseling services help identify challenges within relationships that cause conflict, miscommunication, or dysfunction. Together, we work towards developing healthier ways of coexisting. Family therapy can accommodate as few as two or as many as four family members, ensuring personalized attention and support.",
-    icon: "👨‍👩‍👧",
+    icon: "/lovable-uploads/217a179e-6020-4251-bd91-348812ee99b2.png",
     showConsultButton: true
   },
   {
     title: "Couples Counseling",
     description: "Strengthen your relationship with our couples counseling services. We help you develop improved communication skills, resolve conflicts effectively, and foster a deeper emotional connection with your partner. Our supportive approach creates a safe environment to address relationship challenges.",
-    icon: "❤️",
+    icon: "/lovable-uploads/af4f5b72-1ce8-4ee0-85f6-94ba223d8166.png",
     showConsultButton: true
   },
   {
     title: "Clinical Supervision",
     description: "Coming soon: Professional clinical supervision for LCSW-A's seeking guidance and mentorship to develop their clinical skills and advance their careers. Stay tuned for more information.",
-    icon: "📋",
+    icon: "/lovable-uploads/10b860a6-a737-466f-a1aa-1ff1f9c5429b.png",
     showConsultButton: false,
     comingSoon: true
   }
@@ -87,9 +87,12 @@ const Services = () => {
           </div>
         )}
         
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center flex flex-col sm:flex-row justify-center gap-4">
           <Link to="/schedule" className="btn-primary inline-block">
-            Book Your Session
+            Book Your Consultation
+          </Link>
+          <Link to="/about-me" className="btn-secondary inline-block">
+            Meet Our Therapist
           </Link>
         </div>
       </div>
@@ -118,8 +121,12 @@ const ServiceCard = ({
     }}
   >
     <Card className="hover-card h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md bg-white/80 backdrop-blur-sm rounded-xl flex flex-col">
-      <div className="text-4xl mb-4 bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center">
-        {service.icon}
+      <div className="mb-4 flex items-center justify-center">
+        <img 
+          src={service.icon} 
+          alt={service.title} 
+          className="w-16 h-16 object-contain"
+        />
       </div>
       <h3 className="text-xl font-bookmania mb-3 text-emerald-green group-hover:text-gold-dark transition-colors flex items-center gap-2">
         {service.title}
