@@ -35,11 +35,11 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="section bg-white">
-      <div className="container-custom">
+    <section id="faq" className="section bg-white py-12 sm:py-16 md:py-24">
+      <div className="container-custom px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bookmania mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bookmania mb-4">
               Frequently Asked <span className="gold-text">Questions</span>
             </h2>
           </div>
@@ -47,25 +47,25 @@ const FAQ = () => {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border-b border-border">
-                <AccordionTrigger className="text-left font-bookmania py-4">
+                <AccordionTrigger className="text-left font-bookmania py-4 text-sm sm:text-base">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-4">
+                <AccordionContent className="text-muted-foreground pb-4 text-sm sm:text-base">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
           
-          <div className="mt-12 text-center">
-            <p className="mb-6">
+          <div className="mt-8 sm:mt-12 text-center">
+            <p className="mb-4 sm:mb-6 text-sm sm:text-base">
               Have a question that isn't answered here? Feel free to reach out.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#contact" className="btn-primary">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <a href="#contact" className="btn-primary text-sm sm:text-base">
                 Contact Us
               </a>
-              <a href="/schedule" className="btn-secondary">
+              <a href="/schedule" className="btn-secondary text-sm sm:text-base">
                 Schedule Consultation
               </a>
             </div>

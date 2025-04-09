@@ -2,13 +2,19 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   useEffect(() => {
@@ -30,7 +36,7 @@ const Navbar = () => {
     { name: "Home", href: "/" },
     { name: "Services", href: "/#services" },
     { name: "Books", href: "/books" },
-    { name: "About", href: "/#about" },
+    { name: "About", href: "/about-me" },
     { name: "Contact", href: "/#contact" },
   ];
   
@@ -40,56 +46,56 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-sm shadow-sm py-3"
-          : "bg-transparent py-6"
+          ? "bg-white/90 backdrop-blur-sm shadow-sm py-2"
+          : "bg-transparent py-3 sm:py-6"
       }`}
     >
       <div className="container-custom flex items-center justify-between">
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
           <img 
             src="/lovable-uploads/d88841e0-4a57-4364-87af-91cbdd1142cf.png" 
             alt="The Gift of Peace" 
-            className="h-12 md:h-14" 
+            className="h-10 sm:h-12 md:h-14" 
           />
-          <div className="ml-3 flex flex-col">
-            <span className="font-bookmania text-lg md:text-xl font-medium text-emerald-green leading-tight">
+          <div className="ml-2 sm:ml-3 flex flex-col">
+            <span className="font-bookmania text-base sm:text-lg md:text-xl font-medium text-emerald-green leading-tight">
               The Gift
             </span>
-            <span className="font-bookmania text-lg md:text-xl font-medium text-emerald-green leading-tight">
+            <span className="font-bookmania text-base sm:text-lg md:text-xl font-medium text-emerald-green leading-tight">
               of Peace
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
           {navItems.map((item) => (
             <Link
               key={item.name}
               to={item.href}
-              className="font-bookmania text-emerald-green hover:text-gold transition-colors"
+              className="font-bookmania text-sm lg:text-base text-emerald-green hover:text-gold transition-colors"
             >
               {item.name}
             </Link>
           ))}
           <Link
             to="/schedule"
-            className="btn-primary rounded-full"
+            className="btn-primary rounded-full text-sm lg:text-base py-2 px-4"
           >
-            Book Session
+            Book Consult
           </Link>
           <a
             href={clientPortalUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10"
+            className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10 text-sm lg:text-base py-2 px-4"
           >
             Client Portal
           </a>
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden" onClick={toggleMobileMenu}>
+        <button className="md:hidden p-2" onClick={toggleMobileMenu} aria-label="Toggle menu">
           {isMobileMenuOpen ? (
             <X className="h-6 w-6 text-emerald-green" />
           ) : (
@@ -98,33 +104,38 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Full Screen Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white/90 backdrop-blur-sm shadow-lg">
-          <div className="container-custom py-4 flex flex-col space-y-4">
+        <div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col">
+          <div className="flex justify-end p-4">
+            <button onClick={toggleMobileMenu} className="p-2">
+              <X className="h-6 w-6 text-emerald-green" />
+            </button>
+          </div>
+          <div className="flex-grow flex flex-col items-center justify-center space-y-6 p-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
-                className="font-bookmania text-emerald-green py-2"
-                onClick={toggleMobileMenu}
+                className="font-bookmania text-xl text-emerald-green py-2"
+                onClick={closeMobileMenu}
               >
                 {item.name}
               </Link>
             ))}
             <Link
               to="/schedule"
-              className="btn-primary inline-block text-center rounded-full"
-              onClick={toggleMobileMenu}
+              className="btn-primary w-full max-w-xs text-center rounded-full py-3 mt-4"
+              onClick={closeMobileMenu}
             >
-              Book Session
+              Book Consult
             </Link>
             <a
               href={clientPortalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary inline-block text-center rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10"
-              onClick={toggleMobileMenu}
+              className="btn-secondary w-full max-w-xs text-center rounded-full border-creased-khaki text-creased-khaki py-3"
+              onClick={closeMobileMenu}
             >
               Client Portal
             </a>

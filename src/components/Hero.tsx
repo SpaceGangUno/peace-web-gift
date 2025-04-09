@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center pt-24 pb-12"
+      className="relative min-h-[85vh] sm:min-h-screen flex items-center pt-24 pb-12"
       style={{
         background: "linear-gradient(to bottom, rgba(139, 144, 120, 0.9), rgba(38, 65, 57, 0.8))"
       }}
@@ -18,29 +18,29 @@ const Hero = () => {
       ></div>
       
       <div className="container-custom relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="mb-8 flex justify-center">
+        <div className="max-w-3xl mx-auto text-center px-4">
+          <div className="mb-6 sm:mb-8 flex justify-center">
             <img 
               src="/lovable-uploads/ac8805ec-0a56-4cb7-834d-44a0d1bde1fa.png" 
               alt="The Gift of Peace Logo" 
-              className="h-32 md:h-48 animate-fade-in"
+              className="h-24 sm:h-32 md:h-48 animate-fade-in"
             />
           </div>
           
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bookmania font-light text-creased-khaki mb-6 animate-fade-in">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bookmania font-light text-creased-khaki mb-4 sm:mb-6 animate-fade-in">
             Find Your Path to Inner Peace
           </h1>
           
-          <p className="text-lg md:text-xl text-white/90 mb-8 animate-fade-in-slow">
+          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 animate-fade-in-slow">
             Compassionate therapy services guiding you toward wellness, 
             emotional balance, and personal growth in a nurturing environment.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-slow">
-            <a href="#services" className="btn-primary rounded-full">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-slow">
+            <a href="#services" className="btn-primary rounded-full text-sm sm:text-base">
               Explore Services
             </a>
-            <Link to="/schedule" className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10">
+            <Link to="/schedule" className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10 text-sm sm:text-base">
               Schedule Consultation
             </Link>
           </div>
@@ -51,8 +51,8 @@ const Hero = () => {
         <a href="#services" className="text-white/70 hover:text-white">
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            width="32" 
-            height="32" 
+            width="28" 
+            height="28" 
             viewBox="0 0 24 24" 
             fill="none" 
             stroke="currentColor" 

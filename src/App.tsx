@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Books from "./pages/Books";
@@ -20,9 +20,16 @@ const ClientPortalRedirect = () => {
     window.location.href = CLIENT_PORTAL_URL;
   }, []);
   
-  return <div className="min-h-screen flex items-center justify-center">
-    <p>Redirecting to client portal...</p>
-  </div>;
+  return (
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="bg-white shadow-md rounded-md p-6 text-center">
+        <p className="text-lg">Redirecting to client portal...</p>
+        <div className="mt-4 h-1.5 w-full bg-muted overflow-hidden rounded-full">
+          <div className="h-full bg-gold animate-pulse w-4/5 rounded-full"></div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const App = () => (
