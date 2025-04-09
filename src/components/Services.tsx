@@ -39,7 +39,8 @@ const services = [
     description: "Coming soon: Professional clinical supervision for LCSW-A's seeking guidance and mentorship to develop their clinical skills and advance their careers. Stay tuned for more information.",
     icon: "/lovable-uploads/10b860a6-a737-466f-a1aa-1ff1f9c5429b.png",
     showConsultButton: false,
-    comingSoon: true
+    comingSoon: true,
+    backgroundImage: "/lovable-uploads/2c3d36b2-a50e-4e69-b11d-c9a1477fa904.png"
   }
 ];
 
