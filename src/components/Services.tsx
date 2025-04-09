@@ -18,6 +18,12 @@ const services = [
     showConsultButton: true
   },
   {
+    title: "Couples Counseling",
+    description: "Strengthen your relationship with our couples counseling services. We help you develop improved communication skills, resolve conflicts effectively, and foster a deeper emotional connection with your partner. Our supportive approach creates a safe environment to address relationship challenges.",
+    icon: "❤️",
+    showConsultButton: true
+  },
+  {
     title: "Trauma Recovery",
     description: "Gentle, evidence-based approaches to process trauma and reclaim your sense of safety and well-being.",
     icon: "🌈",
@@ -28,6 +34,13 @@ const services = [
     description: "Develop present-moment awareness to reduce stress, improve focus, and enhance your overall quality of life.",
     icon: "✨",
     showConsultButton: false
+  },
+  {
+    title: "Clinical Supervision",
+    description: "Coming soon: Professional clinical supervision for LCSW-A's seeking guidance and mentorship to develop their clinical skills and advance their careers. Stay tuned for more information.",
+    icon: "📋",
+    showConsultButton: false,
+    comingSoon: true
   }
 ];
 
@@ -45,7 +58,7 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div 
               key={index} 
@@ -60,6 +73,7 @@ const Services = () => {
                 </div>
                 <h3 className="text-xl font-bookmania mb-3 text-emerald-green group-hover:text-gold-dark transition-colors">
                   {service.title}
+                  {service.comingSoon && <span className="ml-2 text-xs font-sans bg-gold-light/30 text-gold-dark px-2 py-0.5 rounded-full">Coming Soon</span>}
                 </h3>
                 <p className="text-wasabi mb-4 flex-grow">
                   {service.description}
