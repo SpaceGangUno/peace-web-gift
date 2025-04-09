@@ -35,7 +35,7 @@ const EvidenceBased = () => {
       name: "Mindfulness Techniques",
       description:
         "Mindfulness combines various therapeutic approaches that emphasize cultivating present-moment awareness, non-judgmental acceptance, and self-compassion. These practices help individuals develop a deeper understanding of their thoughts, emotions, and physical sensations, and teach them to respond to life's challenges with a more balanced and focused mindset.",
-      image: "/lovable-uploads/af4f5b72-1ce8-4ee0-85f6-94ba223d8166.png",
+      image: "/lovable-uploads/b1c85920-3efb-4e4d-8bae-147a0c19f6c6.png",
     },
   ];
 
