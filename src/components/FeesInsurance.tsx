@@ -5,19 +5,19 @@ const FeesInsurance = () => {
   const insuranceByRegion = [
     {
       region: "Washington DC",
-      plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Kaiser Permanente", "Aetna", "Cigna", "Anthem", "Optum"]
+      plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Kaiser Permanente", "Aetna", "Cigna", "Anthem", "Optum/UHC"]
     },
     {
       region: "Virginia",
-      plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Kaiser Permanente", "Aetna", "Cigna", "Anthem", "Optum"]
+      plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Kaiser Permanente", "Aetna", "Cigna", "Anthem", "Optum/UHC"]
     },
     {
       region: "North Carolina",
-      plans: ["Optum", "Cigna", "Aetna", "BCBS"]
+      plans: ["Optum/UHC", "Cigna", "Aetna", "BCBS"]
     },
     {
       region: "South Carolina",
-      plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Aetna", "Cigna", "Anthem", "Optum"]
+      plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Aetna", "Cigna", "Anthem", "Optum/UHC"]
     }
   ];
 
