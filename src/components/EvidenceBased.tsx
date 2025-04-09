@@ -35,11 +35,6 @@ const EvidenceBased = () => {
         "Mindfulness combines various therapeutic approaches that emphasize cultivating present-moment awareness, non-judgmental acceptance, and self-compassion. These practices help individuals develop a deeper understanding of their thoughts, emotions, and physical sensations, and teach them to respond to life's challenges with a more balanced and focused mindset.",
       image: "/lovable-uploads/af4f5b72-1ce8-4ee0-85f6-94ba223d8166.png",
     },
-    {
-      name: "Acceptance and Commitment Therapy",
-      description:
-        "ACT helps individuals accept difficult feelings while committing to behaviors that improve and enrich life. It combines mindfulness skills with the practice of self-acceptance, helping you develop a psychological flexibility that allows you to better connect with the present moment and take action based on your values.",
-    },
   ];
 
   return (
