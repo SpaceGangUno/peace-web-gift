@@ -74,7 +74,7 @@ const About = () => {
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold rounded-lg"></div>
               <img
-                src="/lovable-uploads/570ec2c5-d6af-40ce-b389-5b6e1a03f448.png"
+                src="/lovable-uploads/cc79ae37-04b3-4cae-badf-2b2c5d76ca4e.png"
                 alt="The Gift of Peace - Group meditation"
                 className="rounded-lg w-full h-auto object-cover shadow-lg"
               />
