@@ -23,8 +23,8 @@ const AboutMe = () => {
                   <div className="relative">
                     <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold rounded-lg"></div>
                     <img 
-                      src="/lovable-uploads/6cae21e5-5080-4d29-b814-f502644d67e4.png" 
-                      alt="Therapist Portrait" 
+                      src="/lovable-uploads/6904b9af-099b-4179-b02a-e40033d77351.png" 
+                      alt="Kaiane Thompson - Therapist Portrait" 
                       className="rounded-lg w-full h-auto object-cover shadow-lg"
                     />
                   </div>
