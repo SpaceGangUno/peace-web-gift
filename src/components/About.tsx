@@ -74,10 +74,9 @@ const About = () => {
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold rounded-lg"></div>
               <img
-                src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                alt="Healing environment"
+                src="/lovable-uploads/570ec2c5-d6af-40ce-b389-5b6e1a03f448.png"
+                alt="The Gift of Peace - Group meditation"
                 className="rounded-lg w-full h-auto object-cover shadow-lg"
-                style={{ maxHeight: "600px" }}
               />
             </div>
           </div>
