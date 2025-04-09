@@ -17,28 +17,24 @@ const services = [
   {
     title: "Individual Counseling",
     description: "Our individual counseling services are tailored to help you achieve your personal goals, improve mental wellbeing, and become a healthier version of yourself. By identifying the sources of your stressors, we work together to develop new patterns and more effective ways of managing life's challenges. Embrace change and unlock your full potential with our dedicated support.",
-    icon: "/lovable-uploads/3d4db493-ae96-4b9b-8c69-1f2d8da78c89.png",
     showConsultButton: true,
     backgroundImage: "/lovable-uploads/e76f10eb-f404-4731-9ecb-b3ce56599f71.png"
   },
   {
     title: "Family Counseling",
     description: "Family dynamics significantly impact individual wellbeing and functioning. Our family counseling services help identify challenges within relationships that cause conflict, miscommunication, or dysfunction. Together, we work towards developing healthier ways of coexisting. Family therapy can accommodate as few as two or as many as four family members, ensuring personalized attention and support.",
-    icon: "/lovable-uploads/217a179e-6020-4251-bd91-348812ee99b2.png",
     showConsultButton: true,
     backgroundImage: "/lovable-uploads/77526680-57b4-4b21-a564-c8138ae65805.png"
   },
   {
     title: "Couples Counseling",
     description: "Strengthen your relationship with our couples counseling services. We help you develop improved communication skills, resolve conflicts effectively, and foster a deeper emotional connection with your partner. Our supportive approach creates a safe environment to address relationship challenges.",
-    icon: "/lovable-uploads/af4f5b72-1ce8-4ee0-85f6-94ba223d8166.png",
     backgroundImage: "/lovable-uploads/aeb9c661-1bdf-460c-b5ff-9e50d0f183b5.png",
     showConsultButton: true
   },
   {
     title: "Clinical Supervision",
     description: "Coming soon: Professional clinical supervision for LCSW-A's seeking guidance and mentorship to develop their clinical skills and advance their careers. Stay tuned for more information.",
-    icon: "/lovable-uploads/10b860a6-a737-466f-a1aa-1ff1f9c5429b.png",
     showConsultButton: false,
     comingSoon: true,
     backgroundImage: "/lovable-uploads/2c3d36b2-a50e-4e69-b11d-c9a1477fa904.png"
@@ -116,7 +112,6 @@ const ServiceCard = ({
   service: {
     title: string;
     description: string;
-    icon: string;
     showConsultButton: boolean;
     comingSoon?: boolean;
     backgroundImage?: string;
@@ -145,12 +140,6 @@ const ServiceCard = ({
       
       <div className={`${service.backgroundImage ? 'relative z-10' : ''}`}>
         <div className="mb-4 flex items-center justify-between">
-          <img 
-            src={service.icon} 
-            alt={service.title} 
-            className="w-16 h-16 object-contain bg-gold/20 p-2 rounded-full"
-          />
-          
           {service.comingSoon && (
             <span className="text-xs font-sans bg-gold-light/50 text-gold-dark px-3 py-1 rounded-full font-medium">
               Coming Soon
