@@ -7,8 +7,14 @@ import { Link } from "react-router-dom";
 const services = [
   {
     title: "Individual Counseling",
-    description: "Our individual counseling services are tailored to help you achieve your personal goals, improve mental wellbeing, and become a healthier version of yourself. By identifying the sources of your stressors, we work together to develop new patterns and more effective ways of managing life's challenges.",
+    description: "Our individual counseling services are tailored to help you achieve your personal goals, improve mental wellbeing, and become a healthier version of yourself. By identifying the sources of your stressors, we work together to develop new patterns and more effective ways of managing life's challenges. Embrace change and unlock your full potential with our dedicated support.",
     icon: "🌱",
+    showConsultButton: true
+  },
+  {
+    title: "Family Counseling",
+    description: "Family dynamics significantly impact individual wellbeing and functioning. Our family counseling services help identify challenges within relationships that cause conflict, miscommunication, or dysfunction. Together, we work towards developing healthier ways of coexisting. Family therapy can accommodate as few as two or as many as four family members, ensuring personalized attention and support.",
+    icon: "👨‍👩‍👧",
     showConsultButton: true
   },
   {
@@ -16,12 +22,6 @@ const services = [
     description: "Strengthen your relationship with improved communication, conflict resolution skills, and deeper emotional connection.",
     icon: "❤️",
     showConsultButton: false
-  },
-  {
-    title: "Family Counseling",
-    description: "Family dynamics significantly impact individual wellbeing and functioning. Our family counseling services help identify challenges within relationships that cause conflict, miscommunication, or dysfunction. Together, we work towards developing healthier ways of coexisting. Family therapy can accommodate as few as two or as many as four family members.",
-    icon: "👨‍👩‍👧",
-    showConsultButton: true
   },
   {
     title: "Anxiety Management",
@@ -61,15 +61,9 @@ const Services = () => {
           {services.map((service, index) => (
             <div 
               key={index} 
-              className="group"
+              className="group animate-fade-in"
               style={{ 
-                animationDelay: `${index * 0.15}s`,
-                opacity: 0
-              }}
-              onLoad={(e) => {
-                const target = e.currentTarget;
-                target.style.opacity = "0";
-                target.style.animation = "fade-in 0.5s ease-out forwards";
+                animationDelay: `${index * 0.15}s`
               }}
             >
               <Card className="h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md bg-white/50 backdrop-blur-sm rounded-xl flex flex-col">
@@ -98,9 +92,9 @@ const Services = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <a href="#contact" className="btn-primary rounded-full">
+          <Link to="/schedule" className="btn-primary rounded-full">
             Book Your Session
-          </a>
+          </Link>
         </div>
       </div>
     </section>
