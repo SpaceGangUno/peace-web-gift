@@ -32,24 +32,26 @@ const AboutMe = () => {
                 
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bookmania mb-4 text-emerald-green">
-                    Jane Doe, <span className="text-gold">LCSW</span>
+                    Meet Kaiane Thompson, <span className="text-gold">LCSW</span>
                   </h2>
                   
                   <p className="text-wasabi mb-4">
-                    With over 15 years of experience in mental health counseling, I specialize in helping 
-                    clients navigate through life's challenges using evidence-based therapeutic approaches.
+                    Kaiane is a compassionate and dedicated therapist with a passion for helping individuals overcome 
+                    the effects of trauma, depression, anxiety, and challenging family dynamics. With her expertise, 
+                    she empowers clients to unpack their emotional baggage and embark on a transformative journey 
+                    towards a more fulfilling life.
                   </p>
                   
                   <p className="text-wasabi mb-4">
-                    My areas of specialty include trauma recovery, anxiety management, couples counseling, 
-                    and family therapy. I believe in creating a safe, non-judgmental space where clients 
+                    Her areas of specialty include trauma recovery, anxiety management, couples counseling, 
+                    and family therapy. She believes in creating a safe, non-judgmental space where clients 
                     can explore their thoughts and feelings freely.
                   </p>
                   
                   <p className="text-wasabi mb-4">
-                    I hold a Master's degree in Social Work from the University of North Carolina 
-                    and am a Licensed Clinical Social Worker. My approach combines cognitive-behavioral therapy, 
-                    mindfulness practices, and emotion-focused techniques tailored to each client's unique needs.
+                    With a Master's degree in Social Work and as a Licensed Clinical Social Worker, 
+                    Kaiane's approach combines evidence-based therapeutic techniques, 
+                    mindfulness practices, and emotion-focused strategies tailored to each client's unique needs.
                   </p>
                   
                   <h3 className="text-xl font-bookmania mt-6 mb-3 text-emerald-green">
