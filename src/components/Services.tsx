@@ -24,18 +24,6 @@ const services = [
     showConsultButton: true
   },
   {
-    title: "Trauma Recovery",
-    description: "Gentle, evidence-based approaches to process trauma and reclaim your sense of safety and well-being.",
-    icon: "🌈",
-    showConsultButton: false
-  },
-  {
-    title: "Mindfulness Training",
-    description: "Develop present-moment awareness to reduce stress, improve focus, and enhance your overall quality of life.",
-    icon: "✨",
-    showConsultButton: false
-  },
-  {
     title: "Clinical Supervision",
     description: "Coming soon: Professional clinical supervision for LCSW-A's seeking guidance and mentorship to develop their clinical skills and advance their careers. Stay tuned for more information.",
     icon: "📋",
@@ -58,7 +46,7 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <div 
               key={index} 
