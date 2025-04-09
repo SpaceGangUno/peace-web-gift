@@ -42,9 +42,6 @@ const FAQ = () => {
             <h2 className="text-3xl md:text-4xl font-bookmania mb-4">
               Frequently Asked <span className="gold-text">Questions</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Find answers to common questions about our services and the therapy process.
-            </p>
           </div>
 
           <Accordion type="single" collapsible className="w-full">
