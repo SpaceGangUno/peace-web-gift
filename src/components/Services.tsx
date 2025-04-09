@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,8 @@ const services = [
     title: "Individual Counseling",
     description: "Our individual counseling services are tailored to help you achieve your personal goals, improve mental wellbeing, and become a healthier version of yourself. By identifying the sources of your stressors, we work together to develop new patterns and more effective ways of managing life's challenges. Embrace change and unlock your full potential with our dedicated support.",
     icon: "/lovable-uploads/3d4db493-ae96-4b9b-8c69-1f2d8da78c89.png",
-    showConsultButton: true
+    showConsultButton: true,
+    backgroundImage: "/lovable-uploads/e76f10eb-f404-4731-9ecb-b3ce56599f71.png"
   },
   {
     title: "Family Counseling",
