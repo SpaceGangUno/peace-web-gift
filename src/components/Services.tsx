@@ -30,6 +30,7 @@ const services = [
     title: "Couples Counseling",
     description: "Strengthen your relationship with our couples counseling services. We help you develop improved communication skills, resolve conflicts effectively, and foster a deeper emotional connection with your partner. Our supportive approach creates a safe environment to address relationship challenges.",
     icon: "/lovable-uploads/af4f5b72-1ce8-4ee0-85f6-94ba223d8166.png",
+    backgroundImage: "/lovable-uploads/441aea25-bf9f-49bc-95fc-2cee7da7779a.png",
     showConsultButton: true
   },
   {
@@ -111,6 +112,7 @@ const ServiceCard = ({
     icon: string;
     showConsultButton: boolean;
     comingSoon?: boolean;
+    backgroundImage?: string;
   };
   animationDelay: number;
 }) => (
@@ -120,35 +122,54 @@ const ServiceCard = ({
       animationDelay: `${animationDelay}s`
     }}
   >
-    <Card className="hover-card h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md bg-white/80 backdrop-blur-sm rounded-xl flex flex-col">
-      <div className="mb-4 flex items-center justify-center">
-        <img 
-          src={service.icon} 
-          alt={service.title} 
-          className="w-16 h-16 object-contain"
-        />
-      </div>
-      <h3 className="text-xl font-bookmania mb-3 text-emerald-green group-hover:text-gold-dark transition-colors flex items-center gap-2">
-        {service.title}
-        {service.comingSoon && (
-          <span className="text-xs font-sans bg-gold-light/30 text-gold-dark px-2 py-0.5 rounded-full">
-            Coming Soon
-          </span>
-        )}
-      </h3>
-      <p className="text-wasabi mb-4 flex-grow">
-        {service.description}
-      </p>
-      {service.showConsultButton && (
-        <div className="mt-4">
-          <Link to="/schedule">
-            <Button variant="outline" size="sm" className="border-gold hover:bg-gold/10 text-emerald-green">
-              <CalendarClock className="mr-2 h-4 w-4" />
-              Schedule Consultation
-            </Button>
-          </Link>
+    <Card 
+      className={`hover-card h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md rounded-xl flex flex-col relative overflow-hidden ${service.backgroundImage ? 'text-white' : 'bg-white/80 backdrop-blur-sm'}`}
+    >
+      {service.backgroundImage && (
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={service.backgroundImage} 
+            alt={service.title} 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-emerald-green/60 backdrop-blur-[1px]"></div>
         </div>
       )}
+      
+      <div className={`${service.backgroundImage ? 'relative z-10' : ''}`}>
+        <div className="mb-4 flex items-center justify-center">
+          <img 
+            src={service.icon} 
+            alt={service.title} 
+            className="w-16 h-16 object-contain"
+          />
+        </div>
+        <h3 className={`text-xl font-bookmania mb-3 ${service.backgroundImage ? 'text-creased-khaki' : 'text-emerald-green group-hover:text-gold-dark'} transition-colors flex items-center gap-2`}>
+          {service.title}
+          {service.comingSoon && (
+            <span className="text-xs font-sans bg-gold-light/30 text-gold-dark px-2 py-0.5 rounded-full">
+              Coming Soon
+            </span>
+          )}
+        </h3>
+        <p className={`mb-4 flex-grow ${service.backgroundImage ? 'text-white' : 'text-wasabi'}`}>
+          {service.description}
+        </p>
+        {service.showConsultButton && (
+          <div className="mt-4">
+            <Link to="/schedule">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className={`${service.backgroundImage ? 'border-gold hover:bg-gold/30 text-white' : 'border-gold hover:bg-gold/10 text-emerald-green'}`}
+              >
+                <CalendarClock className="mr-2 h-4 w-4" />
+                Schedule Consultation
+              </Button>
+            </Link>
+          </div>
+        )}
+      </div>
     </Card>
   </div>
 );
