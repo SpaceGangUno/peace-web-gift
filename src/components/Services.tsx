@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -71,8 +70,30 @@ const Services = () => {
               ))}
             </CarouselContent>
             <div className="flex justify-center gap-4 mt-6">
-              <CarouselPrevious className="relative static translate-y-0 h-9 w-9 border-gold bg-gold/10 hover:bg-gold/20 text-emerald-green" />
-              <CarouselNext className="relative static translate-y-0 h-9 w-9 border-gold bg-gold/10 hover:bg-gold/20 text-emerald-green" />
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="border-gold bg-gold/10 hover:bg-gold/20 text-emerald-green h-9 w-9 rounded-full"
+                onClick={() => {
+                  const prevButton = document.querySelector('.services-carousel .embla__prev');
+                  if (prevButton instanceof HTMLElement) prevButton.click();
+                }}
+              >
+                <ChevronLeft className="h-4 w-4" />
+                <span className="sr-only">Previous</span>
+              </Button>
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="border-gold bg-gold/10 hover:bg-gold/20 text-emerald-green h-9 w-9 rounded-full"
+                onClick={() => {
+                  const nextButton = document.querySelector('.services-carousel .embla__next');
+                  if (nextButton instanceof HTMLElement) nextButton.click();
+                }}
+              >
+                <ChevronRight className="h-4 w-4" />
+                <span className="sr-only">Next</span>
+              </Button>
             </div>
           </Carousel>
         ) : (
@@ -101,7 +122,6 @@ const Services = () => {
   );
 };
 
-// Extracted ServiceCard component for reusability
 const ServiceCard = ({ 
   service, 
   animationDelay 

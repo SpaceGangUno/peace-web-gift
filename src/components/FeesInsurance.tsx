@@ -1,16 +1,17 @@
 
-import { Check } from "lucide-react";
+import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const FeesInsurance = () => {
   const [activeRegion, setActiveRegion] = useState<string>("North Carolina");
+  const isMobile = useIsMobile();
   
   const insuranceByRegion = [
     {
@@ -86,41 +87,93 @@ const FeesInsurance = () => {
               <div className="p-6">
                 <h3 className="font-bookmania text-2xl mb-4">Insurance Accepted</h3>
                 
-                <div className="mb-6">
-                  <div className="flex overflow-x-auto space-x-2 pb-2">
-                    {insuranceByRegion.map((region, idx) => (
-                      <button 
-                        key={idx} 
-                        className={`px-4 py-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors 
-                          ${activeRegion === region.region 
-                            ? "bg-gold-gradient text-noir-vigne" 
-                            : "bg-wasabi/10 text-wasabi hover:bg-wasabi/20"
-                          }`}
-                        onClick={() => setActiveRegion(region.region)}
-                      >
-                        {region.region}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="space-y-2 min-h-[200px]">
-                  {insuranceByRegion
-                    .filter(region => region.region === activeRegion)
-                    .map((region, index) => (
-                      <div key={index}>
-                        <h4 className="font-bookmania text-lg mb-2">{region.region}</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {region.plans.map((plan, planIndex) => (
-                            <span key={planIndex} className="inline-flex items-center bg-wasabi/10 px-3 py-1 rounded-full text-sm">
-                              <Check className="text-gold mr-1 h-4 w-4 flex-shrink-0" />
-                              {plan}
-                            </span>
-                          ))}
-                        </div>
+                {isMobile ? (
+                  <div className="mb-6">
+                    <Carousel className="w-full insurance-carousel">
+                      <CarouselContent>
+                        {insuranceByRegion.map((region, idx) => (
+                          <CarouselItem key={idx}>
+                            <div>
+                              <h4 className="font-bookmania text-lg mb-2">{region.region}</h4>
+                              <div className="flex flex-wrap gap-2">
+                                {region.plans.map((plan, planIndex) => (
+                                  <span key={planIndex} className="inline-flex items-center bg-wasabi/10 px-3 py-1 rounded-full text-sm">
+                                    <Check className="text-gold mr-1 h-4 w-4 flex-shrink-0" />
+                                    {plan}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <div className="flex justify-center gap-4 mt-6">
+                        <Button 
+                          variant="outline" 
+                          size="icon" 
+                          className="bg-wasabi/10 hover:bg-wasabi/20 text-wasabi border-none h-8 w-8 rounded-full"
+                          onClick={() => {
+                            const prevButton = document.querySelector('.insurance-carousel .embla__prev');
+                            if (prevButton instanceof HTMLElement) prevButton.click();
+                          }}
+                        >
+                          <ChevronLeft className="h-4 w-4" />
+                          <span className="sr-only">Previous</span>
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          size="icon" 
+                          className="bg-wasabi/10 hover:bg-wasabi/20 text-wasabi border-none h-8 w-8 rounded-full"
+                          onClick={() => {
+                            const nextButton = document.querySelector('.insurance-carousel .embla__next');
+                            if (nextButton instanceof HTMLElement) nextButton.click();
+                          }}
+                        >
+                          <ChevronRight className="h-4 w-4" />
+                          <span className="sr-only">Next</span>
+                        </Button>
                       </div>
-                    ))}
-                </div>
+                    </Carousel>
+                  </div>
+                ) : (
+                  <div className="mb-6">
+                    <div className="flex overflow-x-auto space-x-2 pb-2">
+                      {insuranceByRegion.map((region, idx) => (
+                        <button 
+                          key={idx} 
+                          className={`px-4 py-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors 
+                            ${activeRegion === region.region 
+                              ? "bg-gold-gradient text-noir-vigne" 
+                              : "bg-wasabi/10 text-wasabi hover:bg-wasabi/20"
+                            }`}
+                          onClick={() => setActiveRegion(region.region)}
+                        >
+                          {region.region}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
+                {!isMobile && (
+                  <div className="space-y-2 min-h-[200px]">
+                    {insuranceByRegion
+                      .filter(region => region.region === activeRegion)
+                      .map((region, index) => (
+                        <div key={index}>
+                          <h4 className="font-bookmania text-lg mb-2">{region.region}</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {region.plans.map((plan, planIndex) => (
+                              <span key={planIndex} className="inline-flex items-center bg-wasabi/10 px-3 py-1 rounded-full text-sm">
+                                <Check className="text-gold mr-1 h-4 w-4 flex-shrink-0" />
+                                {plan}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
