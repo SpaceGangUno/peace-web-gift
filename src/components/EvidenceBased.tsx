@@ -8,7 +8,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const EvidenceBased = () => {
   const practices = [
@@ -44,12 +43,8 @@ const EvidenceBased = () => {
   ];
 
   return (
-    <section id="evidence-based" className="section relative overflow-hidden">
-      {/* Background curved shapes */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-[#492365] rounded-b-[50%] w-full transform translate-y-[-50%]" style={{ opacity: 0.3 }}></div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-[#492365] rounded-t-[50%] w-full transform translate-y-[50%]" style={{ opacity: 0.3 }}></div>
-      
-      <div className="container-custom relative z-10">
+    <section id="evidence-based" className="section bg-[#f2fce2]/20">
+      <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bookmania mb-4">
             Evidence-Based <span className="gold-text">Practices</span>
@@ -60,10 +55,11 @@ const EvidenceBased = () => {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto my-12">
+        <div className="max-w-5xl mx-auto my-12 evidence-carousel">
           <Carousel
             opts={{
               align: "center",
+              loop: true,
             }}
             className="w-full"
           >
@@ -71,9 +67,9 @@ const EvidenceBased = () => {
               {practices.map((practice, index) => (
                 <CarouselItem key={index} className="md:basis-4/5">
                   <div className="p-1">
-                    <Card className="border-0 shadow-lg overflow-hidden">
+                    <Card className="border-wasabi/30 shadow-lg overflow-hidden h-full">
                       <div 
-                        className="bg-[#492365] text-white p-8 rounded-lg"
+                        className="bg-gradient-to-br from-emerald-green/90 to-emerald-green/70 text-white p-8 rounded-lg h-full"
                         style={{
                           backgroundImage: practice.image ? `url(${practice.image})` : 'none',
                           backgroundSize: 'cover',
@@ -82,7 +78,7 @@ const EvidenceBased = () => {
                         }}
                       >
                         <CardHeader className="pb-2">
-                          <CardTitle className="text-2xl md:text-3xl text-[#f89b7e]">
+                          <CardTitle className="text-2xl md:text-3xl text-creased-khaki">
                             {practice.name}
                           </CardTitle>
                         </CardHeader>
@@ -96,17 +92,17 @@ const EvidenceBased = () => {
               ))}
             </CarouselContent>
             <CarouselPrevious 
-              className="left-2 md:left-4 bg-[#f89b7e]/80 hover:bg-[#f89b7e] text-white border-none h-10 w-10"
+              className="left-2 md:-left-10 bg-gold/80 hover:bg-gold text-noir-vigne border-none h-10 w-10"
             />
             <CarouselNext 
-              className="right-2 md:right-4 bg-[#f89b7e]/80 hover:bg-[#f89b7e] text-white border-none h-10 w-10" 
+              className="right-2 md:-right-10 bg-gold/80 hover:bg-gold text-noir-vigne border-none h-10 w-10" 
             />
           </Carousel>
         </div>
 
-        <div className="mt-12 p-6 bg-muted/30 rounded-lg max-w-3xl mx-auto">
-          <h3 className="font-bookmania text-xl mb-3 text-center">Our Commitment to Quality Care</h3>
-          <p className="text-center">
+        <div className="mt-12 p-6 bg-wasabi/10 rounded-lg max-w-3xl mx-auto border border-wasabi/20">
+          <h3 className="font-bookmania text-xl mb-3 text-center text-emerald-green">Our Commitment to Quality Care</h3>
+          <p className="text-center text-wasabi">
             We continuously stay updated on the latest research and best practices 
             in mental health treatment. Our therapeutic approaches are tailored to your 
             individual needs while being grounded in methods proven to be effective.
