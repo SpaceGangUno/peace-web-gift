@@ -56,14 +56,10 @@ const FeesInsurance = () => {
                     <span className="font-medium">Couples Counseling Intake</span>
                     <span className="font-bookmania text-emerald-green">$225</span>
                   </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Family Therapy (80 min)</span>
-                    <span className="font-bookmania text-emerald-green">$180</span>
-                  </div>
                 </div>
                 
                 <p className="mt-6 text-sm text-muted-foreground">
-                  Payment is due at the time of service. We accept cash, check, and all major credit cards.
+                  Payment is due at the time of service. We accept all major credit cards.
                 </p>
               </div>
             </div>
