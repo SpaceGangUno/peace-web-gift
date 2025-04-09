@@ -67,11 +67,11 @@ const EvidenceBased = () => {
                   <div className="p-1">
                     <Card className="border-wasabi/30 shadow-md overflow-hidden h-full group hover:border-gold transition-all duration-300">
                       <div className="grid md:grid-cols-5 h-full">
-                        <div className="md:col-span-2 bg-emerald-green/5 flex items-center justify-center p-4">
+                        <div className="md:col-span-2 bg-emerald-green/5 flex items-center justify-center p-0 h-full">
                           <img 
                             src={practice.image} 
                             alt={practice.name} 
-                            className="w-24 h-24 md:w-32 md:h-32 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                            className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                           />
                         </div>
                         <div className="md:col-span-3 p-6">
