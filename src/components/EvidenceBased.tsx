@@ -82,15 +82,6 @@ const EvidenceBased = () => {
             />
           </Carousel>
         </div>
-
-        <div className="mt-12 p-6 bg-wasabi/10 rounded-lg max-w-3xl mx-auto border border-wasabi/20">
-          <h3 className="font-bookmania text-xl mb-3 text-center text-emerald-green">Our Commitment to Quality Care</h3>
-          <p className="text-center text-wasabi">
-            We continuously stay updated on the latest research and best practices 
-            in mental health treatment. Our therapeutic approaches are tailored to your 
-            individual needs while being grounded in methods proven to be effective.
-          </p>
-        </div>
       </div>
     </section>
   );
