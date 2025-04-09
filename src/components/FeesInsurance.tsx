@@ -56,6 +56,14 @@ const FeesInsurance = () => {
                     <span className="font-medium">Couples Counseling Intake</span>
                     <span className="font-bookmania text-emerald-green">$225</span>
                   </div>
+                  <div className="flex justify-between items-center pb-2 border-b border-border">
+                    <span className="font-medium">Family Counseling (60 min)</span>
+                    <span className="font-bookmania text-emerald-green">$200</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-2 border-b border-border">
+                    <span className="font-medium">Family Counseling Intake</span>
+                    <span className="font-bookmania text-emerald-green">$225</span>
+                  </div>
                 </div>
                 
                 <p className="mt-6 text-sm text-muted-foreground">
