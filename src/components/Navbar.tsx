@@ -33,6 +33,8 @@ const Navbar = () => {
     { name: "About", href: "/#about" },
     { name: "Contact", href: "/#contact" },
   ];
+  
+  const clientPortalUrl = "https://thegiftofpeacecw.clientsecure.me/";
 
   return (
     <header
@@ -76,12 +78,14 @@ const Navbar = () => {
           >
             Book Session
           </Link>
-          <Link
-            to="/portal"
+          <a
+            href={clientPortalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10"
           >
             Client Portal
-          </Link>
+          </a>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -115,13 +119,15 @@ const Navbar = () => {
             >
               Book Session
             </Link>
-            <Link
-              to="/portal"
+            <a
+              href={clientPortalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-secondary inline-block text-center rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10"
               onClick={toggleMobileMenu}
             >
               Client Portal
-            </Link>
+            </a>
           </div>
         </div>
       )}
