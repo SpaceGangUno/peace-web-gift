@@ -1,8 +1,17 @@
 
+import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CalendarClock } from "lucide-react";
+import { CalendarClock, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const services = [
   {
@@ -33,6 +42,8 @@ const services = [
 ];
 
 const Services = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <section id="services" className="section bg-[#f2fce2]/30">
       <div className="container-custom">
@@ -46,40 +57,33 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="group animate-fade-in"
-              style={{ 
-                animationDelay: `${index * 0.15}s`
-              }}
-            >
-              <Card className="h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md bg-white/50 backdrop-blur-sm rounded-xl flex flex-col">
-                <div className="text-4xl mb-4">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bookmania mb-3 text-emerald-green group-hover:text-gold-dark transition-colors">
-                  {service.title}
-                  {service.comingSoon && <span className="ml-2 text-xs font-sans bg-gold-light/30 text-gold-dark px-2 py-0.5 rounded-full">Coming Soon</span>}
-                </h3>
-                <p className="text-wasabi mb-4 flex-grow">
-                  {service.description}
-                </p>
-                {service.showConsultButton && (
-                  <div className="mt-4">
-                    <Link to="/schedule">
-                      <Button variant="outline" size="sm" className="border-gold hover:bg-gold/10 text-emerald-green">
-                        <CalendarClock className="mr-2 h-4 w-4" />
-                        Schedule Consultation
-                      </Button>
-                    </Link>
-                  </div>
-                )}
-              </Card>
+        {isMobile ? (
+          // Mobile view with carousel
+          <Carousel className="w-full max-w-sm mx-auto">
+            <CarouselContent>
+              {services.map((service, index) => (
+                <CarouselItem key={index} className="pl-1 md:pl-4">
+                  <ServiceCard service={service} animationDelay={0} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-2 mt-6">
+              <CarouselPrevious className="static translate-y-0 h-9 w-9 border-gold hover:bg-gold/10" />
+              <CarouselNext className="static translate-y-0 h-9 w-9 border-gold hover:bg-gold/10" />
             </div>
-          ))}
-        </div>
+          </Carousel>
+        ) : (
+          // Desktop view with grid
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {services.map((service, index) => (
+              <ServiceCard 
+                key={index} 
+                service={service} 
+                animationDelay={index * 0.15} 
+              />
+            ))}
+          </div>
+        )}
         
         <div className="mt-12 text-center">
           <Link to="/schedule" className="btn-primary rounded-full">
@@ -90,5 +94,54 @@ const Services = () => {
     </section>
   );
 };
+
+// Extracted ServiceCard component for reusability
+const ServiceCard = ({ 
+  service, 
+  animationDelay 
+}: { 
+  service: {
+    title: string;
+    description: string;
+    icon: string;
+    showConsultButton: boolean;
+    comingSoon?: boolean;
+  };
+  animationDelay: number;
+}) => (
+  <div 
+    className="group animate-fade-in"
+    style={{ 
+      animationDelay: `${animationDelay}s`
+    }}
+  >
+    <Card className="h-full p-6 border-wasabi/20 hover:border-gold transition-all duration-300 hover:shadow-md bg-white/50 backdrop-blur-sm rounded-xl flex flex-col">
+      <div className="text-4xl mb-4">
+        {service.icon}
+      </div>
+      <h3 className="text-xl font-bookmania mb-3 text-emerald-green group-hover:text-gold-dark transition-colors flex items-center gap-2">
+        {service.title}
+        {service.comingSoon && (
+          <span className="text-xs font-sans bg-gold-light/30 text-gold-dark px-2 py-0.5 rounded-full">
+            Coming Soon
+          </span>
+        )}
+      </h3>
+      <p className="text-wasabi mb-4 flex-grow">
+        {service.description}
+      </p>
+      {service.showConsultButton && (
+        <div className="mt-4">
+          <Link to="/schedule">
+            <Button variant="outline" size="sm" className="border-gold hover:bg-gold/10 text-emerald-green">
+              <CalendarClock className="mr-2 h-4 w-4" />
+              Schedule Consultation
+            </Button>
+          </Link>
+        </div>
+      )}
+    </Card>
+  </div>
+);
 
 export default Services;
