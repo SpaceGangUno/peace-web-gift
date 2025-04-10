@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Calendar } from "lucide-react";
 
 const AboutMe = () => {
   return (
@@ -53,11 +53,17 @@ const AboutMe = () => {
                   <li>Virginia license #: 0904017793</li>
                 </ul>
                 
-                <div className="text-center mt-8">
+                <div className="text-center mt-8 flex flex-wrap gap-4 justify-center">
                   <Link to="/books">
-                    <Button className="btn-secondary mt-2">
+                    <Button className="btn-secondary">
                       <BookOpen className="mr-2 h-4 w-4" />
                       Recommended Reading
+                    </Button>
+                  </Link>
+                  <Link to="/schedule">
+                    <Button className="btn-primary">
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Book Consultation
                     </Button>
                   </Link>
                 </div>
