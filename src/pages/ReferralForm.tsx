@@ -19,6 +19,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const formSchema = z.object({
   referringProvider: z.string().min(1, "Referring provider is required"),
@@ -29,6 +36,7 @@ const formSchema = z.object({
   clientEmail: z.string().email("Invalid email address"),
   clientDOB: z.string().min(1, "Date of birth is required"),
   clientGender: z.string().min(1, "Gender is required"),
+  clientState: z.string().min(1, "State is required"),
   insuranceInfo: z.string().min(1, "Insurance information is required"),
   referralPurpose: z.string().min(1, "Purpose of referral is required"),
 });
@@ -47,6 +55,7 @@ const ReferralForm = () => {
       clientEmail: "",
       clientDOB: "",
       clientGender: "",
+      clientState: "",
       insuranceInfo: "",
       referralPurpose: "",
     },
@@ -211,19 +220,48 @@ const ReferralForm = () => {
                     />
                   </div>
                   
-                  <FormField
-                    control={form.control}
-                    name="insuranceInfo"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Insurance Type / ID#</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter insurance details" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="clientState"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>State</FormLabel>
+                          <Select 
+                            onValueChange={field.onChange} 
+                            defaultValue={field.value}
+                          >
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select a state" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="DC">Washington DC</SelectItem>
+                              <SelectItem value="VA">Virginia</SelectItem>
+                              <SelectItem value="NC">North Carolina</SelectItem>
+                              <SelectItem value="SC">South Carolina</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="insuranceInfo"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Insurance Type</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Enter insurance type" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                   
                   <FormField
                     control={form.control}
