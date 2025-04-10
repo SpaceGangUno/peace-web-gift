@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Book, ExternalLink } from "lucide-react";
@@ -28,7 +27,7 @@ const BookList = () => {
           title: "How to Keep House While Drowning",
           author: "KC Davis",
           description: "A gentle approach to cleaning and organizing for those with ADHD or other executive function challenges.",
-          amazonLink: "https://www.amazon.com/Keep-House-While-Drowning-compassionate/dp/1398710377/",
+          amazonLink: "https://www.amazon.com/How-Keep-House-While-Drowning/dp/1668002841",
           isTopRecommendation: true
         },
         {
