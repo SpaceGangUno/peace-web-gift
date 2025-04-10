@@ -25,11 +25,9 @@ const formSchema = z.object({
   referralContact: z.string().min(1, "Contact number is required"),
   referralEmail: z.string().email("Invalid email address"),
   clientName: z.string().min(1, "Client name is required"),
-  clientAddress: z.string().min(1, "Client address is required"),
   clientNumber: z.string().min(1, "Client number is required"),
   clientEmail: z.string().email("Invalid email address"),
   clientDOB: z.string().min(1, "Date of birth is required"),
-  clientAge: z.string().min(1, "Age is required"),
   clientGender: z.string().min(1, "Gender is required"),
   insuranceInfo: z.string().min(1, "Insurance information is required"),
   referralPurpose: z.string().min(1, "Purpose of referral is required"),
@@ -45,11 +43,9 @@ const ReferralForm = () => {
       referralContact: "",
       referralEmail: "",
       clientName: "",
-      clientAddress: "",
       clientNumber: "",
       clientEmail: "",
       clientDOB: "",
-      clientAge: "",
       clientGender: "",
       insuranceInfo: "",
       referralPurpose: "",
@@ -155,20 +151,6 @@ const ReferralForm = () => {
                     )}
                   />
                   
-                  <FormField
-                    control={form.control}
-                    name="clientAddress"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Client Address</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter client's address" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
@@ -199,7 +181,7 @@ const ReferralForm = () => {
                     />
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="clientDOB"
@@ -208,20 +190,6 @@ const ReferralForm = () => {
                           <FormLabel>Date of Birth</FormLabel>
                           <FormControl>
                             <Input placeholder="MM/DD/YYYY" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="clientAge"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Age</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Enter age" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
