@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CalendarClock, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
@@ -43,6 +43,20 @@ const services = [
 
 const Services = () => {
   const isMobile = useIsMobile();
+  const carouselApiRef = useRef<any>(null);
+  
+  // Auto-rotation effect for carousel
+  useEffect(() => {
+    const autoRotationInterval = setInterval(() => {
+      if (carouselApiRef.current) {
+        carouselApiRef.current.scrollNext();
+      }
+    }, 5000); // Rotate every 5 seconds
+    
+    return () => {
+      clearInterval(autoRotationInterval);
+    };
+  }, []);
   
   return (
     <section id="services" className="section section-alt py-16 md:py-24 lg:py-32">
@@ -59,6 +73,7 @@ const Services = () => {
           <Carousel 
             className="w-full max-w-sm mx-auto services-carousel mt-10" 
             opts={{ loop: true }}
+            setApi={(api) => (carouselApiRef.current = api)}
           >
             <CarouselContent>
               {services.map((service, index) => (

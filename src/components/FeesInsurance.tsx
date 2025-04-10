@@ -1,5 +1,6 @@
+
 import { Check } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -13,6 +14,22 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const FeesInsurance = () => {
   const [activeRegion, setActiveRegion] = useState<string>("North Carolina");
   const isMobile = useIsMobile();
+  const carouselApiRef = useRef<any>(null);
+  
+  // Auto-rotation effect for carousel
+  useEffect(() => {
+    if (isMobile) {
+      const autoRotationInterval = setInterval(() => {
+        if (carouselApiRef.current) {
+          carouselApiRef.current.scrollNext();
+        }
+      }, 4000); // Rotate every 4 seconds
+      
+      return () => {
+        clearInterval(autoRotationInterval);
+      };
+    }
+  }, [isMobile]);
   
   const insuranceByRegion = [
     {
@@ -32,6 +49,12 @@ const FeesInsurance = () => {
       plans: ["Quest Behavioral Health", "Carelon Behavioral Health", "Kaiser Permanente", "Aetna", "Cigna", "Anthem", "Optum/UHC"]
     }
   ];
+  
+  // Get the insurance plans for the active region
+  const getActivePlans = () => {
+    const activeRegionData = insuranceByRegion.find(item => item.region === activeRegion);
+    return activeRegionData?.plans || [];
+  };
 
   return (
     <section id="fees" className="section bg-muted/30">
@@ -90,7 +113,11 @@ const FeesInsurance = () => {
                 
                 {isMobile ? (
                   <div className="mb-6">
-                    <Carousel className="w-full insurance-carousel" opts={{ loop: true }}>
+                    <Carousel 
+                      className="w-full insurance-carousel" 
+                      opts={{ loop: true }}
+                      setApi={(api) => (carouselApiRef.current = api)}
+                    >
                       <CarouselContent>
                         {insuranceByRegion.map((region, idx) => (
                           <CarouselItem key={idx}>
@@ -130,6 +157,18 @@ const FeesInsurance = () => {
                           {region.region}
                         </button>
                       ))}
+                    </div>
+                    
+                    {/* Display insurance plans for the active region */}
+                    <div className="mt-4">
+                      <div className="flex flex-wrap gap-2">
+                        {getActivePlans().map((plan, planIndex) => (
+                          <span key={planIndex} className="inline-flex items-center bg-wasabi/10 px-3 py-1 rounded-full text-sm">
+                            <Check className="text-gold mr-1 h-4 w-4 flex-shrink-0" />
+                            {plan}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
