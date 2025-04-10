@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Book, ExternalLink } from "lucide-react";
@@ -177,7 +178,7 @@ const BookList = () => {
           title: "Worthy",
           author: "Jamie Kern Lima",
           description: "How to believe in yourself in a world of unrelenting self-criticism.",
-          amazonLink: "https://www.amazon.com/Worthy-Believe-Yourself-Unrelenting-Self-Criticism/dp/1400236746/",
+          amazonLink: "https://www.amazon.com/Worthy-Believe-Enough-Transform-Pre-Order/dp/140197760X/",
           isTopRecommendation: true
         },
         {
