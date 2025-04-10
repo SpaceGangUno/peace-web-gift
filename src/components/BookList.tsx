@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Book, ExternalLink } from "lucide-react";
@@ -197,7 +196,7 @@ const BookList = () => {
           title: "The Untethered Soul",
           author: "Michael A. Singer",
           description: "The journey beyond yourself to spiritual awakening.",
-          amazonLink: "https://www.amazon.com/Untethered-Soul-Journey-Beyond-Yourself/dp/1577314808/",
+          amazonLink: "https://www.amazon.com/Untethered-Soul-Journey-Beyond-Yourself/dp/1572245379/",
           isTopRecommendation: true
         },
         {
