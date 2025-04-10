@@ -23,7 +23,7 @@ const EvidenceBased = () => {
       name: "Cognitive Behavioral Therapy",
       description:
         "CBT focuses on identifying negative thinking patterns and teaching practical skills to cope with everyday challenges more effectively. The goal is to help individuals develop healthier thinking habits, improve emotional regulation, and engage in more constructive behaviors, leading to a better overall quality of life.",
-      image: "/lovable-uploads/10b860a6-a737-466f-a1aa-1ff1f9c5429b.png",
+      image: "/lovable-uploads/59111012-e723-4e7c-bc08-12c077ac06f0.png",
     },
     {
       name: "Emotion Focused Therapy",
