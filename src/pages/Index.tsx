@@ -16,12 +16,14 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <Services />
-        <About />
-        <EvidenceBased />
-        <FeesInsurance />
-        <FAQ />
-        <Contact />
+        <div className="space-y-6 sm:space-y-10 md:space-y-16">
+          <Services />
+          <About />
+          <EvidenceBased />
+          <FeesInsurance />
+          <FAQ />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </div>
