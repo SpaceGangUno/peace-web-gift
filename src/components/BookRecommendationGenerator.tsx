@@ -11,6 +11,7 @@ interface BookItem {
   description: string;
   amazonLink: string;
   isTopRecommendation?: boolean;
+  keywords?: string[];
 }
 
 interface BookRecommendationGeneratorProps {
@@ -25,7 +26,7 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
 
   // Additional books that aren't in the main categories
   const additionalBooks: BookItem[] = [
-    // Mental Health & Self-Help
+    // Mental Health & Self-Help books
     {
       title: "Tiny Beautiful Things",
       author: "Cheryl Strayed",
@@ -100,7 +101,7 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
       title: "Why We Sleep",
       author: "Matthew Walker",
       description: "Unlocking the power of sleep and dreams for better health and wellbeing.",
-      amazonLink: "https://www.amazon.com/Why-We-Sleep-Unlocking-Dreams/dp/1501144324/"
+      amazonLink: "https://www.amazon.com/Why-We-Sleep-Unlocking-Dreams/dp/1501663224/"
     },
     // Stress Management & Mindfulness
     {
@@ -213,6 +214,93 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
       author: "Kiese Laymon",
       description: "A powerful exploration of what it means to live in a Black body in America, addressing issues of weight, trauma, family, and healing.",
       amazonLink: "https://www.amazon.com/Heavy-American-Memoir-Kiese-Laymon/dp/1501125656/"
+    },
+    // Mindfulness Books
+    {
+      title: "Mindfulness in Plain English",
+      author: "Bhante Henepola Gunaratana",
+      description: "A classic introduction to mindfulness meditation practice that's accessible and practical.",
+      amazonLink: "https://www.amazon.com/Mindfulness-Plain-English-Revised-Expanded/dp/0861719069/",
+      keywords: ["mindfulness", "meditation", "spiritual", "peace", "awareness", "present moment"]
+    },
+    {
+      title: "The Miracle of Mindfulness",
+      author: "Thich Nhat Hanh",
+      description: "A gentle guide to developing mindfulness in daily life from renowned Buddhist monk Thich Nhat Hanh.",
+      amazonLink: "https://www.amazon.com/Miracle-Mindfulness-Introduction-Practice-Meditation/dp/0807012394/",
+      keywords: ["mindfulness", "meditation", "spiritual", "buddhist", "awareness", "peace"]
+    },
+    {
+      title: "Wherever You Go, There You Are",
+      author: "Jon Kabat-Zinn",
+      description: "A practical guide to mindfulness meditation that helps bring awareness to everyday moments.",
+      amazonLink: "https://www.amazon.com/Wherever-You-Go-There-Are/dp/1401307787/",
+      keywords: ["mindfulness", "meditation", "present moment", "awareness", "stress reduction"]
+    },
+    // Spiritual/God-Related Books
+    {
+      title: "Conversations with God",
+      author: "Neale Donald Walsch",
+      description: "A series that documents an unconventional dialogue the author believes he had with God, discussing spirituality and personal growth.",
+      amazonLink: "https://www.amazon.com/Conversations-God-Uncommon-Dialogue-Book/dp/0399142789/",
+      keywords: ["god", "spiritual", "faith", "religion", "divine", "spirituality"]
+    },
+    {
+      title: "The Case for God",
+      author: "Karen Armstrong",
+      description: "A nuanced exploration of the history and nature of religious belief and our understanding of God.",
+      amazonLink: "https://www.amazon.com/Case-God-Karen-Armstrong/dp/0307389804/",
+      keywords: ["god", "religion", "spirituality", "faith", "theology", "belief"]
+    },
+    {
+      title: "God: A Human History",
+      author: "Reza Aslan",
+      description: "A fascinating exploration of how humans have perceived and related to God throughout history.",
+      amazonLink: "https://www.amazon.com/God-Human-History-Reza-Aslan/dp/0553394738/",
+      keywords: ["god", "religion", "spirituality", "history", "theological", "divine"]
+    },
+    {
+      title: "Meditations",
+      author: "Marcus Aurelius",
+      description: "Timeless reflections on mindful living, virtue, and inner peace from the Roman Emperor and Stoic philosopher.",
+      amazonLink: "https://www.amazon.com/Meditations-New-Translation-Marcus-Aurelius/dp/0812968255/",
+      keywords: ["mindfulness", "stoicism", "philosophy", "wisdom", "spiritual", "reflection"]
+    },
+    {
+      title: "The Seat of the Soul",
+      author: "Gary Zukav",
+      description: "A spiritual guide that explores the evolution of human consciousness and authentic power.",
+      amazonLink: "https://www.amazon.com/Seat-Soul-Gary-Zukav/dp/147675540X/",
+      keywords: ["spiritual", "soul", "consciousness", "divine", "purpose", "intention"]
+    },
+    // African American Spirituality
+    {
+      title: "In Search of Our Mothers' Gardens",
+      author: "Alice Walker",
+      description: "Essays exploring spirituality, art, and resilience in African American women's lives and creative expression.",
+      amazonLink: "https://www.amazon.com/Search-Our-Mothers-Gardens-Womanist/dp/0156028646/",
+      keywords: ["african american", "spirituality", "women", "resilience", "creativity", "faith"]
+    },
+    {
+      title: "Spirited: Affirming the Soul and Black Gay/Lesbian Identity",
+      author: "G. Winston James & Lisa C. Moore (editors)",
+      description: "A collection addressing spirituality and faith for Black LGBTQ+ individuals navigating cultural and religious contexts.",
+      amazonLink: "https://www.amazon.com/Spirited-Affirming-Black-Lesbian-Identity/dp/1902934075/",
+      keywords: ["african american", "spirituality", "lgbtq", "identity", "faith", "soul"]
+    },
+    {
+      title: "Joy Unspeakable: Contemplative Practices of the Black Church",
+      author: "Barbara A. Holmes",
+      description: "Explores the contemplative and mystical traditions within historical and contemporary Black church communities.",
+      amazonLink: "https://www.amazon.com/Joy-Unspeakable-Contemplative-Practices-Second/dp/1506421601/",
+      keywords: ["african american", "spirituality", "mindfulness", "meditation", "church", "contemplative"]
+    },
+    {
+      title: "The Black Church: This Is Our Story, This Is Our Song",
+      author: "Henry Louis Gates Jr.",
+      description: "An exploration of the pivotal role of the Black church in African American history, community, and spiritual life.",
+      amazonLink: "https://www.amazon.com/Black-Church-This-Story-Song/dp/1984880438/",
+      keywords: ["african american", "spirituality", "church", "faith", "community", "history"]
     }
   ];
 
@@ -236,22 +324,53 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
     const allAvailableBooks = [...allBooks, ...additionalBooks];
 
     // Simple keyword matching for demonstration
-    const keywords = query.toLowerCase().split(/\s+/);
+    const searchTerms = query.toLowerCase().split(/\s+/);
     
+    // Improved matching algorithm with topic mapping
     const matchedBooks = allAvailableBooks.filter(book => {
+      // Check explicit keywords if available
+      if (book.keywords) {
+        if (searchTerms.some(term => book.keywords!.some(keyword => keyword.includes(term)))) {
+          return true;
+        }
+      }
+      
+      // Fall back to text search
       const bookText = `${book.title} ${book.author} ${book.description}`.toLowerCase();
-      return keywords.some(keyword => bookText.includes(keyword));
+      return searchTerms.some(term => bookText.includes(term));
     });
 
     // Sort by relevance (number of keyword matches)
     const scoredBooks = matchedBooks.map(book => {
       const bookText = `${book.title} ${book.author} ${book.description}`.toLowerCase();
-      const score = keywords.reduce((count, keyword) => {
-        return count + (bookText.includes(keyword) ? 1 : 0);
-      }, 0);
+      let score = 0;
+      
+      // Score based on keywords (weighted higher)
+      if (book.keywords) {
+        searchTerms.forEach(term => {
+          book.keywords!.forEach(keyword => {
+            if (keyword.includes(term)) {
+              score += 2;  // Keywords match gets more weight
+            }
+          });
+        });
+      }
+      
+      // Score based on text content
+      searchTerms.forEach(term => {
+        if (bookText.includes(term)) {
+          score += 1;
+        }
+        // Title matches get extra weight
+        if (book.title.toLowerCase().includes(term)) {
+          score += 1;
+        }
+      });
+      
       return { ...book, score };
     });
 
+    // Sort by score (highest first)
     scoredBooks.sort((a, b) => (b.score || 0) - (a.score || 0));
 
     // Timeout to simulate processing
@@ -281,6 +400,9 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
         <p className="text-muted-foreground">
           Describe what you're looking for, and we'll suggest books that might help.
         </p>
+        <p className="text-xs text-muted-foreground mt-2">
+          Try topics like "mindfulness," "god," "anxiety," or specific interests.
+        </p>
       </div>
       
       <div className="flex flex-col sm:flex-row gap-3 mb-8">
@@ -290,7 +412,7 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
             value={query}
             onChange={handleQueryChange}
             onKeyDown={handleKeyDown}
-            placeholder="e.g., coping with anxiety, mindfulness techniques, grief recovery..."
+            placeholder="e.g., mindfulness, spirituality, grief recovery..."
             className="pl-9 py-6"
           />
         </div>
