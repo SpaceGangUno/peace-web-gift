@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
@@ -117,8 +118,7 @@ const BookingCalendar = () => {
               Schedule a <span className="gold-text">Consultation</span>
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-              Take the first step toward healing by scheduling a consultation. 
-              Monday through Friday consultations are available between 10am-6pm.
+              Take the first step toward healing by scheduling a consultation.
             </p>
           </div>
 
