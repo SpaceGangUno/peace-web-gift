@@ -112,10 +112,10 @@ const BookList = () => {
           amazonLink: "https://www.amazon.com/Dare-Anxiety-Stop-Panic-Attacks/dp/0956596258/"
         },
         {
-          title: "Hope and Help for Your Nerves",
-          author: "Claire Weekes",
-          description: "End anxiety, panic, and fear with this classic guide.",
-          amazonLink: "https://www.amazon.com/Hope-Help-Your-Nerves-Signet/dp/0451167228/"
+          title: "Daily Vagus Nerve Exercises",
+          author: "Elizabeth Williams",
+          description: "Breathwork, meditation techniques, and body exercises for anxiety and stress relief.",
+          amazonLink: "https://www.amazon.com/DAILY-VAGUS-NERVE-EXERCISES-Breathwork/dp/B0F2Z6ZWFP/"
         }
       ],
     },
