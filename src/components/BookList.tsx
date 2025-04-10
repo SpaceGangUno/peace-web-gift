@@ -1,14 +1,15 @@
 
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Book } from "lucide-react";
+import { Book, ExternalLink } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface BookItem {
   title: string;
   author: string;
   description: string;
-  amazonLink?: string;
-  imageUrl?: string;
+  amazonLink: string;
+  imageUrl: string;
 }
 
 interface BookCategory {
@@ -27,31 +28,36 @@ const BookList = () => {
           title: "Taking Charge of Adult ADHD",
           author: "Russell A. Barkley",
           description: "A step-by-step guide to managing ADHD symptoms and building essential life skills.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Taking-Charge-Adult-ADHD-Second/dp/1462546854/",
+          imageUrl: "https://images.unsplash.com/photo-1589998059171-988d887df646?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "Driven to Distraction",
           author: "Edward M. Hallowell & John J. Ratey",
           description: "Recognizing and coping with Attention Deficit Disorder from childhood through adulthood.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Driven-Distraction-Revised-Recognizing-Attention/dp/0307743152/",
+          imageUrl: "https://images.unsplash.com/photo-1497561813398-8fcc7a37b567?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "The ADHD Effect on Marriage",
           author: "Melissa Orlov",
           description: "Understanding and rebuilding your relationship when ADHD impacts your partnership.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/ADHD-Effect-Marriage-Relationship-Improve/dp/1886941971/",
+          imageUrl: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "How to Keep House While Drowning",
           author: "KC Davis",
           description: "A gentle approach to cleaning and organizing for those with ADHD or other executive function challenges.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Keep-House-While-Drowning-compassionate/dp/1398710377/",
+          imageUrl: "https://images.unsplash.com/photo-1584473457409-ae5c91d7d8b1?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "Scattered Minds",
           author: "Gabor Maté",
           description: "A new approach to understanding and treating Attention Deficit Disorder.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Scattered-Minds-Origins-Attention-Disorder/dp/1785042211/",
+          imageUrl: "https://images.unsplash.com/photo-1541781774-b1cf4a81eb81?q=80&w=400&h=600&auto=format&fit=crop"
         },
       ],
     },
@@ -63,25 +69,29 @@ const BookList = () => {
           title: "It's OK That You're Not OK",
           author: "Megan Devine",
           description: "Meeting grief and loss in a culture that doesn't understand.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Its-That-Youre-Not-Understand/dp/1622039076/",
+          imageUrl: "https://images.unsplash.com/photo-1474031317822-f51f48735ddd?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "The Year of Magical Thinking",
           author: "Joan Didion",
           description: "A powerful memoir of grief and mourning after the loss of a spouse.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Year-Magical-Thinking-Joan-Didion/dp/1400078431/",
+          imageUrl: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "Bearing the Unbearable",
           author: "Joanne Cacciatore",
           description: "Love, loss, and the heartbreaking path of grief.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Bearing-Unbearable-Love-Loss-Heartbreaking/dp/1614292965/",
+          imageUrl: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "Have Yourself a Merry Little Griefmas",
           author: "Shelley F. Knight",
           description: "A guide to navigating grief and loss during the holiday season.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Have-Yourself-Merry-Little-Griefmas/dp/1739206207/",
+          imageUrl: "https://images.unsplash.com/photo-1607370921719-9272a366d01d?q=80&w=400&h=600&auto=format&fit=crop"
         },
       ],
     },
@@ -93,25 +103,29 @@ const BookList = () => {
           title: "The Anxiety and Phobia Workbook",
           author: "Edmund J. Bourne",
           description: "Practical techniques and exercises to help manage anxiety and panic.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Anxiety-Phobia-Workbook-Edmund-Bourne/dp/1684034833/",
+          imageUrl: "https://images.unsplash.com/photo-1541199249251-f713e6145474?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "Dare",
           author: "Barry McDonagh",
           description: "The new way to end anxiety and stop panic attacks.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Dare-Anxiety-Stop-Panic-Attacks/dp/0956596258/",
+          imageUrl: "https://images.unsplash.com/photo-1494972308805-463bc619d34e?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "Hope and Help for Your Nerves",
           author: "Claire Weekes",
           description: "End anxiety, panic, and fear with this classic guide.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Hope-Help-Nerves-Claire-Weekes/dp/0451167228/",
+          imageUrl: "https://images.unsplash.com/photo-1610809027249-86c649feabc5?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "Don't Believe Everything You Think",
           author: "Joseph Nguyen",
           description: "Change the way you feel by changing the way you think.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Dont-Believe-Everything-You-Think/dp/1954854005/",
+          imageUrl: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=400&h=600&auto=format&fit=crop"
         },
       ],
     },
@@ -123,37 +137,43 @@ const BookList = () => {
           title: "Adult Children of Emotionally Immature Parents",
           author: "Lindsay C. Gibson",
           description: "How to heal from distant, rejecting, or self-involved parents.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Adult-Children-Emotionally-Immature-Parents/dp/1626251703/",
+          imageUrl: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "The Body Keeps the Score",
           author: "Bessel van der Kolk",
           description: "Brain, mind, and body in the healing of trauma.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Body-Keeps-Score-Healing-Trauma/dp/0143127748/",
+          imageUrl: "https://images.unsplash.com/photo-1547860664-b8537ca5f833?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "Forgiving What You Can't Forget",
           author: "Lysa TerKeurst",
           description: "Discover how to move on, make peace with painful memories, and create a life that's beautiful again.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Forgiving-What-Cant-Forget-Discover/dp/0718039874/",
+          imageUrl: "https://images.unsplash.com/photo-1594312915251-48db9280c8f1?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "It Didn't Start with You",
           author: "Mark Wolynn",
           description: "How inherited family trauma shapes who we are and how to end the cycle.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Didnt-Start-You-Inherited-Family/dp/1101980389/",
+          imageUrl: "https://images.unsplash.com/photo-1490633874781-1c63cc424610?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "What Happened to You?",
           author: "Bruce D. Perry & Oprah Winfrey",
           description: "Conversations on trauma, resilience, and healing.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/What-Happened-You-Understanding-Resilience/dp/1250223180/",
+          imageUrl: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "When the Body Says No",
           author: "Gabor Maté",
           description: "The cost of hidden stress and the mind-body connection in illness.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/When-Body-Says-Understanding-Stress-Disease/dp/0470923350/",
+          imageUrl: "https://images.unsplash.com/photo-1621600411688-a0070d79f200?q=80&w=400&h=600&auto=format&fit=crop"
         },
       ],
     },
@@ -165,19 +185,22 @@ const BookList = () => {
           title: "Atomic Habits",
           author: "James Clear",
           description: "An easy and proven way to build good habits and break bad ones.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299/",
+          imageUrl: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "The Gifts of Imperfection",
           author: "Brené Brown",
           description: "Let go of who you think you're supposed to be and embrace who you are.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Gifts-Imperfection-Think-Supposed-Embrace/dp/0593133587/",
+          imageUrl: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "The Body Keeps the Score",
           author: "Bessel van der Kolk",
           description: "Brain, mind, and body in the healing of trauma.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Body-Keeps-Score-Healing-Trauma/dp/0143127748/",
+          imageUrl: "https://images.unsplash.com/photo-1547860664-b8537ca5f833?q=80&w=400&h=600&auto=format&fit=crop"
         },
       ],
     },
@@ -189,13 +212,15 @@ const BookList = () => {
           title: "Worthy",
           author: "Jamie Kern Lima",
           description: "How to believe in yourself in a world of unrelenting self-criticism.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Worthy-Believe-Yourself-Unrelenting-Self-Criticism/dp/1400236746/",
+          imageUrl: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "The Mountain Is You",
           author: "Brianna Wiest",
           description: "Transforming self-sabotage into self-mastery.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Mountain-You-Transforming-Self-Sabotage-Self-Mastery/dp/1949759229/",
+          imageUrl: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=400&h=600&auto=format&fit=crop"
         },
       ],
     },
@@ -207,43 +232,50 @@ const BookList = () => {
           title: "The Power of Now",
           author: "Eckhart Tolle",
           description: "A guide to spiritual enlightenment through present moment awareness.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Power-Now-Guide-Spiritual-Enlightenment/dp/1577314808/",
+          imageUrl: "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "When Things Fall Apart",
           author: "Pema Chödrön",
           description: "Heart advice for difficult times with Buddhist wisdom.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/When-Things-Fall-Apart-Difficult/dp/1611803438/",
+          imageUrl: "https://images.unsplash.com/photo-1477332552946-cfb384aeaf1c?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "The Book of Joy",
           author: "Dalai Lama & Desmond Tutu",
           description: "Lasting happiness in a changing world through spiritual practices.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Book-Joy-Lasting-Happiness-Changing/dp/0399185046/",
+          imageUrl: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "The Untethered Soul",
           author: "Michael A. Singer",
           description: "The journey beyond yourself to spiritual awakening.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Untethered-Soul-Journey-Beyond-Yourself/dp/1572245379/",
+          imageUrl: "https://images.unsplash.com/photo-1505816014357-96b5ff457e9a?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "The 5 AM Club",
           author: "Robin Sharma",
           description: "Own your morning, elevate your life with morning rituals for optimal performance.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/AM-Club-Morning-Elevate-Life/dp/1443456624/",
+          imageUrl: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "No Bad Parts",
           author: "Richard Schwartz",
           description: "Healing trauma and restoring wholeness with Internal Family Systems therapy.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/No-Bad-Parts-Restoring-Wholeness/dp/1683646681/",
+          imageUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&h=600&auto=format&fit=crop"
         },
         {
           title: "The Four Agreements",
           author: "Don Miguel Ruiz",
           description: "A practical guide to personal freedom based on ancient Toltec wisdom.",
-          amazonLink: "#",
+          amazonLink: "https://www.amazon.com/Four-Agreements-Practical-Personal-Freedom/dp/1878424319/",
+          imageUrl: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=400&h=600&auto=format&fit=crop"
         },
       ],
     },
@@ -264,7 +296,7 @@ const BookList = () => {
           </div>
 
           <Tabs defaultValue="adhd" className="w-full">
-            <div className="mb-8 flex justify-center">
+            <div className="mb-8 flex justify-center overflow-x-auto py-2">
               <TabsList className="bg-muted/50">
                 {categories.map((category) => (
                   <TabsTrigger 
@@ -282,34 +314,34 @@ const BookList = () => {
               <TabsContent key={category.id} value={category.id} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {category.books.map((book, index) => (
-                    <div 
+                    <Card
                       key={index}
-                      className="bg-white rounded-lg shadow-md overflow-hidden border border-border hover:border-gold/50 transition-all"
+                      className="overflow-hidden hover:shadow-lg transition-all hover:border-gold/50"
                     >
-                      <div className="p-6">
-                        <div className="flex items-start mb-4">
-                          <Book className="text-gold mr-3 flex-shrink-0" />
-                          <div>
-                            <h3 className="font-bookmania text-lg font-medium mb-1">{book.title}</h3>
-                            <p className="text-sm text-muted-foreground mb-2">by {book.author}</p>
-                          </div>
-                        </div>
-                        <p className="text-sm mb-4">{book.description}</p>
-                        {book.amazonLink && (
-                          <a 
-                            href={book.amazonLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gold hover:text-egyptian-earth text-sm font-medium inline-flex items-center"
-                          >
-                            Find on Amazon
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                          </a>
-                        )}
+                      <div className="aspect-[2/3] relative overflow-hidden">
+                        <img 
+                          src={book.imageUrl} 
+                          alt={`Cover of ${book.title}`}
+                          className="object-cover w-full h-full transition-transform hover:scale-105"
+                        />
                       </div>
-                    </div>
+                      <CardContent className="p-5">
+                        <div className="mb-3">
+                          <h3 className="font-bookmania text-lg font-medium mb-1">{book.title}</h3>
+                          <p className="text-sm text-muted-foreground">by {book.author}</p>
+                        </div>
+                        <p className="text-sm mb-4 line-clamp-3">{book.description}</p>
+                        <a 
+                          href={book.amazonLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gold hover:text-egyptian-earth text-sm font-medium inline-flex items-center"
+                        >
+                          Find on Amazon
+                          <ExternalLink className="h-3.5 w-3.5 ml-1" />
+                        </a>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
                 <p className="text-center text-sm text-muted-foreground mt-8">
