@@ -96,7 +96,7 @@ const BookList = () => {
           title: "Don't Believe Everything You Think",
           author: "Joseph Nguyen",
           description: "Change the way you feel by changing the way you think.",
-          amazonLink: "https://www.amazon.com/Dont-Believe-Everything-You-Think/dp/1954854005/",
+          amazonLink: "https://www.amazon.com/Dont-Believe-Everything-You-Think/dp/B0B39TSMJM/",
           isTopRecommendation: true
         },
         {
