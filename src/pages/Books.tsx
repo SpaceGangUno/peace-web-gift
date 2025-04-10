@@ -14,13 +14,6 @@ const Books = () => {
       </Helmet>
       <Navbar />
       <main className="flex-grow pt-24">
-        <div className="container-custom mx-auto px-4 mb-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl md:text-4xl font-bookmania mb-4">
-              Book <span className="gold-text">Recommendations</span>
-            </h1>
-          </div>
-        </div>
         <BookList />
       </main>
       <Footer />
