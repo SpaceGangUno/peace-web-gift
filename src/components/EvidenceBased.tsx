@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Carousel,
@@ -14,10 +13,10 @@ const EvidenceBased = () => {
   const isMobile = useIsMobile();
   const practices = [
     {
-      name: "Psychodynamic Therapy",
+      name: "Internal Family Systems",
       description:
-        "Psychodynamic therapy is based on the idea that our past experiences, especially those from our early childhood, have a significant impact on our present behavior, thoughts, and emotional patterns. In simpler terms, psychodynamic therapy helps people dig deep into their past to better understand why they think and act the way they do today to work through any emotional issues and improve their overall mental health.",
-      image: "/lovable-uploads/a5e8c605-ceed-4a5e-87c9-1fa466454940.png",
+        "A type of therapy that sees a person's mind as made up of multiple parts. It's like having an inner family where each part has a job, such as protecting, managing, or soothing us. Some parts might carry pain or negative emotions, we focus on helping these parts feel safe and understood. The goal is to bring harmony within this inner family, enabling a person to feel more balanced and whole.",
+      image: "/lovable-uploads/4e618c20-7362-4b98-8998-ecf6d28ab55d.png",
     },
     {
       name: "Cognitive Behavioral Therapy",
