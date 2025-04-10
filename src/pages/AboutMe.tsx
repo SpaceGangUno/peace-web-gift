@@ -25,7 +25,7 @@ const AboutMe = () => {
                     <div className="relative">
                       <div className="absolute -top-2 -left-2 w-full h-full border-2 border-gold rounded-lg"></div>
                       <img 
-                        src="/public/lovable-uploads/440e32be-6c35-4af0-b468-8eba9e5e5149.png"
+                        src="/lovable-uploads/440e32be-6c35-4af0-b468-8eba9e5e5149.png"
                         alt="Kaiane Thompson, LCSW - Founder of The Gift of Peace"
                         className="rounded-lg w-full h-auto object-cover shadow-lg relative z-10"
                       />
