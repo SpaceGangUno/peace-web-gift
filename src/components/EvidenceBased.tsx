@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   Carousel,
@@ -22,7 +23,7 @@ const EvidenceBased = () => {
       name: "Cognitive Behavioral Therapy",
       description:
         "CBT focuses on identifying negative thinking patterns and teaching practical skills to cope with everyday challenges more effectively. The goal is to help individuals develop healthier thinking habits, improve emotional regulation, and engage in more constructive behaviors, leading to a better overall quality of life.",
-      image: "/lovable-uploads/59111012-e723-4e7c-bc08-12c077ac06f0.png",
+      image: "/lovable-uploads/4b303914-8f57-4ba2-adb2-367326c3e33b.png",
     },
     {
       name: "Emotion Focused Therapy",
