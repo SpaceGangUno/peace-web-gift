@@ -15,7 +15,7 @@ const AboutMe = () => {
           <div className="container-custom">
             <div className="max-w-5xl mx-auto">
               <h1 className="text-3xl md:text-5xl font-bookmania mb-6 text-center">
-                Meet Your <span className="gold-text">Therapist</span>
+                About <span className="gold-text">Kaiane Thompson</span>
               </h1>
               
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-12">
@@ -32,7 +32,7 @@ const AboutMe = () => {
                 
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bookmania mb-4 text-emerald-green">
-                    Meet Kaiane Thompson, <span className="text-gold">LCSW</span>
+                    Kaiane Thompson, <span className="text-gold">LCSW</span>
                   </h2>
                   
                   <p className="text-wasabi mb-4">
@@ -55,13 +55,14 @@ const AboutMe = () => {
                   </p>
                   
                   <h3 className="text-xl font-bookmania mt-6 mb-3 text-emerald-green">
-                    Professional Memberships
+                    State Licenses
                   </h3>
                   
                   <ul className="list-disc pl-5 text-wasabi mb-6">
-                    <li>National Association of Social Workers (NASW)</li>
-                    <li>American Association for Marriage and Family Therapy (AAMFT)</li>
-                    <li>International Association of Trauma Professionals</li>
+                    <li>South Carolina license #: 15570</li>
+                    <li>North Carolina license #: C014665</li>
+                    <li>D.C. license #: LC200003802</li>
+                    <li>Virginia license #: 0904017793</li>
                   </ul>
                   
                   <Link to="/books">
