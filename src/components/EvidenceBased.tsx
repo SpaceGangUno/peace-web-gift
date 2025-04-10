@@ -60,23 +60,25 @@ const EvidenceBased = () => {
             <CarouselContent>
               {practices.map((practice, index) => (
                 <CarouselItem key={index} className="md:basis-4/5">
-                  <div className="p-1">
+                  <div className="p-1 h-full">
                     <Card className="border-wasabi/30 shadow-md overflow-hidden h-full group hover:border-gold transition-all duration-300">
                       <div className="grid md:grid-cols-5 h-full">
                         <div className="md:col-span-2 bg-emerald-green/5 flex items-center justify-center p-0 h-full">
-                          <img 
-                            src={practice.image} 
-                            alt={practice.name} 
-                            className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                          />
+                          <div className="aspect-ratio-container h-full w-full" style={{ aspectRatio: '1/1', height: '100%' }}>
+                            <img 
+                              src={practice.image} 
+                              alt={practice.name} 
+                              className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                            />
+                          </div>
                         </div>
-                        <div className="md:col-span-3 p-6">
+                        <div className="md:col-span-3 p-6 flex flex-col">
                           <CardHeader className="pb-2 px-0 pt-0">
                             <CardTitle className="text-2xl md:text-2xl text-gold">
                               {practice.name}
                             </CardTitle>
                           </CardHeader>
-                          <CardContent className="px-0 pb-0">
+                          <CardContent className="px-0 pb-0 flex-grow">
                             <p className="text-noir-vigne/90">{practice.description}</p>
                           </CardContent>
                         </div>
