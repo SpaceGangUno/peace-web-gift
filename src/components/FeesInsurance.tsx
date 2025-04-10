@@ -115,7 +115,10 @@ const FeesInsurance = () => {
                   <div className="mb-6">
                     <Carousel 
                       className="w-full insurance-carousel" 
-                      opts={{ loop: true }}
+                      opts={{ 
+                        loop: true,
+                        dragFree: true,
+                      }}
                       setApi={(api) => (carouselApiRef.current = api)}
                     >
                       <CarouselContent>

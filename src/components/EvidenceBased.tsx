@@ -55,18 +55,19 @@ const EvidenceBased = () => {
             opts={{
               align: "center",
               loop: true,
+              dragFree: true,
             }}
             className="w-full practices-carousel"
           >
             <CarouselContent>
               {practices.map((practice, index) => (
-                <CarouselItem key={index} className="md:basis-4/5">
+                <CarouselItem key={index} className={isMobile ? "md:basis-full" : "md:basis-4/5"}>
                   <div className="p-1 h-full">
                     <Card className="border-wasabi/30 shadow-md overflow-hidden h-full group hover:border-gold transition-all duration-300">
-                      <div className="grid grid-cols-1 md:grid-cols-5 h-full">
-                        <div className="md:col-span-2 bg-emerald-green/5 flex items-center justify-center">
-                          <div className="w-full h-full">
-                            <AspectRatio ratio={1/1} className="w-full h-full">
+                      <div className={`grid grid-cols-1 ${isMobile ? '' : 'md:grid-cols-5'} h-full`}>
+                        <div className={`${isMobile ? '' : 'md:col-span-2'} bg-emerald-green/5 flex items-center justify-center`}>
+                          <div className="w-full">
+                            <AspectRatio ratio={1/1} className="w-full">
                               <img 
                                 src={practice.image} 
                                 alt={practice.name} 
@@ -75,7 +76,7 @@ const EvidenceBased = () => {
                             </AspectRatio>
                           </div>
                         </div>
-                        <div className="md:col-span-3 p-6 flex flex-col">
+                        <div className={`${isMobile ? '' : 'md:col-span-3'} p-6 flex flex-col`}>
                           <CardHeader className="pb-2 px-0 pt-0">
                             <CardTitle className="text-2xl md:text-2xl text-gold">
                               {practice.name}

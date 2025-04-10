@@ -72,7 +72,10 @@ const Services = () => {
           // Mobile view with carousel
           <Carousel 
             className="w-full max-w-sm mx-auto services-carousel mt-10" 
-            opts={{ loop: true }}
+            opts={{ 
+              loop: true,
+              dragFree: true,
+            }}
             setApi={(api) => (carouselApiRef.current = api)}
           >
             <CarouselContent>
