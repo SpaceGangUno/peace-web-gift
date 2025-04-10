@@ -161,6 +161,12 @@ const BookList = () => {
           author: "Gabor Maté",
           description: "The cost of hidden stress and the mind-body connection in illness.",
           amazonLink: "https://www.amazon.com/When-Body-Says-Understanding-Stress-Disease/dp/0470923350/"
+        },
+        {
+          title: "No Bad Parts",
+          author: "Richard Schwartz",
+          description: "Healing trauma and restoring wholeness with Internal Family Systems therapy.",
+          amazonLink: "https://www.amazon.com/No-Bad-Parts-Restoring-Wholeness/dp/1683646681/"
         }
       ],
     },
@@ -191,7 +197,7 @@ const BookList = () => {
           title: "The Untethered Soul",
           author: "Michael A. Singer",
           description: "The journey beyond yourself to spiritual awakening.",
-          amazonLink: "https://www.amazon.com/Untethered-Soul-Journey-Beyond-Yourself/dp/1572245379/",
+          amazonLink: "https://www.amazon.com/Untethered-Soul-Journey-Beyond-Yourself/dp/1577314806/",
           isTopRecommendation: true
         },
         {
@@ -206,12 +212,6 @@ const BookList = () => {
           author: "Robin Sharma",
           description: "Own your morning, elevate your life with morning rituals for optimal performance.",
           amazonLink: "https://www.amazon.com/AM-Club-Morning-Elevate-Life/dp/1443456624/"
-        },
-        {
-          title: "No Bad Parts",
-          author: "Richard Schwartz",
-          description: "Healing trauma and restoring wholeness with Internal Family Systems therapy.",
-          amazonLink: "https://www.amazon.com/No-Bad-Parts-Restoring-Wholeness/dp/1683646681/"
         },
         {
           title: "The Four Agreements",
