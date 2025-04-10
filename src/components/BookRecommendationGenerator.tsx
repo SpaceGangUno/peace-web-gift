@@ -26,6 +26,7 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
 
   // Additional books that aren't in the main categories
   const additionalBooks: BookItem[] = [
+    // Mental Health & Self-Help
     {
       title: "Tiny Beautiful Things",
       author: "Cheryl Strayed",
@@ -55,6 +56,91 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
       author: "Marc Brackett",
       description: "Unlocking the power of emotions to help us achieve success and well-being.",
       amazonLink: "https://www.amazon.com/Permission-Feel-Unlocking-Emotions-Success/dp/1250212839/"
+    },
+    // Depression & Mood Disorders
+    {
+      title: "Lost Connections",
+      author: "Johann Hari",
+      description: "Uncovering the real causes of depression and the unexpected solutions.",
+      amazonLink: "https://www.amazon.com/Lost-Connections-Uncovering-Depression-Unexpected/dp/163286830X/"
+    },
+    {
+      title: "Reasons to Stay Alive",
+      author: "Matt Haig",
+      description: "A moving, funny, and joyous exploration of how to live better and feel more alive.",
+      amazonLink: "https://www.amazon.com/Reasons-Stay-Alive-Matt-Haig/dp/0143128728/"
+    },
+    // Relationships & Communication
+    {
+      title: "Attached",
+      author: "Amir Levine and Rachel Heller",
+      description: "The science of adult attachment and how it can help you find and keep love.",
+      amazonLink: "https://www.amazon.com/Attached-Science-Adult-Attachment-Help/dp/1585429139/"
+    },
+    {
+      title: "Nonviolent Communication",
+      author: "Marshall B. Rosenberg",
+      description: "A language of life that helps you connect better with others and resolve conflicts peacefully.",
+      amazonLink: "https://www.amazon.com/Nonviolent-Communication-Language-Life-Changing-Relationships/dp/189200528X/"
+    },
+    // Parenting
+    {
+      title: "The Whole-Brain Child",
+      author: "Daniel J. Siegel and Tina Payne Bryson",
+      description: "12 revolutionary strategies to nurture your child's developing mind.",
+      amazonLink: "https://www.amazon.com/Whole-Brain-Child-Revolutionary-Strategies-Developing/dp/0553386697/"
+    },
+    {
+      title: "How to Talk So Kids Will Listen & Listen So Kids Will Talk",
+      author: "Adele Faber and Elaine Mazlish",
+      description: "The ultimate parenting bible for effectively communicating with children.",
+      amazonLink: "https://www.amazon.com/How-Talk-Kids-Will-Listen/dp/1451663889/"
+    },
+    // Sleep & Rest
+    {
+      title: "Why We Sleep",
+      author: "Matthew Walker",
+      description: "Unlocking the power of sleep and dreams for better health and wellbeing.",
+      amazonLink: "https://www.amazon.com/Why-We-Sleep-Unlocking-Dreams/dp/1501144324/"
+    },
+    // Stress Management & Mindfulness
+    {
+      title: "Burnout",
+      author: "Emily Nagoski and Amelia Nagoski",
+      description: "The secret to unlocking the stress cycle and preventing emotional exhaustion.",
+      amazonLink: "https://www.amazon.com/Burnout-Secret-Unlocking-Stress-Cycle/dp/1984818325/"
+    },
+    {
+      title: "10% Happier",
+      author: "Dan Harris",
+      description: "How meditation helped a skeptic calm the voice in his head and find self-awareness.",
+      amazonLink: "https://www.amazon.com/10-Happier-Self-Help-Actually-Works/dp/0062265431/"
+    },
+    // Healing from Specific Traumas
+    {
+      title: "When Things Fall Apart",
+      author: "Pema Chödrön",
+      description: "Heart advice for difficult times from a Buddhist perspective.",
+      amazonLink: "https://www.amazon.com/When-Things-Fall-Apart-Difficult/dp/1611803438/"
+    },
+    {
+      title: "The Dance of Anger",
+      author: "Harriet Lerner",
+      description: "A guide to changing the patterns of relationships that make you feel angry.",
+      amazonLink: "https://www.amazon.com/Dance-Anger-Changing-Patterns-Relationships/dp/0062319043/"
+    },
+    // Purpose & Meaning
+    {
+      title: "Man's Search for Meaning",
+      author: "Viktor E. Frankl",
+      description: "A powerful memoir of survival and the search for meaning in extreme circumstances.",
+      amazonLink: "https://www.amazon.com/Mans-Search-Meaning-Viktor-Frankl/dp/0807014273/"
+    },
+    {
+      title: "Designing Your Life",
+      author: "Bill Burnett and Dave Evans",
+      description: "How to build a well-lived, joyful life using design thinking principles.",
+      amazonLink: "https://www.amazon.com/Designing-Your-Life-Well-Lived-Joyful/dp/1101875321/"
     }
   ];
 
