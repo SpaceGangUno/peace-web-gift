@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { BookOpen, Calendar } from "lucide-react";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 const AboutMe = () => {
   return (
@@ -18,31 +19,46 @@ const AboutMe = () => {
                 About <span className="gold-text">the Founder</span>
               </h1>
               
-              <div className="max-w-3xl mx-auto mt-12">
-                <h2 className="text-2xl md:text-3xl font-bookmania mb-4 text-emerald-green">
-                  Kaiane Thompson, <span className="text-gold">LCSW</span>
-                </h2>
+              <div className="max-w-3xl mx-auto mt-8 md:mt-12">
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-8">
+                  <div className="md:w-1/3">
+                    <div className="relative">
+                      <div className="absolute -top-2 -left-2 w-full h-full border-2 border-gold rounded-lg"></div>
+                      <img 
+                        src="/public/lovable-uploads/440e32be-6c35-4af0-b468-8eba9e5e5149.png"
+                        alt="Kaiane Thompson, LCSW - Founder of The Gift of Peace"
+                        className="rounded-lg w-full h-auto object-cover shadow-lg relative z-10"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="md:w-2/3">
+                    <h2 className="text-2xl md:text-3xl font-bookmania mb-4 text-emerald-green">
+                      Kaiane Thompson, <span className="text-gold">LCSW</span>
+                    </h2>
+                    
+                    <p className="text-wasabi mb-4">
+                      Kaiane is a compassionate and dedicated therapist with a passion for helping individuals overcome 
+                      the effects of trauma, depression, anxiety, and challenging family dynamics. With her expertise, 
+                      she empowers clients to unpack their emotional baggage and embark on a transformative journey 
+                      towards a more fulfilling life.
+                    </p>
+                    
+                    <p className="text-wasabi mb-4">
+                      Her areas of specialty include trauma recovery, anxiety management, couples counseling, 
+                      and family therapy. She believes in creating a safe, non-judgmental space where clients 
+                      can explore their thoughts and feelings freely.
+                    </p>
+                    
+                    <p className="text-wasabi mb-4">
+                      With a Master's degree in Social Work and as a Licensed Clinical Social Worker, 
+                      Kaiane's approach combines evidence-based therapeutic techniques, 
+                      mindfulness practices, and emotion-focused strategies tailored to each client's unique needs.
+                    </p>
+                  </div>
+                </div>
                 
-                <p className="text-wasabi mb-4">
-                  Kaiane is a compassionate and dedicated therapist with a passion for helping individuals overcome 
-                  the effects of trauma, depression, anxiety, and challenging family dynamics. With her expertise, 
-                  she empowers clients to unpack their emotional baggage and embark on a transformative journey 
-                  towards a more fulfilling life.
-                </p>
-                
-                <p className="text-wasabi mb-4">
-                  Her areas of specialty include trauma recovery, anxiety management, couples counseling, 
-                  and family therapy. She believes in creating a safe, non-judgmental space where clients 
-                  can explore their thoughts and feelings freely.
-                </p>
-                
-                <p className="text-wasabi mb-4">
-                  With a Master's degree in Social Work and as a Licensed Clinical Social Worker, 
-                  Kaiane's approach combines evidence-based therapeutic techniques, 
-                  mindfulness practices, and emotion-focused strategies tailored to each client's unique needs.
-                </p>
-                
-                <h3 className="text-xl font-bookmania mt-6 mb-3 text-emerald-green">
+                <h3 className="text-xl font-bookmania mt-8 mb-3 text-emerald-green">
                   State Licenses
                 </h3>
                 
