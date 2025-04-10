@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -64,7 +63,6 @@ const Carousel = React.forwardRef<
         dragFree: true,
         watchDrag: true,
         loop: opts?.loop !== false, // Enable continuous rotation by default unless explicitly set to false
-        draggable: true,
       },
       plugins
     )
