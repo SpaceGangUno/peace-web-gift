@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Book, ExternalLink } from "lucide-react";
@@ -53,7 +54,7 @@ const BookList = () => {
           title: "The ADHD Effect on Marriage",
           author: "Melissa Orlov",
           description: "Understanding and rebuilding your relationship when ADHD impacts your partnership.",
-          amazonLink: "https://www.amazon.com/ADHD-Effect-Marriage-Relationship-Improve/dp/1886941971/"
+          amazonLink: "https://www.amazon.com/ADHD-Effect-Marriage-Understanding-Relationship/dp/1886941971/"
         }
       ],
     },
@@ -115,7 +116,7 @@ const BookList = () => {
           title: "Hope and Help for Your Nerves",
           author: "Claire Weekes",
           description: "End anxiety, panic, and fear with this classic guide.",
-          amazonLink: "https://www.amazon.com/Hope-Help-Nerves-Claire-Weekes/dp/0451167228/"
+          amazonLink: "https://www.amazon.com/Hope-Help-Your-Nerves-Signet/dp/0451167228/"
         }
       ],
     },
@@ -153,7 +154,7 @@ const BookList = () => {
           title: "What Happened to You?",
           author: "Bruce D. Perry & Oprah Winfrey",
           description: "Conversations on trauma, resilience, and healing.",
-          amazonLink: "https://www.amazon.com/What-Happened-You-Understanding-Resilience/dp/1250223180/"
+          amazonLink: "https://www.amazon.com/What-Happened-You-Conversations-Resilience/dp/1250223180/"
         },
         {
           title: "When the Body Says No",
@@ -196,7 +197,7 @@ const BookList = () => {
           title: "The Untethered Soul",
           author: "Michael A. Singer",
           description: "The journey beyond yourself to spiritual awakening.",
-          amazonLink: "https://www.amazon.com/Untethered-Soul-Journey-Beyond-Yourself/dp/1577314806/",
+          amazonLink: "https://www.amazon.com/Untethered-Soul-Journey-Beyond-Yourself/dp/1577314808/",
           isTopRecommendation: true
         },
         {
