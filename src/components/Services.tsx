@@ -78,9 +78,9 @@ const Services = () => {
             }}
             setApi={(api) => (carouselApiRef.current = api)}
           >
-            <CarouselContent>
+            <CarouselContent className="h-[600px]">
               {services.map((service, index) => (
-                <CarouselItem key={index} className="pl-1 md:pl-4">
+                <CarouselItem key={index} className="pl-1 md:pl-4 h-full">
                   <ServiceCard service={service} animationDelay={0} />
                 </CarouselItem>
               ))}
@@ -132,7 +132,7 @@ const ServiceCard = ({
   animationDelay: number;
 }) => (
   <div 
-    className="group animate-fade-in-up"
+    className="group animate-fade-in-up h-full"
     style={{ 
       animationDelay: `${animationDelay}s`
     }}
@@ -151,7 +151,7 @@ const ServiceCard = ({
         </div>
       )}
       
-      <div className={`${service.backgroundImage ? 'relative z-10' : ''}`}>
+      <div className={`${service.backgroundImage ? 'relative z-10 h-full flex flex-col' : 'h-full flex flex-col'}`}>
         <div className="mb-4 flex items-center justify-between">
           {service.comingSoon && (
             <span className="text-xs font-sans bg-magenta-500 text-white px-3 py-1.5 rounded-full font-medium shadow-md border border-white/30 animate-pulse">
