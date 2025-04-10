@@ -43,14 +43,10 @@ const EvidenceBased = () => {
     <section id="evidence-based" className="section py-20 bg-emerald-green/10">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <span className="text-gold-dark text-sm uppercase tracking-wider font-medium mb-2 block">Our Approach</span>
           <h2 className="text-3xl md:text-4xl font-bookmania mb-4">
             Evidence-Based <span className="gold-text">Practices</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-gold-light to-gold mx-auto mb-6"></div>
-          <p className="text-wasabi max-w-2xl mx-auto">
-            Our therapeutic techniques are rooted in scientifically validated approaches to mental wellness and personal growth.
-          </p>
         </div>
 
         <div className="max-w-5xl mx-auto my-12 evidence-carousel">
