@@ -193,6 +193,16 @@
   animation: fadeInUp 0.8s forwards;
 }
 
+@keyframes gentle-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(184, 136, 48, 0.2); }
+  70% { box-shadow: 0 0 0 10px rgba(184, 136, 48, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(184, 136, 48, 0); }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 2s infinite;
+}
+
 /* Mobile-specific animations */
 @media (max-width: 640px) {
   .animate-fade-in-up {

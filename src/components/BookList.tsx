@@ -266,9 +266,10 @@ const BookList = () => {
                         {topRecommendations.map((book, index) => (
                           <Card
                             key={`top-${index}`}
-                            className="overflow-hidden hover:shadow-lg transition-all hover:border-gold/50 flex flex-col"
+                            className="overflow-hidden hover:shadow-lg transition-all hover:border-gold/50 flex flex-col relative animate-fade-in-up border-gold border-2"
                           >
-                            <CardContent className="p-5 flex-grow">
+                            <div className="absolute inset-0 bg-gold/5 animate-pulse pointer-events-none rounded-lg"></div>
+                            <CardContent className="p-5 flex-grow relative z-10">
                               <div className="mb-3">
                                 <h3 className="font-bookmania text-xl font-medium mb-1">{book.title}</h3>
                                 <p className="text-sm text-muted-foreground">by {book.author}</p>
