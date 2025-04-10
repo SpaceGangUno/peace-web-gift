@@ -1,4 +1,3 @@
-
 import { Check } from "lucide-react";
 import React, { useState, useRef, useEffect } from "react";
 import {
@@ -21,14 +20,13 @@ const FeesInsurance = () => {
   const isMobile = useIsMobile();
   const carouselApiRef = useRef<any>(null);
   
-  // Auto-rotation effect for carousel
   useEffect(() => {
     if (isMobile) {
       const autoRotationInterval = setInterval(() => {
         if (carouselApiRef.current) {
           carouselApiRef.current.scrollNext();
         }
-      }, 4000); // Rotate every 4 seconds
+      }, 4000);
       
       return () => {
         clearInterval(autoRotationInterval);
@@ -55,7 +53,6 @@ const FeesInsurance = () => {
     }
   ];
   
-  // Get the insurance plans for the active region
   const getActivePlans = () => {
     const activeRegionData = insuranceByRegion.find(item => item.region === activeRegion);
     return activeRegionData?.plans || [];
@@ -85,7 +82,7 @@ const FeesInsurance = () => {
                       <TableCell className="py-2 text-sm md:text-base font-medium">Individual (60 min)</TableCell>
                       <TableCell className="py-2 text-right font-bookmania text-emerald-green">$150</TableCell>
                     </TableRow>
-                    <TableRow>
+                    <TableRow className="bg-muted/30">
                       <TableCell className="py-2 text-sm md:text-base font-medium">Individual Intake</TableCell>
                       <TableCell className="py-2 text-right font-bookmania text-emerald-green">$175</TableCell>
                     </TableRow>
@@ -93,7 +90,7 @@ const FeesInsurance = () => {
                       <TableCell className="py-2 text-sm md:text-base font-medium">Couples (60 min)</TableCell>
                       <TableCell className="py-2 text-right font-bookmania text-emerald-green">$200</TableCell>
                     </TableRow>
-                    <TableRow>
+                    <TableRow className="bg-muted/30">
                       <TableCell className="py-2 text-sm md:text-base font-medium">Couples Intake</TableCell>
                       <TableCell className="py-2 text-right font-bookmania text-emerald-green">$225</TableCell>
                     </TableRow>
@@ -101,7 +98,7 @@ const FeesInsurance = () => {
                       <TableCell className="py-2 text-sm md:text-base font-medium">Family (60 min)</TableCell>
                       <TableCell className="py-2 text-right font-bookmania text-emerald-green">$200</TableCell>
                     </TableRow>
-                    <TableRow>
+                    <TableRow className="bg-muted/30">
                       <TableCell className="py-2 text-sm md:text-base font-medium">Family Intake</TableCell>
                       <TableCell className="py-2 text-right font-bookmania text-emerald-green">$225</TableCell>
                     </TableRow>
@@ -169,7 +166,6 @@ const FeesInsurance = () => {
                       ))}
                     </div>
                     
-                    {/* Display insurance plans for the active region */}
                     <div className="mt-4">
                       <div className="flex flex-wrap gap-2">
                         {getActivePlans().map((plan, planIndex) => (
