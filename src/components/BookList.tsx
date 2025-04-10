@@ -84,7 +84,7 @@ const BookList = () => {
           title: "Have Yourself a Merry Little Griefmas",
           author: "Shelley F. Knight",
           description: "A guide to navigating grief and loss during the holiday season.",
-          amazonLink: "https://www.amazon.com/Have-Yourself-Merry-Little-Griefmas/dp/1739206207/"
+          amazonLink: "https://www.amazon.com/Have-Yourself-Merry-Little-Griefmas-ebook/dp/B0DMLR676R/"
         }
       ],
     },
