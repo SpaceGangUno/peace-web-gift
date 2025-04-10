@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const EvidenceBased = () => {
   const isMobile = useIsMobile();
@@ -62,14 +63,16 @@ const EvidenceBased = () => {
                 <CarouselItem key={index} className="md:basis-4/5">
                   <div className="p-1 h-full">
                     <Card className="border-wasabi/30 shadow-md overflow-hidden h-full group hover:border-gold transition-all duration-300">
-                      <div className="grid md:grid-cols-5 h-full">
-                        <div className="md:col-span-2 bg-emerald-green/5 flex items-center justify-center p-0 h-full">
-                          <div className="aspect-ratio-container h-full w-full" style={{ aspectRatio: '1/1', height: '100%' }}>
-                            <img 
-                              src={practice.image} 
-                              alt={practice.name} 
-                              className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                            />
+                      <div className="grid grid-cols-1 md:grid-cols-5 h-full">
+                        <div className="md:col-span-2 bg-emerald-green/5 flex items-center justify-center">
+                          <div className="w-full h-full">
+                            <AspectRatio ratio={1/1} className="w-full h-full">
+                              <img 
+                                src={practice.image} 
+                                alt={practice.name} 
+                                className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                              />
+                            </AspectRatio>
                           </div>
                         </div>
                         <div className="md:col-span-3 p-6 flex flex-col">
