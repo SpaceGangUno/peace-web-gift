@@ -1,8 +1,9 @@
 
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Book, ExternalLink } from "lucide-react";
+import { Book, ExternalLink, Search } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import BookRecommendationGenerator from "@/components/BookRecommendationGenerator";
 
 interface BookItem {
   title: string;
@@ -322,14 +323,14 @@ const BookList = () => {
                       </div>
                     </div>
                   )}
-                  
-                  <p className="text-center text-sm text-muted-foreground mt-8">
-                    This is just a small selection. Please reach out if you'd like more personalized recommendations.
-                  </p>
                 </TabsContent>
               );
             })}
           </Tabs>
+          
+          <div className="mt-16">
+            <BookRecommendationGenerator allBooks={categories.flatMap(category => category.books)} />
+          </div>
         </div>
       </div>
     </section>
