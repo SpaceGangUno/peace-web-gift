@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -141,6 +140,79 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
       author: "Bill Burnett and Dave Evans",
       description: "How to build a well-lived, joyful life using design thinking principles.",
       amazonLink: "https://www.amazon.com/Designing-Your-Life-Well-Lived-Joyful/dp/1101875321/"
+    },
+    // African American Mental Health & Wellness
+    {
+      title: "Black Pain: It Just Looks Like We're Not Hurting",
+      author: "Terrie M. Williams",
+      description: "Reveals how the African American community masks its pain and depression, offering a comprehensive look at the impact of psychological suffering in the Black community.",
+      amazonLink: "https://www.amazon.com/Black-Pain-Just-Looks-Hurting/dp/074329382X/"
+    },
+    {
+      title: "My Grandmother's Hands: Racialized Trauma and the Pathway to Mending Our Hearts and Bodies",
+      author: "Resmaa Menakem",
+      description: "Examines the damage caused by racism from the perspective of body-centered psychology and offers a path for healing intergenerational trauma.",
+      amazonLink: "https://www.amazon.com/My-Grandmothers-Hands-Racialized-Pathway/dp/1942094477/"
+    },
+    {
+      title: "Sister Outsider",
+      author: "Audre Lorde",
+      description: "A collection of essays and speeches exploring the complexities of identity as a Black woman, lesbian, mother, warrior, and poet.",
+      amazonLink: "https://www.amazon.com/Sister-Outsider-Speeches-Crossing-Feminist/dp/1580911862/"
+    },
+    {
+      title: "Homecoming: Overcome Fear and Trauma to Reclaim Your Whole, Authentic Self",
+      author: "Thema Bryant",
+      description: "Drawing from both clinical practice and her own experiences, Dr. Bryant offers a path toward healing and transformation for those who have experienced trauma.",
+      amazonLink: "https://www.amazon.com/Homecoming-Overcome-Trauma-Reclaim-Authentic/dp/0593233158/"
+    },
+    {
+      title: "Shifting: The Double Lives of Black Women in America",
+      author: "Charisse Jones and Kumea Shorter-Gooden",
+      description: "Examines the psychological impact of navigating multiple identities and the bias Black women face in various settings.",
+      amazonLink: "https://www.amazon.com/Shifting-Double-Lives-Women-America/dp/0060090553/"
+    },
+    {
+      title: "Post Traumatic Slave Syndrome: America's Legacy of Enduring Injury and Healing",
+      author: "Dr. Joy DeGruy",
+      description: "Explores how the trauma of slavery continues to impact African Americans today and offers strategies for healing.",
+      amazonLink: "https://www.amazon.com/Post-Traumatic-Slave-Syndrome-Americas/dp/0985217278/"
+    },
+    {
+      title: "The Unapologetic Guide to Black Mental Health",
+      author: "Rheeda Walker",
+      description: "Offers practical strategies for navigating mental health issues unique to Black communities while addressing barriers to treatment.",
+      amazonLink: "https://www.amazon.com/Unapologetic-Guide-Black-Mental-Health/dp/1684034140/"
+    },
+    {
+      title: "I'm Still Here: Black Dignity in a World Made for Whiteness",
+      author: "Austin Channing Brown",
+      description: "A powerful account of growing up Black, Christian, and female that explores how Black people learn to navigate in white spaces while maintaining their dignity.",
+      amazonLink: "https://www.amazon.com/Im-Still-Here-Dignity-Whiteness/dp/1524760854/"
+    },
+    {
+      title: "Between the World and Me",
+      author: "Ta-Nehisi Coates",
+      description: "Written as a letter to his son, Coates confronts the notion of race in America and how it has shaped American history and the present day experience.",
+      amazonLink: "https://www.amazon.com/Between-World-Me-Ta-Nehisi-Coates/dp/0451482212/"
+    },
+    {
+      title: "The Body Is Not an Apology: The Power of Radical Self-Love",
+      author: "Sonya Renee Taylor",
+      description: "Explores the connection between radical self-love and social justice, with particular attention to issues facing Black women and their bodies.",
+      amazonLink: "https://www.amazon.com/Body-Not-Apology-Radical-Self-Love/dp/1626569762/"
+    },
+    {
+      title: "Eloquent Rage: A Black Feminist Discovers Her Superpower",
+      author: "Brittney Cooper",
+      description: "Examines the emotional lives of Black women and the pressures they face while celebrating their strength and resilience.",
+      amazonLink: "https://www.amazon.com/Eloquent-Rage-Black-Feminist-Discovers/dp/1250112575/"
+    },
+    {
+      title: "Heavy: An American Memoir",
+      author: "Kiese Laymon",
+      description: "A powerful exploration of what it means to live in a Black body in America, addressing issues of weight, trauma, family, and healing.",
+      amazonLink: "https://www.amazon.com/Heavy-American-Memoir-Kiese-Laymon/dp/1501125656/"
     }
   ];
 
