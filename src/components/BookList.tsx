@@ -197,7 +197,7 @@ const BookList = () => {
           title: "The Untethered Soul",
           author: "Michael A. Singer",
           description: "The journey beyond yourself to spiritual awakening.",
-          amazonLink: "https://www.amazon.com/Untethered-Soul-Journey-Beyond-Yourself/dp/1572245379/",
+          amazonLink: "https://www.amazon.com/Untethered-Soul-Journey-Beyond-Yourself/dp/1577314808/",
           isTopRecommendation: true
         },
         {
@@ -218,82 +218,6 @@ const BookList = () => {
           author: "Don Miguel Ruiz",
           description: "A practical guide to personal freedom based on ancient Toltec wisdom.",
           amazonLink: "https://www.amazon.com/Four-Agreements-Practical-Personal-Freedom/dp/1878424319/"
-        }
-      ],
-    },
-    {
-      id: "abuse",
-      name: "Abuse Recovery",
-      books: [
-        {
-          title: "Why Does He Do That?",
-          author: "Lundy Bancroft",
-          description: "Inside the minds of angry and controlling men - a comprehensive guide to understanding abuse dynamics in relationships.",
-          amazonLink: "https://www.amazon.com/Why-Does-He-That-Controlling/dp/0425191656/",
-          isTopRecommendation: true
-        },
-        {
-          title: "The Courage to Heal",
-          author: "Ellen Bass and Laura Davis",
-          description: "A guide for women survivors of child sexual abuse, offering a path to recovery, validation and hope.",
-          amazonLink: "https://www.amazon.com/Courage-Heal-Survivors-Sexual-Anniversary/dp/0061284335/",
-          isTopRecommendation: true
-        },
-        {
-          title: "Healing the Fragmented Selves of Trauma Survivors",
-          author: "Janina Fisher",
-          description: "Overcoming internal self-alienation and becoming whole again after trauma and abuse.",
-          amazonLink: "https://www.amazon.com/Healing-Fragmented-Selves-Trauma-Survivors/dp/0415708230/"
-        },
-        {
-          title: "The Verbally Abusive Relationship",
-          author: "Patricia Evans",
-          description: "How to recognize it and how to respond to verbal abuse in relationships.",
-          amazonLink: "https://www.amazon.com/Verbally-Abusive-Relationship-Expanded-Edition/dp/1440504636/"
-        },
-        {
-          title: "Boundaries",
-          author: "Henry Cloud and John Townsend",
-          description: "When to say yes, how to say no to take control of your life and set healthy boundaries.",
-          amazonLink: "https://www.amazon.com/Boundaries-Updated-Expanded-When-Control/dp/0310351804/"
-        }
-      ],
-    },
-    {
-      id: "emotional-intelligence",
-      name: "Emotional Intelligence",
-      books: [
-        {
-          title: "Atlas of the Heart",
-          author: "Brené Brown",
-          description: "Mapping meaningful connection and the language of human experience through emotions.",
-          amazonLink: "https://www.amazon.com/Atlas-Heart-Meaningful-Connection-Experience/dp/0399592555/",
-          isTopRecommendation: true
-        },
-        {
-          title: "Emotional Intelligence",
-          author: "Daniel Goleman",
-          description: "Why emotional intelligence can matter more than IQ for character, health and lifelong achievement.",
-          amazonLink: "https://www.amazon.com/Emotional-Intelligence-Matter-More-Than/dp/055338371X/",
-          isTopRecommendation: true
-        },
-        {
-          title: "Permission to Feel",
-          author: "Marc Brackett",
-          description: "Unlocking the power of emotions to help our children, ourselves, and our society thrive.",
-          amazonLink: "https://www.amazon.com/Permission-Feel-Unlocking-Emotions-Success/dp/1250212839/"
-        },
-        {
-          title: "Emotional Agility",
-          author: "Susan David",
-          description: "Get unstuck, embrace change, and thrive in work and life by developing emotional flexibility.",
-          amazonLink: "https://www.amazon.com/Emotional-Agility-Unstuck-Embrace-Change/dp/1592409490/"
-        },
-        {
-          title: "The Language of Emotions",
-          author: "Karla McLaren",
-          description: "What your feelings are trying to tell you and how to harness their wisdom.",
-          amazonLink: "https://www.amazon.com/Language-Emotions-What-Feelings-Trying/dp/1591797691/"
         }
       ],
     },
@@ -334,7 +258,6 @@ const BookList = () => {
               
               return (
                 <TabsContent key={category.id} value={category.id} className="space-y-8">
-                  {/* Top Recommendations Section */}
                   {topRecommendations.length > 0 && (
                     <div className="space-y-6">
                       <h2 className="text-2xl font-bookmania text-center mb-6">Top Recommendations</h2>
@@ -367,7 +290,6 @@ const BookList = () => {
                     </div>
                   )}
 
-                  {/* Additional Recommendations Section */}
                   {additionalBooks.length > 0 && (
                     <div className="space-y-6">
                       <h2 className="text-2xl font-bookmania text-center mb-6">Additional Recommendations</h2>
