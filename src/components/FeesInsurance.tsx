@@ -8,8 +8,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+} from "@/components/ui/table";
 
 const FeesInsurance = () => {
   const [activeRegion, setActiveRegion] = useState<string>("North Carolina");
@@ -74,35 +79,37 @@ const FeesInsurance = () => {
               <div className="p-6">
                 <h3 className="font-bookmania text-2xl mb-4">Private Pay Rates</h3>
                 
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Individual Counseling (60 min)</span>
-                    <span className="font-bookmania text-emerald-green">$150</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Individual Counseling Intake</span>
-                    <span className="font-bookmania text-emerald-green">$175</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Couples Counseling (60 min)</span>
-                    <span className="font-bookmania text-emerald-green">$200</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Couples Counseling Intake</span>
-                    <span className="font-bookmania text-emerald-green">$225</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Family Counseling (60 min)</span>
-                    <span className="font-bookmania text-emerald-green">$200</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-border">
-                    <span className="font-medium">Family Counseling Intake</span>
-                    <span className="font-bookmania text-emerald-green">$225</span>
-                  </div>
-                </div>
+                <Table>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="py-2 text-sm md:text-base font-medium">Individual (60 min)</TableCell>
+                      <TableCell className="py-2 text-right font-bookmania text-emerald-green">$150</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="py-2 text-sm md:text-base font-medium">Individual Intake</TableCell>
+                      <TableCell className="py-2 text-right font-bookmania text-emerald-green">$175</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="py-2 text-sm md:text-base font-medium">Couples (60 min)</TableCell>
+                      <TableCell className="py-2 text-right font-bookmania text-emerald-green">$200</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="py-2 text-sm md:text-base font-medium">Couples Intake</TableCell>
+                      <TableCell className="py-2 text-right font-bookmania text-emerald-green">$225</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="py-2 text-sm md:text-base font-medium">Family (60 min)</TableCell>
+                      <TableCell className="py-2 text-right font-bookmania text-emerald-green">$200</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="py-2 text-sm md:text-base font-medium">Family Intake</TableCell>
+                      <TableCell className="py-2 text-right font-bookmania text-emerald-green">$225</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
                 
-                <p className="mt-6 text-sm text-muted-foreground">
-                  Payment is due at the time of service. We accept all major credit cards.
+                <p className="mt-4 text-sm text-muted-foreground text-center">
+                  Payment is due at time of service. All major credit cards accepted.
                 </p>
               </div>
             </div>
