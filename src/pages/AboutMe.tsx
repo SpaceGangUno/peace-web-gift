@@ -38,22 +38,29 @@ const AboutMe = () => {
                     </h2>
                     
                     <p className="text-wasabi mb-4">
-                      Kaiane is a compassionate and dedicated therapist with a passion for helping individuals overcome 
-                      the effects of trauma, depression, anxiety, and challenging family dynamics. With her expertise, 
-                      she empowers clients to unpack their emotional baggage and embark on a transformative journey 
-                      towards a more fulfilling life.
+                      Kaiane holds a Bachelor's degree from North Carolina A&T State University and a Master's degree 
+                      in Social Work from UNC Charlotte. Kaiane is a Licensed Clinical Social Worker in North Carolina, 
+                      South Carolina, Virginia, and Washington, D.C.
                     </p>
                     
                     <p className="text-wasabi mb-4">
-                      Her areas of specialty include trauma recovery, anxiety management, couples counseling, 
-                      and family therapy. She believes in creating a safe, non-judgmental space where clients 
-                      can explore their thoughts and feelings freely.
+                      Kaiane has built a diverse clinical foundation through her work in child welfare, 
+                      transitional living programs, and community mental health. These experiences have 
+                      given her a well-rounded perspective on the many ways life can impact us. She works 
+                      with adults (21+) in navigating emotional challenges through periods of growth, 
+                      transition, and pain.
                     </p>
                     
                     <p className="text-wasabi mb-4">
-                      With a Master's degree in Social Work and as a Licensed Clinical Social Worker, 
-                      Kaiane's approach combines evidence-based therapeutic techniques, 
-                      mindfulness practices, and emotion-focused strategies tailored to each client's unique needs.
+                      Kaiane specializes in supporting individuals impacted by trauma, anxiety, depression, 
+                      and disconnection. She believes healing begins with understanding how past experiences 
+                      shape current emotions and relationships, and works to create a space where clients 
+                      feel safe, seen, and supported.
+                    </p>
+                    
+                    <p className="text-wasabi mb-4">
+                      Her approach is compassionate, direct, and grounded in evidence-based practices. 
+                      Beginning this fall, Kaiane will also be offering clinical supervision for LCSWAs.
                     </p>
                   </div>
                 </div>
