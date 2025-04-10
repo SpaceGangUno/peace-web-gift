@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-[85vh] sm:min-h-screen flex items-center pt-24 pb-12"
+      className="relative min-h-[70vh] flex items-center pt-16 pb-8"
       style={{
         background: "linear-gradient(to bottom, rgba(139, 144, 120, 0.9), rgba(38, 65, 57, 0.8))"
       }}
@@ -19,24 +19,24 @@ const Hero = () => {
       
       <div className="container-custom relative z-10">
         <div className="max-w-3xl mx-auto text-center px-4">
-          <div className="mb-6 sm:mb-8 flex justify-center">
+          <div className="mb-4 sm:mb-6 flex justify-center">
             <img 
               src="/lovable-uploads/ac8805ec-0a56-4cb7-834d-44a0d1bde1fa.png" 
               alt="The Gift of Peace Logo" 
-              className="h-24 sm:h-32 md:h-48 animate-fade-in"
+              className="h-20 sm:h-24 md:h-32 animate-fade-in"
             />
           </div>
           
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bookmania font-light text-creased-khaki mb-4 sm:mb-6 animate-fade-in">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bookmania font-light text-creased-khaki mb-3 sm:mb-4 animate-fade-in">
             Find Your Path to Inner Peace
           </h1>
           
-          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 animate-fade-in-slow">
+          <p className="text-base sm:text-lg text-white/90 mb-5 sm:mb-6 animate-fade-in-slow">
             Compassionate therapy services guiding you toward wellness, 
             emotional balance, and personal growth in a nurturing environment.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-slow">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center animate-fade-in-slow">
             <a href="#services" className="btn-primary rounded-full text-sm sm:text-base">
               Explore Services
             </a>
@@ -47,12 +47,12 @@ const Hero = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-6 left-0 right-0 flex justify-center animate-bounce">
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center animate-bounce">
         <a href="#services" className="text-white/70 hover:text-white">
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            width="28" 
-            height="28" 
+            width="24" 
+            height="24" 
             viewBox="0 0 24 24" 
             fill="none" 
             stroke="currentColor" 
