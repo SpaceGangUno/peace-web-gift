@@ -74,7 +74,7 @@ const ReferralForm = () => {
         <title>Referral Form | The Gift of Peace</title>
       </Helmet>
       <Navbar />
-      <div className="container-custom py-12">
+      <div className="container-custom py-12 pt-24 sm:pt-32"> {/* Added padding top */}
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="font-bookmania text-3xl md:text-4xl text-noir-vigne mb-4">Referral Form</h1>

@@ -2,12 +2,16 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Helmet } from "react-helmet";
 
 const PrivacyPolicy = () => {
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>Privacy Policy | The Gift of Peace</title>
+      </Helmet>
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pt-24 sm:pt-32"> {/* Added padding top */}
         <div className="container-custom py-12 max-w-4xl mx-auto">
           <h1 className="text-3xl md:text-4xl font-bookmania mb-8 text-center">Privacy Policy</h1>
           
