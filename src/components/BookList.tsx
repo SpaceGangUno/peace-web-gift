@@ -41,6 +41,18 @@ const BookList = () => {
           description: "Understanding and rebuilding your relationship when ADHD impacts your partnership.",
           amazonLink: "#",
         },
+        {
+          title: "How to Keep House While Drowning",
+          author: "KC Davis",
+          description: "A gentle approach to cleaning and organizing for those with ADHD or other executive function challenges.",
+          amazonLink: "#",
+        },
+        {
+          title: "Scattered Minds",
+          author: "Gabor Maté",
+          description: "A new approach to understanding and treating Attention Deficit Disorder.",
+          amazonLink: "#",
+        },
       ],
     },
     {
@@ -65,6 +77,12 @@ const BookList = () => {
           description: "Love, loss, and the heartbreaking path of grief.",
           amazonLink: "#",
         },
+        {
+          title: "Have Yourself a Merry Little Griefmas",
+          author: "Shelley F. Knight",
+          description: "A guide to navigating grief and loss during the holiday season.",
+          amazonLink: "#",
+        },
       ],
     },
     {
@@ -87,6 +105,54 @@ const BookList = () => {
           title: "Hope and Help for Your Nerves",
           author: "Claire Weekes",
           description: "End anxiety, panic, and fear with this classic guide.",
+          amazonLink: "#",
+        },
+        {
+          title: "Don't Believe Everything You Think",
+          author: "Joseph Nguyen",
+          description: "Change the way you feel by changing the way you think.",
+          amazonLink: "#",
+        },
+      ],
+    },
+    {
+      id: "trauma",
+      name: "Trauma",
+      books: [
+        {
+          title: "Adult Children of Emotionally Immature Parents",
+          author: "Lindsay C. Gibson",
+          description: "How to heal from distant, rejecting, or self-involved parents.",
+          amazonLink: "#",
+        },
+        {
+          title: "The Body Keeps the Score",
+          author: "Bessel van der Kolk",
+          description: "Brain, mind, and body in the healing of trauma.",
+          amazonLink: "#",
+        },
+        {
+          title: "Forgiving What You Can't Forget",
+          author: "Lysa TerKeurst",
+          description: "Discover how to move on, make peace with painful memories, and create a life that's beautiful again.",
+          amazonLink: "#",
+        },
+        {
+          title: "It Didn't Start with You",
+          author: "Mark Wolynn",
+          description: "How inherited family trauma shapes who we are and how to end the cycle.",
+          amazonLink: "#",
+        },
+        {
+          title: "What Happened to You?",
+          author: "Bruce D. Perry & Oprah Winfrey",
+          description: "Conversations on trauma, resilience, and healing.",
+          amazonLink: "#",
+        },
+        {
+          title: "When the Body Says No",
+          author: "Gabor Maté",
+          description: "The cost of hidden stress and the mind-body connection in illness.",
           amazonLink: "#",
         },
       ],
@@ -116,6 +182,24 @@ const BookList = () => {
       ],
     },
     {
+      id: "self-esteem",
+      name: "Self Esteem",
+      books: [
+        {
+          title: "Worthy",
+          author: "Jamie Kern Lima",
+          description: "How to believe in yourself in a world of unrelenting self-criticism.",
+          amazonLink: "#",
+        },
+        {
+          title: "The Mountain Is You",
+          author: "Brianna Wiest",
+          description: "Transforming self-sabotage into self-mastery.",
+          amazonLink: "#",
+        },
+      ],
+    },
+    {
       id: "spiritual",
       name: "Spiritual",
       books: [
@@ -135,6 +219,30 @@ const BookList = () => {
           title: "The Book of Joy",
           author: "Dalai Lama & Desmond Tutu",
           description: "Lasting happiness in a changing world through spiritual practices.",
+          amazonLink: "#",
+        },
+        {
+          title: "The Untethered Soul",
+          author: "Michael A. Singer",
+          description: "The journey beyond yourself to spiritual awakening.",
+          amazonLink: "#",
+        },
+        {
+          title: "The 5 AM Club",
+          author: "Robin Sharma",
+          description: "Own your morning, elevate your life with morning rituals for optimal performance.",
+          amazonLink: "#",
+        },
+        {
+          title: "No Bad Parts",
+          author: "Richard Schwartz",
+          description: "Healing trauma and restoring wholeness with Internal Family Systems therapy.",
+          amazonLink: "#",
+        },
+        {
+          title: "The Four Agreements",
+          author: "Don Miguel Ruiz",
+          description: "A practical guide to personal freedom based on ancient Toltec wisdom.",
           amazonLink: "#",
         },
       ],
