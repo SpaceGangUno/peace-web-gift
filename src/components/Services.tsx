@@ -12,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const services = [
   {
@@ -78,10 +79,12 @@ const Services = () => {
             }}
             setApi={(api) => (carouselApiRef.current = api)}
           >
-            <CarouselContent className="h-[600px]">
+            <CarouselContent>
               {services.map((service, index) => (
-                <CarouselItem key={index} className="pl-1 md:pl-4 h-full">
-                  <ServiceCard service={service} animationDelay={0} />
+                <CarouselItem key={index} className="pl-1 md:pl-4">
+                  <div className="h-full">
+                    <ServiceCard service={service} animationDelay={0} />
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
