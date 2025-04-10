@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { useToast } from "@/hooks/use-toast";
@@ -21,12 +20,34 @@ const BookingCalendar = () => {
     message: "",
   });
 
-  // Available time slots
+  useEffect(() => {
+    const savedData = localStorage.getItem('contactFormData');
+    if (savedData) {
+      try {
+        const parsedData = JSON.parse(savedData);
+        
+        if (parsedData.name) {
+          const nameParts = parsedData.name.split(' ');
+          if (nameParts.length > 0) setFormData(prev => ({ ...prev, firstName: nameParts[0] }));
+          if (nameParts.length > 1) setFormData(prev => ({ ...prev, lastName: nameParts.slice(1).join(' ') }));
+        }
+        
+        if (parsedData.email) setFormData(prev => ({ ...prev, email: parsedData.email }));
+        if (parsedData.phone) setFormData(prev => ({ ...prev, phone: parsedData.phone }));
+        
+        if (parsedData.message) setFormData(prev => ({ ...prev, message: parsedData.message }));
+        
+        localStorage.removeItem('contactFormData');
+      } catch (error) {
+        console.error("Error parsing contact form data:", error);
+      }
+    }
+  }, []);
+
   const availableTimes = [
     "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
   ];
 
-  // Options for dropdowns
   const stateOptions = ["North Carolina", "South Carolina", "Virginia", "Washington DC"];
   const insuranceOptions = [
     "Aetna", "Anthem", "BCBS", "Cigna", "Kaiser Permanente", 
@@ -38,16 +59,14 @@ const BookingCalendar = () => {
     "Healthcare Provider", "Psychology Today", "Other"
   ];
 
-  // Weekend check for calendar
   const isWeekend = (date: Date) => {
     const day = date.getDay();
-    // Highlight Sundays (0) as available, disable all other weekends
-    return day === 6; // Only Saturday (6) is disabled
+    return day === 6;
   };
 
   const handleDateChange = (selectedDate: Date | undefined) => {
     setDate(selectedDate);
-    setTime(""); // Reset time when date changes
+    setTime("");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -67,7 +86,6 @@ const BookingCalendar = () => {
       return;
     }
     
-    // Here you would typically handle form submission to a server
     console.log("Form data submitted:", { ...formData, date, time });
     
     toast({
@@ -76,7 +94,6 @@ const BookingCalendar = () => {
       variant: "default",
     });
     
-    // Reset form
     setFormData({
       firstName: "",
       lastName: "",
@@ -116,8 +133,8 @@ const BookingCalendar = () => {
                     selected={date}
                     onSelect={handleDateChange}
                     disabled={(date) => 
-                      date < new Date() || // Disable past dates
-                      isWeekend(date) // Disable weekends except Sunday
+                      date < new Date() || 
+                      isWeekend(date)
                     }
                     className="rounded-md border mx-auto"
                     showOutsideDays={false}

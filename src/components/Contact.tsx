@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 import { CalendarClock, Mail, Phone } from "lucide-react";
@@ -37,6 +37,11 @@ const Contact = () => {
       phone: "",
       message: "",
     });
+  };
+
+  // Store form data in localStorage when navigating to schedule page
+  const handleScheduleClick = () => {
+    localStorage.setItem('contactFormData', JSON.stringify(formData));
   };
 
   return (
@@ -125,7 +130,11 @@ const Contact = () => {
                     Send Message
                   </button>
                   
-                  <Link to="/schedule" className="btn-secondary w-full sm:w-auto text-center text-sm sm:text-base py-2 sm:py-3">
+                  <Link 
+                    to="/schedule" 
+                    className="btn-secondary w-full sm:w-auto text-center text-sm sm:text-base py-2 sm:py-3"
+                    onClick={handleScheduleClick}
+                  >
                     Schedule Consultation
                   </Link>
                 </div>
