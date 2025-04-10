@@ -24,6 +24,40 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
   const [isGenerating, setIsGenerating] = useState(false);
   const { toast } = useToast();
 
+  // Additional books that aren't in the main categories
+  const additionalBooks: BookItem[] = [
+    {
+      title: "Tiny Beautiful Things",
+      author: "Cheryl Strayed",
+      description: "A collection of advice columns that offers empathetic guidance on love, loss, and finding meaning in life's struggles.",
+      amazonLink: "https://www.amazon.com/Tiny-Beautiful-Things-Advice-Sugar/dp/0307949338/"
+    },
+    {
+      title: "Maybe You Should Talk to Someone",
+      author: "Lori Gottlieb",
+      description: "A therapist explores the human condition through her work with clients and her own therapy journey.",
+      amazonLink: "https://www.amazon.com/Maybe-You-Should-Talk-Someone/dp/1328662055/"
+    },
+    {
+      title: "Self-Compassion: The Proven Power of Being Kind to Yourself",
+      author: "Kristin Neff",
+      description: "Offers practical exercises and action plans for dealing with every emotionally difficult situation.",
+      amazonLink: "https://www.amazon.com/Self-Compassion-Proven-Power-Being-Yourself/dp/0061733520/"
+    },
+    {
+      title: "The Gifts of Imperfection",
+      author: "Brené Brown",
+      description: "A guide to wholehearted living that encourages letting go of perfectionism and embracing vulnerability.",
+      amazonLink: "https://www.amazon.com/Gifts-Imperfection-Think-Supposed-Embrace/dp/159285849X/"
+    },
+    {
+      title: "Permission to Feel",
+      author: "Marc Brackett",
+      description: "Unlocking the power of emotions to help us achieve success and well-being.",
+      amazonLink: "https://www.amazon.com/Permission-Feel-Unlocking-Emotions-Success/dp/1250212839/"
+    }
+  ];
+
   const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
@@ -40,10 +74,13 @@ const BookRecommendationGenerator = ({ allBooks }: BookRecommendationGeneratorPr
 
     setIsGenerating(true);
 
+    // Combine all books
+    const allAvailableBooks = [...allBooks, ...additionalBooks];
+
     // Simple keyword matching for demonstration
     const keywords = query.toLowerCase().split(/\s+/);
     
-    const matchedBooks = allBooks.filter(book => {
+    const matchedBooks = allAvailableBooks.filter(book => {
       const bookText = `${book.title} ${book.author} ${book.description}`.toLowerCase();
       return keywords.some(keyword => bookText.includes(keyword));
     });
