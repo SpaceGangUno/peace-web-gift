@@ -1,4 +1,6 @@
 
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -40,6 +42,11 @@ const Footer = () => {
           <p className="text-white/60 text-sm mb-4 md:mb-0">
             &copy; {currentYear} The Gift of Peace. All rights reserved.
           </p>
+          <div className="flex gap-4">
+            <Link to="/privacy-policy" className="text-white/60 text-sm hover:text-gold transition-colors">
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
