@@ -10,6 +10,7 @@ const BookingCalendar = () => {
   const isMobile = useIsMobile();
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [time, setTime] = useState<string>("");
+  const [showOtherInput, setShowOtherInput] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -18,6 +19,7 @@ const BookingCalendar = () => {
     state: "",
     insurance: "",
     referralSource: "",
+    otherReferralSource: "",
     message: "",
   });
 
@@ -55,10 +57,28 @@ const BookingCalendar = () => {
     "Optum/UHC", "Quest Behavioral Health", "Carelon Behavioral Health",
     "Other", "Self-Pay"
   ];
+  
   const referralOptions = [
-    "Google Search", "Social Media", "Friend/Family", "Insurance Provider", 
-    "Healthcare Provider", "Psychology Today", "Other"
+    "Psych Today",
+    "Google Search",
+    "Mental Health Match",
+    "Good Therapy",
+    "Zencare",
+    "Linked In",
+    "Instagram",
+    "Word of Mouth",
+    "Therapy 4 Black Girls",
+    "Black Female Therapist",
+    "Other"
   ];
+
+  useEffect(() => {
+    if (formData.referralSource === "Other") {
+      setShowOtherInput(true);
+    } else {
+      setShowOtherInput(false);
+    }
+  }, [formData.referralSource]);
 
   const isWeekend = (date: Date) => {
     const day = date.getDay();
@@ -87,7 +107,16 @@ const BookingCalendar = () => {
       return;
     }
     
-    console.log("Form data submitted:", { ...formData, date, time });
+    const finalReferralSource = formData.referralSource === "Other" 
+      ? formData.otherReferralSource 
+      : formData.referralSource;
+      
+    console.log("Form data submitted:", { 
+      ...formData, 
+      referralSource: finalReferralSource,
+      date, 
+      time 
+    });
     
     toast({
       title: "Consultation Scheduled",
@@ -103,10 +132,12 @@ const BookingCalendar = () => {
       state: "",
       insurance: "",
       referralSource: "",
+      otherReferralSource: "",
       message: "",
     });
     setDate(undefined);
     setTime("");
+    setShowOtherInput(false);
   };
 
   return (
@@ -293,6 +324,24 @@ const BookingCalendar = () => {
                         <option key={source} value={source}>{source}</option>
                       ))}
                     </select>
+                    
+                    {showOtherInput && (
+                      <div className="mt-3">
+                        <label htmlFor="otherReferralSource" className="block font-bookmania mb-1 text-sm sm:text-base">
+                          Please Specify
+                        </label>
+                        <input
+                          type="text"
+                          id="otherReferralSource"
+                          name="otherReferralSource"
+                          value={formData.otherReferralSource}
+                          onChange={handleChange}
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm"
+                          required={showOtherInput}
+                          placeholder="Please specify how you heard about us"
+                        />
+                      </div>
+                    )}
                   </div>
                   
                   <div>
