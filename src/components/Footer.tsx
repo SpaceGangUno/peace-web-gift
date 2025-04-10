@@ -42,9 +42,12 @@ const Footer = () => {
           <p className="text-white/60 text-sm mb-4 md:mb-0">
             &copy; {currentYear} The Gift of Peace. All rights reserved.
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/privacy-policy" className="text-white/60 text-sm hover:text-gold transition-colors">
               Privacy Policy
+            </Link>
+            <Link to="/referral-form" className="text-white/60 text-sm hover:text-gold transition-colors">
+              Professional Referral Form
             </Link>
           </div>
         </div>

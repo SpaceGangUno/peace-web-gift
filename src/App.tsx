@@ -11,6 +11,7 @@ import Books from "./pages/Books";
 import Schedule from "./pages/Schedule";
 import AboutMe from "./pages/AboutMe";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ReferralForm from "./pages/ReferralForm";
 
 const queryClient = new QueryClient();
 const CLIENT_PORTAL_URL = "https://thegiftofpeacecw.clientsecure.me/";
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/about-me" element={<AboutMe />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/referral-form" element={<ReferralForm />} />
           <Route path="/portal" element={<ClientPortalRedirect />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
