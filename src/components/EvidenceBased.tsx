@@ -29,7 +29,7 @@ const EvidenceBased = () => {
       name: "Emotion Focused Therapy",
       description:
         "EFT is based on the idea that unprocessed or unresolved emotions can lead to mental and emotional distress. EFT involves identifying emotional patterns, understanding their origins, and learning how to transform negative emotions into more adaptive ones. This therapeutic approach is particularly useful for individuals dealing with issues such as depression, anxiety, and relationship problems.",
-      image: "/lovable-uploads/e8383484-0d57-46d7-a300-dc186b1ebf44.png",
+      image: "/lovable-uploads/96de2a7c-c119-4a3f-bc5d-f87628261ea3.png",
     },
     {
       name: "Mindfulness Techniques",
