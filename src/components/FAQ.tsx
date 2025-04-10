@@ -58,17 +58,9 @@ const FAQ = () => {
           </Accordion>
           
           <div className="mt-8 sm:mt-12 text-center">
-            <p className="mb-4 sm:mb-6 text-sm sm:text-base">
-              Have a question that isn't answered here? Feel free to reach out.
+            <p className="text-sm sm:text-base">
+              Have a question that isn't answered here? Feel free to reach out in the contact section below.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <a href="#contact" className="btn-primary text-sm sm:text-base">
-                Contact Us
-              </a>
-              <a href="/schedule" className="btn-secondary text-sm sm:text-base">
-                Schedule Consultation
-              </a>
-            </div>
           </div>
         </div>
       </div>

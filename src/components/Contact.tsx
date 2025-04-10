@@ -139,9 +139,59 @@ const Contact = () => {
                   </Link>
                 </div>
               </form>
+              
+              {/* Contact information for mobile view */}
+              <div className="block lg:hidden mt-8">
+                <div className="bg-wasabi/20 rounded-lg p-4 sm:p-6">
+                  <h3 className="font-bookmania text-lg mb-4 gold-text">
+                    Contact Information
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-start">
+                      <Mail className="text-gold mr-3 flex-shrink-0 h-5 w-5" />
+                      <div>
+                        <p className="text-xs sm:text-sm text-white/70 mb-1">Email</p>
+                        <a href="mailto:admin@thegiftofpeace.org" className="text-white hover:text-gold text-sm sm:text-base break-all">
+                          admin@thegiftofpeace.org
+                        </a>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <Phone className="text-gold mr-3 flex-shrink-0 h-5 w-5" />
+                      <div>
+                        <p className="text-xs sm:text-sm text-white/70 mb-1">Phone</p>
+                        <a href="tel:+19802166978" className="text-white hover:text-gold text-sm sm:text-base">
+                          (980) 216-6978
+                        </a>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <CalendarClock className="text-gold mr-3 flex-shrink-0 h-5 w-5" />
+                      <div>
+                        <p className="text-xs sm:text-sm text-white/70 mb-1">Office Hours</p>
+                        <p className="text-white text-sm sm:text-base">
+                          Monday - Friday: 10am - 6pm
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 pt-4 border-t border-white/20">
+                    <p className="text-white/70 mb-3 text-xs sm:text-sm">
+                      For faster service:
+                    </p>
+                    <Link to="/schedule" className="btn-primary w-full justify-center flex items-center text-sm sm:text-base py-2 sm:py-3">
+                      Book Online
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
             
-            <div className="order-1 lg:order-2 mb-6 lg:mb-0">
+            <div className="order-1 lg:order-2 mb-6 lg:mb-0 hidden lg:block">
               <div className="bg-wasabi/20 rounded-lg p-4 sm:p-6 h-full">
                 <h3 className="font-bookmania text-lg sm:text-xl mb-4 sm:mb-6 gold-text">
                   Contact Information
