@@ -48,15 +48,10 @@ const Services = () => {
     <section id="services" className="section section-alt py-16 md:py-24 lg:py-32">
       <div className="container-custom max-w-7xl">
         <div className="section-title max-w-3xl mx-auto">
-          <span className="section-title-pre">What We Offer</span>
           <h2 className="mb-4">
             Our <span className="gold-text">Services</span>
           </h2>
           <div className="section-title-divider"></div>
-          <p className="text-wasabi text-lg max-w-2xl mx-auto">
-            We offer a range of healing therapy and counseling services 
-            to support your journey toward wellness and growth.
-          </p>
         </div>
         
         {isMobile ? (
@@ -141,7 +136,7 @@ const ServiceCard = ({
       <div className={`${service.backgroundImage ? 'relative z-10' : ''}`}>
         <div className="mb-4 flex items-center justify-between">
           {service.comingSoon && (
-            <span className="text-xs font-sans bg-gold-light/50 text-gold-dark px-3 py-1 rounded-full font-medium">
+            <span className="text-xs font-sans bg-magenta-500 text-white px-3 py-1.5 rounded-full font-medium shadow-md border border-white/30 animate-pulse">
               Coming Soon
             </span>
           )}

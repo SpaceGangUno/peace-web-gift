@@ -152,8 +152,8 @@ const Contact = () => {
                     <Mail className="text-gold mr-3 flex-shrink-0 h-5 w-5" />
                     <div>
                       <p className="text-xs sm:text-sm text-white/70 mb-1">Email</p>
-                      <a href="mailto:contact@thegiftofpeace.com" className="text-white hover:text-gold text-sm sm:text-base break-all">
-                        contact@thegiftofpeace.com
+                      <a href="mailto:admin@thegiftofpeace.org" className="text-white hover:text-gold text-sm sm:text-base break-all">
+                        admin@thegiftofpeace.org
                       </a>
                     </div>
                   </div>
@@ -162,8 +162,8 @@ const Contact = () => {
                     <Phone className="text-gold mr-3 flex-shrink-0 h-5 w-5" />
                     <div>
                       <p className="text-xs sm:text-sm text-white/70 mb-1">Phone</p>
-                      <a href="tel:+11234567890" className="text-white hover:text-gold text-sm sm:text-base">
-                        (123) 456-7890
+                      <a href="tel:+19802166978" className="text-white hover:text-gold text-sm sm:text-base">
+                        (980) 216-6978
                       </a>
                     </div>
                   </div>
