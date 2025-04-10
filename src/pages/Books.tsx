@@ -10,7 +10,7 @@ const Books = () => {
     <div className="flex flex-col min-h-screen">
       <Helmet>
         <title>Recommended Books | The Gift of Peace Counseling</title>
-        <meta name="description" content="Explore our diverse collection of recommended books on mental health, wellness, and healing, including works focused on African American experiences, spirituality, and mindfulness." />
+        <meta name="description" content="Explore our diverse collection of recommended books on mental health, wellness, and healing, including works focused on African American experiences, spirituality, mindfulness, abuse recovery, and emotional intelligence." />
       </Helmet>
       <Navbar />
       <main className="flex-grow pt-24">
@@ -21,7 +21,7 @@ const Books = () => {
             </h1>
             <p className="text-muted-foreground">
               Our expanded library includes diverse perspectives on mental health and wellness, including works on spirituality, 
-              mindfulness, and specifically focused on African American experiences and other cultural contexts.
+              mindfulness, emotional intelligence, abuse recovery, and specifically focused on African American experiences and other cultural contexts.
             </p>
           </div>
         </div>
