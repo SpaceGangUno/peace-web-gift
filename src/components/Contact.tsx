@@ -185,7 +185,7 @@ const Contact = () => {
                     <p className="text-white/70 mb-3 text-xs sm:text-sm">
                       For faster service:
                     </p>
-                    <Link to="/schedule" className="btn-primary w-full justify-center flex items-center text-sm sm:text-base py-2 sm:py-3">
+                    <Link href="/schedule" className="btn-primary w-full justify-center flex items-center text-sm sm:text-base py-2 sm:py-3">
                       Book Online
                     </Link>
                   </div>
