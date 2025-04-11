@@ -1,7 +1,7 @@
 
 "use client";
 
-import Link from "next/link";
+import LinkCompat from "@/components/LinkCompat";
 
 const Hero = () => {
   return (
@@ -42,9 +42,9 @@ const Hero = () => {
             <a href="#services" className="btn-primary rounded-full text-sm">
               Explore Services
             </a>
-            <Link href="/schedule" className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10 text-sm">
+            <LinkCompat href="/schedule" className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10 text-sm">
               Schedule Consultation
-            </Link>
+            </LinkCompat>
           </div>
         </div>
       </div>

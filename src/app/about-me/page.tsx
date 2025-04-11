@@ -4,7 +4,7 @@
 import React from "react";
 import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import LinkCompat from "@/components/LinkCompat";
 import { BookOpen, Calendar } from "lucide-react";
 
 const AboutMePage = () => {
@@ -75,18 +75,18 @@ const AboutMePage = () => {
               </ul>
               
               <div className="text-center mt-8 flex flex-wrap gap-4 justify-center">
-                <Link href="/books">
+                <LinkCompat href="/books">
                   <Button className="btn-secondary">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Recommended Reading
                   </Button>
-                </Link>
-                <Link href="/schedule">
+                </LinkCompat>
+                <LinkCompat href="/schedule">
                   <Button className="btn-primary">
                     <Calendar className="mr-2 h-4 w-4" />
                     Book Consultation
                   </Button>
-                </Link>
+                </LinkCompat>
               </div>
             </div>
           </div>

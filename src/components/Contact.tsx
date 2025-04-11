@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import Link from "next/link";
+import LinkCompat from "@/components/LinkCompat";
 import { CalendarClock, Mail, Phone } from "lucide-react";
 
 const Contact = () => {
@@ -132,13 +132,13 @@ const Contact = () => {
                     Send Message
                   </button>
                   
-                  <Link 
+                  <LinkCompat 
                     href="/schedule" 
                     className="btn-secondary w-full sm:w-auto text-center text-sm sm:text-base py-2 sm:py-3"
                     onClick={handleScheduleClick}
                   >
                     Schedule Consultation
-                  </Link>
+                  </LinkCompat>
                 </div>
               </form>
               
@@ -185,9 +185,9 @@ const Contact = () => {
                     <p className="text-white/70 mb-3 text-xs sm:text-sm">
                       For faster service:
                     </p>
-                    <Link href="/schedule" className="btn-primary w-full justify-center flex items-center text-sm sm:text-base py-2 sm:py-3">
+                    <LinkCompat href="/schedule" className="btn-primary w-full justify-center flex items-center text-sm sm:text-base py-2 sm:py-3">
                       Book Online
-                    </Link>
+                    </LinkCompat>
                   </div>
                 </div>
               </div>
@@ -235,9 +235,9 @@ const Contact = () => {
                   <p className="text-white/70 mb-3 text-xs sm:text-sm">
                     For faster service:
                   </p>
-                  <Link href="/schedule" className="btn-primary w-full justify-center flex items-center text-sm sm:text-base py-2 sm:py-3">
+                  <LinkCompat href="/schedule" className="btn-primary w-full justify-center flex items-center text-sm sm:text-base py-2 sm:py-3">
                     Book Online
-                  </Link>
+                  </LinkCompat>
                 </div>
               </div>
             </div>

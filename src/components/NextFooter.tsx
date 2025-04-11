@@ -1,7 +1,7 @@
 
 "use client";
 
-import Link from "next/link";
+import LinkCompat from "@/components/LinkCompat";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -29,9 +29,9 @@ const Footer = () => {
             <a href="#services" className="text-white/70 hover:text-gold transition-colors">
               Services
             </a>
-            <Link href="/about-me" className="text-white/70 hover:text-gold transition-colors">
+            <LinkCompat href="/about-me" className="text-white/70 hover:text-gold transition-colors">
               About
-            </Link>
+            </LinkCompat>
             <a href="#contact" className="text-white/70 hover:text-gold transition-colors">
               Contact
             </a>
@@ -45,12 +45,12 @@ const Footer = () => {
             &copy; {currentYear} The Gift of Peace. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/privacy-policy" className="text-white/60 text-sm hover:text-gold transition-colors">
+            <LinkCompat href="/privacy-policy" className="text-white/60 text-sm hover:text-gold transition-colors">
               Privacy Policy
-            </Link>
-            <Link href="/referral-form" className="text-white/60 text-sm hover:text-gold transition-colors">
+            </LinkCompat>
+            <LinkCompat href="/referral-form" className="text-white/60 text-sm hover:text-gold transition-colors">
               Professional Referral Form
-            </Link>
+            </LinkCompat>
           </div>
         </div>
       </div>

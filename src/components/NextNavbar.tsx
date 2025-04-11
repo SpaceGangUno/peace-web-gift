@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
+import LinkCompat from "@/components/LinkCompat";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navbar = () => {
@@ -53,7 +53,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between">
-        <Link href="/" className="flex items-center" onClick={closeMobileMenu}>
+        <LinkCompat href="/" className="flex items-center" onClick={closeMobileMenu}>
           <img 
             src="/lovable-uploads/d88841e0-4a57-4364-87af-91cbdd1142cf.png" 
             alt="The Gift of Peace" 
@@ -67,25 +67,25 @@ const Navbar = () => {
               of Peace
             </span>
           </div>
-        </Link>
+        </LinkCompat>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
           {navItems.map((item) => (
-            <Link
+            <LinkCompat
               key={item.name}
               href={item.href}
               className="font-bookmania text-sm lg:text-base text-emerald-green hover:text-gold transition-colors"
             >
               {item.name}
-            </Link>
+            </LinkCompat>
           ))}
-          <Link
+          <LinkCompat
             href="/schedule"
             className="btn-primary rounded-full text-sm lg:text-base py-2 px-4"
           >
             Book Consult
-          </Link>
+          </LinkCompat>
           <a
             href={clientPortalUrl}
             target="_blank"
@@ -116,22 +116,22 @@ const Navbar = () => {
           </div>
           <div className="flex-grow flex flex-col items-center justify-center space-y-6 p-6">
             {navItems.map((item) => (
-              <Link
+              <LinkCompat
                 key={item.name}
                 href={item.href}
                 className="font-bookmania text-xl text-emerald-green py-2"
                 onClick={closeMobileMenu}
               >
                 {item.name}
-              </Link>
+              </LinkCompat>
             ))}
-            <Link
+            <LinkCompat
               href="/schedule"
               className="btn-primary w-full max-w-xs text-center rounded-full py-3 mt-4"
               onClick={closeMobileMenu}
             >
               Book Consult
-            </Link>
+            </LinkCompat>
             <a
               href={clientPortalUrl}
               target="_blank"
