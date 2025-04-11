@@ -1,10 +1,9 @@
-
 "use client";
 
 import React, { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CalendarClock, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { CalendarClock, ChevronLeft, ChevronRight, ArrowRight, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -15,6 +14,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const services = [
   {
@@ -48,7 +48,6 @@ const Services = () => {
   const isMobile = useIsMobile();
   const carouselApiRef = useRef<any>(null);
   
-  // Auto-rotation effect for carousel
   useEffect(() => {
     const autoRotationInterval = setInterval(() => {
       if (carouselApiRef.current) {
@@ -72,7 +71,6 @@ const Services = () => {
         </div>
         
         {isMobile ? (
-          // Mobile view with carousel
           <Carousel 
             className="w-full max-w-sm mx-auto services-carousel mt-10" 
             opts={{ 
@@ -96,7 +94,6 @@ const Services = () => {
             </div>
           </Carousel>
         ) : (
-          // Desktop view with grid
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
             {services.map((service, index) => (
               <ServiceCard 
@@ -108,15 +105,24 @@ const Services = () => {
           </div>
         )}
         
-        <div className="mt-16 text-center flex flex-col sm:flex-row justify-center gap-4">
-          <Link href="/schedule" className="btn-primary inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-            Book Your Consultation
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link href="/about-me" className="btn-secondary inline-flex items-center justify-center gap-2 shadow hover:shadow-md transform hover:-translate-y-1 transition-all duration-300">
-            Meet Our Therapist
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+        <div className="mt-16 text-center flex flex-col gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/schedule" className="btn-primary inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+              Book Your Consultation
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link href="/about-me" className="btn-secondary inline-flex items-center justify-center gap-2 shadow hover:shadow-md transform hover:-translate-y-1 transition-all duration-300">
+              Meet Our Therapist
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          
+          <Alert variant="default" className="max-w-md mx-auto bg-emerald-green/10 border-gold/30 mt-4">
+            <AlertCircle className="h-4 w-4 text-gold" />
+            <AlertDescription className="text-xs sm:text-sm text-emerald-green ml-2">
+              Our services are exclusively for adults aged 21 and older.
+            </AlertDescription>
+          </Alert>
         </div>
       </div>
     </section>

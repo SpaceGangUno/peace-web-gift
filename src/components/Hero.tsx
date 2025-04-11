@@ -2,8 +2,6 @@
 "use client";
 
 import LinkCompat from "@/components/LinkCompat";
-import { AlertCircle } from "lucide-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const Hero = () => {
   return (
@@ -11,7 +9,7 @@ const Hero = () => {
       id="home" 
       className="relative min-h-[60vh] flex items-center pt-12 pb-6"
       style={{
-        background: "linear-gradient(to bottom, rgba(139, 144, 120, 0.9), rgba(38, 65, 57, 0.8))"
+        background: "linear-gradient to bottom, rgba(139, 144, 120, 0.9), rgba(38, 65, 57, 0.8))"
       }}
     >
       <div 
@@ -39,13 +37,6 @@ const Hero = () => {
             Compassionate therapy services guiding you toward wellness, 
             emotional balance, and personal growth in a nurturing environment.
           </p>
-          
-          <Alert variant="default" className="bg-white/10 border-gold/30 mb-4 sm:mb-5 animate-fade-in-slow">
-            <AlertCircle className="h-4 w-4 text-gold" />
-            <AlertDescription className="text-xs sm:text-sm text-white/95 ml-2">
-              Our services are exclusively for adults aged 21 and older.
-            </AlertDescription>
-          </Alert>
           
           <div className="flex flex-col sm:flex-row gap-2 justify-center animate-fade-in-slow">
             <a href="#services" className="btn-primary rounded-full text-sm">
