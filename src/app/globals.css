@@ -1,0 +1,216 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 42 40% 98%;
+    --foreground: 158 28% 13%;
+
+    --card: 42 40% 98%;
+    --card-foreground: 158 28% 13%;
+
+    --popover: 42 40% 98%;
+    --popover-foreground: 158 28% 13%;
+
+    --primary: 158 28% 13%;
+    --primary-foreground: 42 70% 95%;
+
+    --secondary: 87 10% 52%;
+    --secondary-foreground: 42 70% 95%;
+
+    --muted: 87 10% 95%;
+    --muted-foreground: 87 10% 40%;
+
+    --accent: 42 70% 76%;
+    --accent-foreground: 158 28% 13%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 42 40% 98%;
+
+    --border: 87 10% 85%;
+    --input: 87 10% 85%;
+    --ring: 33 69% 45%;
+
+    --radius: 0.5rem;
+    
+    /* Custom colors */
+    --magenta-500: 300 100% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83zm20.97 0l9.315 9.314-1.414 1.414L34.828 0h2.83zM22.344 0L13.03 9.314l1.414 1.414L25.172 0h-2.83zM32 0l12.142 12.142-1.414 1.414L30 0h2zM28 0L15.858 12.142l1.414 1.414L32 0h-4zM16 0L3.858 12.142l1.414 1.414L20 0h-4zM44 0L31.858 12.142l1.414 1.414L48 0h-4z' fill='%238b9078' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bookmania;
+  }
+  
+  h2 {
+    @apply text-xl sm:text-2xl md:text-3xl font-bookmania;
+  }
+  
+  h3 {
+    @apply text-lg sm:text-xl font-bookmania;
+  }
+  
+  /* Make tap targets larger on mobile */
+  @media (max-width: 640px) {
+    button, a {
+      @apply min-h-9 px-3;
+    }
+    
+    input, select, textarea {
+      @apply py-2;
+    }
+  }
+}
+
+@layer components {
+  .gold-text {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+
+  .section {
+    @apply py-8 md:py-12 lg:py-16;
+  }
+  
+  .section-alt {
+    @apply bg-[#f8fbf2];
+  }
+  
+  .container-custom {
+    @apply container mx-auto px-4 md:px-5 lg:px-6;
+  }
+
+  .btn-primary {
+    @apply bg-gold-gradient text-noir-vigne font-medium py-2 px-4 sm:py-2.5 sm:px-5 transition-all hover:shadow-lg rounded-md flex items-center justify-center;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-wasabi text-wasabi font-medium py-2 px-4 sm:py-2.5 sm:px-5 hover:bg-wasabi/10 transition-all rounded-md flex items-center justify-center;
+  }
+  
+  .section-title {
+    @apply text-center mb-6 sm:mb-8;
+  }
+  
+  .section-title-pre {
+    @apply text-gold-dark text-xs sm:text-sm uppercase tracking-wider font-medium mb-1.5 block;
+  }
+  
+  .section-title-divider {
+    @apply w-14 sm:w-20 h-1 bg-gradient-to-r from-gold-light to-gold mx-auto mb-3 sm:mb-4;
+  }
+
+  /* Mobile-friendly card styles */
+  .mobile-card {
+    @apply rounded-lg border border-border bg-card shadow-sm p-3 sm:p-4;
+  }
+  
+  /* Mobile-friendly padding classes */
+  .section-padding {
+    @apply px-3 sm:px-5 py-6 sm:py-8;
+  }
+  
+  /* Glass effect for better mobile appearance */
+  .glass {
+    @apply bg-white/80 backdrop-blur-sm shadow-sm;
+  }
+  
+  /* Card gradients for visual appeal on mobile */
+  .card-gradient {
+    @apply bg-gradient-to-br from-background to-muted/50;
+  }
+
+  /* Evidence-based carousel custom styles */
+  .evidence-carousel .embla__slide {
+    @apply transition-all duration-500;
+  }
+  
+  .evidence-carousel .embla__slide.is-selected {
+    @apply scale-105 z-10;
+  }
+  
+  /* Card hover effects */
+  .hover-card {
+    @apply transition-all duration-300 hover:shadow-lg hover:border-gold-light;
+  }
+  
+  /* Form input styles with better mobile support */
+  .form-input {
+    @apply w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm sm:text-base;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-wasabi/50 hover:bg-wasabi rounded-full;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes gentle-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(184, 136, 48, 0.2); }
+  70% { box-shadow: 0 0 0 10px rgba(184, 136, 48, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(184, 136, 48, 0); }
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 2s infinite;
+}
+
+/* Mobile-specific animations */
+@media (max-width: 640px) {
+  .animate-fade-in-up {
+    animation-duration: 0.6s;
+  }
+  
+  .animate-float {
+    animation-duration: 3s;
+  }
+}

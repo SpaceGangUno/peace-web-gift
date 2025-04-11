@@ -1,9 +1,11 @@
 
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CalendarClock, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Carousel,
@@ -107,11 +109,11 @@ const Services = () => {
         )}
         
         <div className="mt-16 text-center flex flex-col sm:flex-row justify-center gap-4">
-          <Link to="/schedule" className="btn-primary inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+          <Link href="/schedule" className="btn-primary inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
             Book Your Consultation
             <ArrowRight className="w-4 h-4" />
           </Link>
-          <Link to="/about-me" className="btn-secondary inline-flex items-center justify-center gap-2 shadow hover:shadow-md transform hover:-translate-y-1 transition-all duration-300">
+          <Link href="/about-me" className="btn-secondary inline-flex items-center justify-center gap-2 shadow hover:shadow-md transform hover:-translate-y-1 transition-all duration-300">
             Meet Our Therapist
             <ArrowRight className="w-4 h-4" />
           </Link>
@@ -170,7 +172,7 @@ const ServiceCard = ({
         </p>
         {service.showConsultButton && (
           <div className="mt-auto pt-4">
-            <Link to="/schedule">
+            <Link href="/schedule">
               <Button 
                 variant="outline" 
                 size="sm" 

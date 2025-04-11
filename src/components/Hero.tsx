@@ -1,5 +1,7 @@
 
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -40,7 +42,7 @@ const Hero = () => {
             <a href="#services" className="btn-primary rounded-full text-sm">
               Explore Services
             </a>
-            <Link to="/schedule" className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10 text-sm">
+            <Link href="/schedule" className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10 text-sm">
               Schedule Consultation
             </Link>
           </div>
