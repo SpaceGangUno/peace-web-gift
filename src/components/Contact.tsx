@@ -1,7 +1,9 @@
 
-import { useState, useEffect } from "react";
+"use client";
+
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { CalendarClock, Mail, Phone } from "lucide-react";
 
 const Contact = () => {
@@ -131,7 +133,7 @@ const Contact = () => {
                   </button>
                   
                   <Link 
-                    to="/schedule" 
+                    href="/schedule" 
                     className="btn-secondary w-full sm:w-auto text-center text-sm sm:text-base py-2 sm:py-3"
                     onClick={handleScheduleClick}
                   >
@@ -233,7 +235,7 @@ const Contact = () => {
                   <p className="text-white/70 mb-3 text-xs sm:text-sm">
                     For faster service:
                   </p>
-                  <Link to="/schedule" className="btn-primary w-full justify-center flex items-center text-sm sm:text-base py-2 sm:py-3">
+                  <Link href="/schedule" className="btn-primary w-full justify-center flex items-center text-sm sm:text-base py-2 sm:py-3">
                     Book Online
                   </Link>
                 </div>

@@ -1,11 +1,10 @@
+"use client";
 
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Helmet } from "react-helmet";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import {
@@ -69,12 +68,8 @@ const ReferralForm = () => {
   };
 
   return (
-    <>
-      <Helmet>
-        <title>Referral Form | The Gift of Peace</title>
-      </Helmet>
-      <Navbar />
-      <div className="container-custom py-12 pt-24 sm:pt-32"> {/* Added padding top */}
+    <PageLayout>
+      <div className="container-custom py-12">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="font-bookmania text-3xl md:text-4xl text-noir-vigne mb-4">Referral Form</h1>
@@ -299,8 +294,7 @@ const ReferralForm = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+    </PageLayout>
   );
 };
 

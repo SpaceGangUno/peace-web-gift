@@ -6,7 +6,6 @@ import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { BookOpen, Calendar } from "lucide-react";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 const AboutMePage = () => {
   return (
