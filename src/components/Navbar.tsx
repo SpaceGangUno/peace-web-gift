@@ -58,10 +58,10 @@ const Navbar = () => {
             className="h-10 sm:h-12 md:h-14" 
           />
           <div className="ml-2 sm:ml-3 flex flex-col">
-            <span className="font-bookmania text-base sm:text-lg md:text-xl font-medium text-emerald-green leading-tight">
+            <span className={`font-bookmania text-base sm:text-lg md:text-xl font-medium ${isScrolled ? 'text-emerald-green' : 'text-creased-khaki'} leading-tight`}>
               The Gift
             </span>
-            <span className="font-bookmania text-base sm:text-lg md:text-xl font-medium text-emerald-green leading-tight">
+            <span className={`font-bookmania text-base sm:text-lg md:text-xl font-medium ${isScrolled ? 'text-emerald-green' : 'text-creased-khaki'} leading-tight`}>
               of Peace
             </span>
           </div>
@@ -73,7 +73,7 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.href}
-              className="font-bookmania text-sm lg:text-base text-emerald-green hover:text-gold transition-colors"
+              className={`font-bookmania text-sm lg:text-base ${isScrolled ? 'text-emerald-green hover:text-gold' : 'text-creased-khaki hover:text-white'} transition-colors`}
             >
               {item.name}
             </Link>
@@ -88,7 +88,7 @@ const Navbar = () => {
             href={clientPortalUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10 text-sm lg:text-base py-2 px-4"
+            className={`btn-secondary rounded-full ${isScrolled ? 'border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10' : 'border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10'} text-sm lg:text-base py-2 px-4`}
           >
             Client Portal
           </a>
@@ -97,9 +97,9 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button className="md:hidden p-2" onClick={toggleMobileMenu} aria-label="Toggle menu">
           {isMobileMenuOpen ? (
-            <X className="h-6 w-6 text-emerald-green" />
+            <X className={`h-6 w-6 ${isScrolled ? 'text-emerald-green' : 'text-creased-khaki'}`} />
           ) : (
-            <Menu className="h-6 w-6 text-emerald-green" />
+            <Menu className={`h-6 w-6 ${isScrolled ? 'text-emerald-green' : 'text-creased-khaki'}`} />
           )}
         </button>
       </div>

@@ -9,7 +9,7 @@ const Hero = () => {
       id="home" 
       className="relative min-h-[60vh] flex items-center pt-12 pb-6"
       style={{
-        background: "linear-gradient to bottom, rgba(139, 144, 120, 0.9), rgba(38, 65, 57, 0.8))"
+        background: "linear-gradient(to bottom, rgba(139, 144, 120, 0.9), rgba(38, 65, 57, 0.8))"
       }}
     >
       <div 
