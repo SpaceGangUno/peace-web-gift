@@ -63,14 +63,15 @@ const Services = () => {
             className="w-full max-w-sm mx-auto services-carousel mt-10" 
             opts={{ 
               loop: true,
-              dragFree: true,
+              slidesToScroll: 1, // Explicitly set slidesToScroll
+              active: false, // Disable active state styling
             }}
             // Removed setApi prop as carouselApiRef is no longer used
           >
             <CarouselContent>
               {services.map((service, index) => (
-                <CarouselItem key={index} className="pl-1 md:pl-4">
-                  <div className="h-full">
+                <CarouselItem key={index} className=""> {/* Removed pl-1 md:pl-4 */}
+                  <div className="h-full p-1"> {/* Added small padding for spacing */}
                     <ServiceCard service={service} animationDelay={0} />
                   </div>
                 </CarouselItem>
@@ -150,6 +151,7 @@ const ServiceCard = ({
         </div>
       )}
       
+      {/* Reverted: Removed opacity-100 from content container */}
       <div className={`${service.backgroundImage ? 'relative z-10 h-full flex flex-col' : 'h-full flex flex-col'}`}>
         <div className="mb-4 flex items-center justify-between">
           {service.comingSoon && (
@@ -158,12 +160,12 @@ const ServiceCard = ({
             </span>
           )}
         </div>
-        {/* Added text-shadow-sm and opacity-100 for better contrast during transitions */}
-        <h3 className={`text-2xl font-bookmania mb-3 ${service.backgroundImage ? 'text-gold-light text-shadow-sm opacity-100' : 'text-emerald-green group-hover:text-gold-dark'} transition-colors`}>
+        {/* Reverted: Removed opacity-100 (kept text-shadow-sm) */}
+        <h3 className={`text-2xl font-bookmania mb-3 ${service.backgroundImage ? 'text-gold-light text-shadow-sm' : 'text-emerald-green group-hover:text-gold-dark'} transition-colors`}>
           {service.title}
         </h3>
-        {/* Added text-shadow-sm and opacity-100 for better contrast during transitions */}
-        <p className={`mb-6 flex-grow ${service.backgroundImage ? 'text-white/90 text-shadow-sm opacity-100' : 'text-wasabi'}`}>
+        {/* Reverted: Removed opacity-100 (kept text-shadow-sm) */}
+        <p className={`mb-6 flex-grow ${service.backgroundImage ? 'text-white/90 text-shadow-sm' : 'text-wasabi'}`}>
           {service.description}
         </p>
         {service.showConsultButton && (

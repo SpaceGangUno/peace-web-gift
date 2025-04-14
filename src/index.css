@@ -133,14 +133,14 @@
     @apply bg-gradient-to-br from-background to-muted/50;
   }
 
-  /* Evidence-based carousel custom styles */
-  .evidence-carousel .embla__slide {
+  /* Evidence-based carousel custom styles - Commented out to test services carousel glitch */
+  /* .evidence-carousel .embla__slide {
     @apply transition-all duration-500;
   }
   
   .evidence-carousel .embla__slide.is-selected {
     @apply scale-105 z-10;
-  }
+  } */
   
   /* Card hover effects */
   .hover-card {
@@ -214,7 +214,4 @@
   }
 }
 
-/* Force carousel items in the services section to stay opaque during transitions */
-.services-carousel [role="group"] {
-  opacity: 1 !important;
-}
+/* Removed CSS override for carousel item opacity as it wasn't effective */
