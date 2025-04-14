@@ -158,13 +158,13 @@ const Navbar = () => {
 
       {/* Mobile Menu - Full Screen Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col">
-          <div className="flex justify-end p-4">
+        <div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col overflow-auto">
+          <div className="flex justify-end p-4 sticky top-0 bg-white shadow-sm">
             <button onClick={toggleMobileMenu} className="p-2">
               <X className="h-6 w-6 text-emerald-green" />
             </button>
           </div>
-          <div className="flex-grow flex flex-col items-center justify-center space-y-6 p-6">
+          <div className="flex-grow flex flex-col items-center justify-center space-y-6 p-6 overflow-auto min-h-screen">
             {/* Home - Always go to top of home page */}
             <button
               onClick={() => {
