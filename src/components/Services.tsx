@@ -1,9 +1,10 @@
+
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CalendarClock, ChevronLeft, ChevronRight, ArrowRight, AlertCircle } from "lucide-react";
+import { CalendarClock, ArrowRight, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -46,7 +47,6 @@ const services = [
 
 const Services = () => {
   const isMobile = useIsMobile();
-  // Removed useEffect hook that handled auto-rotation
   
   return (
     <section id="services" className="section section-alt py-16 md:py-24 lg:py-32">
@@ -63,15 +63,17 @@ const Services = () => {
             className="w-full max-w-sm mx-auto services-carousel mt-10" 
             opts={{ 
               loop: true,
-              slidesToScroll: 1, // Explicitly set slidesToScroll
-              active: false, // Disable active state styling
+              slidesToScroll: 1,
+              dragFree: false, // Make sliding more controlled
+              active: true, // Enable active state
+              align: "center", // Keep slides centered
+              watchDrag: true // Ensure drag events are monitored
             }}
-            // Removed setApi prop as carouselApiRef is no longer used
           >
-            <CarouselContent>
+            <CarouselContent className="-ml-2 md:ml-0"> {/* Adjust left margin */}
               {services.map((service, index) => (
-                <CarouselItem key={index} className=""> {/* Removed pl-1 md:pl-4 */}
-                  <div className="h-full p-1"> {/* Added small padding for spacing */}
+                <CarouselItem key={index} className="pl-2 md:pl-4">
+                  <div className="h-full p-0.5"> {/* Reduced padding for tighter spacing */}
                     <ServiceCard service={service} animationDelay={0} />
                   </div>
                 </CarouselItem>
@@ -151,7 +153,6 @@ const ServiceCard = ({
         </div>
       )}
       
-      {/* Reverted: Removed opacity-100 from content container */}
       <div className={`${service.backgroundImage ? 'relative z-10 h-full flex flex-col' : 'h-full flex flex-col'}`}>
         <div className="mb-4 flex items-center justify-between">
           {service.comingSoon && (
@@ -160,11 +161,9 @@ const ServiceCard = ({
             </span>
           )}
         </div>
-        {/* Reverted: Removed opacity-100 (kept text-shadow-sm) */}
         <h3 className={`text-2xl font-bookmania mb-3 ${service.backgroundImage ? 'text-gold-light text-shadow-sm' : 'text-emerald-green group-hover:text-gold-dark'} transition-colors`}>
           {service.title}
         </h3>
-        {/* Reverted: Removed opacity-100 (kept text-shadow-sm) */}
         <p className={`mb-6 flex-grow ${service.backgroundImage ? 'text-white/90 text-shadow-sm' : 'text-wasabi'}`}>
           {service.description}
         </p>

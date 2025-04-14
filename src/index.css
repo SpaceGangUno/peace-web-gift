@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -133,14 +134,11 @@
     @apply bg-gradient-to-br from-background to-muted/50;
   }
 
-  /* Evidence-based carousel custom styles - Commented out to test services carousel glitch */
-  /* .evidence-carousel .embla__slide {
-    @apply transition-all duration-500;
+  /* Custom carousel styles */
+  .services-carousel .embla__slide,
+  .practices-carousel .embla__slide {
+    @apply transition-transform;
   }
-  
-  .evidence-carousel .embla__slide.is-selected {
-    @apply scale-105 z-10;
-  } */
   
   /* Card hover effects */
   .hover-card {
@@ -214,4 +212,9 @@
   }
 }
 
-/* Removed CSS override for carousel item opacity as it wasn't effective */
+/* Specific fixes for carousel items */
+.services-carousel .embla__container,
+.practices-carousel .embla__container {
+  backface-visibility: hidden;
+  will-change: transform;
+}
