@@ -162,7 +162,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden p-2 z-[60]" 
+          className="md:hidden p-2 z-[100]" 
           onClick={toggleMobileMenu} 
           aria-label="Toggle menu"
         >
@@ -174,15 +174,31 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu - Full Screen Overlay - Now using fixed positioning and higher z-index */}
+      {/* Mobile Menu - Fixed Full Screen Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white z-[55] flex flex-col">
-          <div className="flex justify-end p-4 sticky top-0 bg-white shadow-sm z-[60]">
-            <button onClick={toggleMobileMenu} className="p-2">
+        <div className="md:hidden fixed inset-0 bg-white z-[90] flex flex-col">
+          <div className="container-custom py-3 sm:py-6 flex items-center justify-between sticky top-0 bg-white shadow-sm z-[100]">
+            {/* Duplicate logo for better UX */}
+            <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
+              <img 
+                src="/lovable-uploads/d88841e0-4a57-4364-87af-91cbdd1142cf.png" 
+                alt="The Gift of Peace" 
+                className="h-10 sm:h-12" 
+              />
+              <div className="ml-2 sm:ml-3 flex flex-col">
+                <span className="font-bookmania text-base sm:text-lg font-medium text-emerald-green leading-tight">
+                  The Gift
+                </span>
+                <span className="font-bookmania text-base sm:text-lg font-medium text-emerald-green leading-tight">
+                  of Peace
+                </span>
+              </div>
+            </Link>
+            <button onClick={closeMobileMenu} className="p-2 z-[100]">
               <X className="h-6 w-6 text-emerald-green" />
             </button>
           </div>
-          <div className="flex-grow flex flex-col items-center justify-center space-y-6 p-6 overflow-auto min-h-[90vh]">
+          <div className="flex-grow flex flex-col items-center justify-center space-y-6 p-6 overflow-auto">
             {/* Home - Always go to top of home page */}
             <button
               onClick={() => {
