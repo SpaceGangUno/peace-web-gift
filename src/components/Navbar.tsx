@@ -173,28 +173,19 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu - Fixed Full Screen Overlay with higher z-index */}
+      {/* Mobile Menu - Simplified Fixed Full Screen Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-sm z-[150] flex flex-col">
-          <div className="container-custom py-3 sm:py-6 flex items-center justify-between sticky top-0 bg-white shadow-sm z-[100]">
-            {/* Duplicate logo for better UX */}
-            <Link to="/" className="flex items-center" onClick={closeMobileMenu}>
-              <img 
-                src="/lovable-uploads/d88841e0-4a57-4364-87af-91cbdd1142cf.png" 
-                alt="The Gift of Peace" 
-                className="h-10 sm:h-12" 
-              />
-              <div className="ml-2 sm:ml-3 flex flex-col">
-                <span className="font-bookmania text-base sm:text-lg font-medium text-emerald-green leading-tight">
-                  The Gift
-                </span>
-                <span className="font-bookmania text-base sm:text-lg font-medium text-emerald-green leading-tight">
-                  of Peace
-                </span>
-              </div>
-            </Link>
-          </div>
-          <div className="flex-grow flex flex-col items-center justify-center space-y-6 p-6 overflow-auto">
+        <div className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-sm z-[150] h-screen overflow-y-auto">
+          {/* Close Button - Positioned absolutely */}
+           <button 
+              className="absolute top-4 right-4 p-2 z-[200]" // Positioned top-right
+              onClick={toggleMobileMenu} 
+              aria-label="Close menu"
+            >
+               <X className={`h-8 w-8 text-emerald-green`} /> {/* Slightly larger close icon */}
+            </button>
+          {/* Content area - Full height with vertical centering */}
+          <div className="flex flex-col items-center justify-center space-y-6 p-6 h-full"> {/* Added h-full, justify-center, removed pt-24 */}
             {/* Home - Always go to top of home page */}
             <button
               onClick={() => {
