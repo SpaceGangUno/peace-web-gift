@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
+import LinkCompat from "./LinkCompat";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -110,13 +111,13 @@ const Navbar = () => {
             Home
           </button>
           
-          {/* Services - Scroll to services section */}
-          <button
-            onClick={() => scrollToSection('services')}
+          {/* Services - Link to services section */}
+          <LinkCompat
+            href="/#services"
             className={`font-bookmania text-sm lg:text-base ${isScrolled ? 'text-emerald-green hover:text-gold' : 'text-creased-khaki hover:text-white'} transition-colors`}
           >
             Services
-          </button>
+          </LinkCompat>
           
           {/* Books - Normal link */}
           <Link
@@ -134,13 +135,13 @@ const Navbar = () => {
             About
           </Link>
           
-          {/* Contact - Scroll to contact section */}
-          <button
-            onClick={() => scrollToSection('contact')}
+          {/* Contact - Link to contact section */}
+          <LinkCompat
+            href="/#contact"
             className={`font-bookmania text-sm lg:text-base ${isScrolled ? 'text-emerald-green hover:text-gold' : 'text-creased-khaki hover:text-white'} transition-colors`}
           >
             Contact
-          </button>
+          </LinkCompat>
           
           <Link
             to="/schedule"
@@ -182,7 +183,7 @@ const Navbar = () => {
                <X className={`h-8 w-8 text-emerald-green`} /> {/* Slightly larger close icon */}
             </button>
           {/* Content area - Full height with vertical centering */}
-          <div className="flex flex-col items-center justify-center space-y-6 p-6 h-full"> {/* Added h-full, justify-center, removed pt-24 */}
+          <div className="flex flex-col items-center justify-center space-y-6 p-6 h-full">
             {/* Home - Always go to top of home page */}
             <button
               onClick={() => {
@@ -198,13 +199,14 @@ const Navbar = () => {
               Home
             </button>
             
-            {/* Services - Scroll to services section */}
-            <button
-              onClick={() => scrollToSection('services')}
+            {/* Services - Link to services section */}
+            <LinkCompat
+              href="/#services"
               className="font-bookmania text-xl text-emerald-green py-2"
+              onClick={closeMobileMenu}
             >
               Services
-            </button>
+            </LinkCompat>
             
             {/* Books - Normal link */}
             <Link
@@ -224,13 +226,14 @@ const Navbar = () => {
               About
             </Link>
             
-            {/* Contact - Scroll to contact section */}
-            <button
-              onClick={() => scrollToSection('contact')}
+            {/* Contact - Link to contact section */}
+            <LinkCompat
+              href="/#contact"
               className="font-bookmania text-xl text-emerald-green py-2"
+              onClick={closeMobileMenu}
             >
               Contact
-            </button>
+            </LinkCompat>
             
             <Link
               to="/schedule"
