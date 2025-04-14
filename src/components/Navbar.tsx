@@ -28,6 +28,9 @@ const Navbar = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
+    // Initial check in case the page is already scrolled
+    handleScroll();
+    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -158,7 +161,11 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden p-2" onClick={toggleMobileMenu} aria-label="Toggle menu">
+        <button 
+          className="md:hidden p-2 z-[60]" 
+          onClick={toggleMobileMenu} 
+          aria-label="Toggle menu"
+        >
           {isMobileMenuOpen ? (
             <X className={`h-6 w-6 ${isScrolled ? 'text-emerald-green' : 'text-creased-khaki'}`} />
           ) : (
@@ -167,10 +174,10 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu - Full Screen Overlay */}
+      {/* Mobile Menu - Full Screen Overlay - Now using fixed positioning and higher z-index */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col overflow-auto">
-          <div className="flex justify-end p-4 sticky top-0 bg-white shadow-sm z-50">
+        <div className="md:hidden fixed inset-0 bg-white z-[55] flex flex-col">
+          <div className="flex justify-end p-4 sticky top-0 bg-white shadow-sm z-[60]">
             <button onClick={toggleMobileMenu} className="p-2">
               <X className="h-6 w-6 text-emerald-green" />
             </button>
