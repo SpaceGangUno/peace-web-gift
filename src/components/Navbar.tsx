@@ -159,17 +159,14 @@ const Navbar = () => {
           </a>
         </nav>
 
-        {/* Mobile Menu Button - Fixed position to ensure it's always accessible */}
+        {/* Mobile Menu Button - Only shows Menu icon, opens the menu */}
         <button 
           className="md:hidden p-2 z-[200]" 
           onClick={toggleMobileMenu} 
-          aria-label="Toggle menu"
+          aria-label="Open menu"
         >
-          {isMobileMenuOpen ? (
-            <X className={`h-6 w-6 ${isScrolled ? 'text-emerald-green' : 'text-creased-khaki'}`} />
-          ) : (
-            <Menu className={`h-6 w-6 ${isScrolled ? 'text-emerald-green' : 'text-creased-khaki'}`} />
-          )}
+          {/* Always show Menu icon */}
+          <Menu className={`h-6 w-6 ${isScrolled ? 'text-emerald-green' : 'text-creased-khaki'}`} />
         </button>
       </div>
 
