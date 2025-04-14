@@ -33,6 +33,22 @@ const Navbar = () => {
     };
   }, []);
 
+  // Effect to handle body scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      // Prevent scrolling on the body when menu is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Re-enable scrolling when menu is closed
+      document.body.style.overflow = '';
+    }
+    
+    // Cleanup function to always re-enable scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   // Function to handle smooth scrolling to sections
   const scrollToSection = (sectionId: string) => {
     // Close the mobile menu if it's open
@@ -154,12 +170,12 @@ const Navbar = () => {
       {/* Mobile Menu - Full Screen Overlay */}
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col overflow-auto">
-          <div className="flex justify-end p-4 sticky top-0 bg-white shadow-sm">
+          <div className="flex justify-end p-4 sticky top-0 bg-white shadow-sm z-50">
             <button onClick={toggleMobileMenu} className="p-2">
               <X className="h-6 w-6 text-emerald-green" />
             </button>
           </div>
-          <div className="flex-grow flex flex-col items-center justify-center space-y-6 p-6 overflow-auto min-h-screen">
+          <div className="flex-grow flex flex-col items-center justify-center space-y-6 p-6 overflow-auto min-h-[90vh]">
             {/* Home - Always go to top of home page */}
             <button
               onClick={() => {
