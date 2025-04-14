@@ -46,19 +46,7 @@ const services = [
 
 const Services = () => {
   const isMobile = useIsMobile();
-  const carouselApiRef = useRef<any>(null);
-  
-  useEffect(() => {
-    const autoRotationInterval = setInterval(() => {
-      if (carouselApiRef.current) {
-        carouselApiRef.current.scrollNext();
-      }
-    }, 5000); // Rotate every 5 seconds
-    
-    return () => {
-      clearInterval(autoRotationInterval);
-    };
-  }, []);
+  // Removed useEffect hook that handled auto-rotation
   
   return (
     <section id="services" className="section section-alt py-16 md:py-24 lg:py-32">
@@ -77,7 +65,7 @@ const Services = () => {
               loop: true,
               dragFree: true,
             }}
-            setApi={(api) => (carouselApiRef.current = api)}
+            // Removed setApi prop as carouselApiRef is no longer used
           >
             <CarouselContent>
               {services.map((service, index) => (
