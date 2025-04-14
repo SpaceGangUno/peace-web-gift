@@ -23,18 +23,18 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="#home" className="text-white/70 hover:text-gold transition-colors">
+            <LinkCompat href="/#home" className="text-white/70 hover:text-gold transition-colors">
               Home
-            </a>
-            <a href="#services" className="text-white/70 hover:text-gold transition-colors">
+            </LinkCompat>
+            <LinkCompat href="/#services" className="text-white/70 hover:text-gold transition-colors">
               Services
-            </a>
+            </LinkCompat>
             <LinkCompat href="/about-me" className="text-white/70 hover:text-gold transition-colors">
               About
             </LinkCompat>
-            <a href="#contact" className="text-white/70 hover:text-gold transition-colors">
+            <LinkCompat href="/#contact" className="text-white/70 hover:text-gold transition-colors">
               Contact
-            </a>
+            </LinkCompat>
           </div>
         </div>
         
