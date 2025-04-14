@@ -1,9 +1,15 @@
-
 "use client";
 
 import LinkCompat from "@/components/LinkCompat";
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section 
       id="home" 
@@ -39,10 +45,16 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-2 justify-center animate-fade-in-slow">
-            <a href="#services" className="btn-primary rounded-full text-sm">
+            <button 
+              onClick={() => scrollToSection('services')}
+              className="btn-primary rounded-full text-sm"
+            >
               Explore Services
-            </a>
-            <LinkCompat href="/schedule" className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10 text-sm">
+            </button>
+            <LinkCompat 
+              href="/schedule" 
+              className="btn-secondary rounded-full border-creased-khaki text-creased-khaki hover:bg-creased-khaki/10 text-sm"
+            >
               Schedule Consultation
             </LinkCompat>
           </div>
@@ -50,7 +62,10 @@ const Hero = () => {
       </div>
       
       <div className="absolute bottom-2 left-0 right-0 flex justify-center animate-bounce">
-        <a href="#services" className="text-white/70 hover:text-white">
+        <button 
+          onClick={() => scrollToSection('services')}
+          className="text-white/70 hover:text-white"
+        >
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
             width="20" 
@@ -65,7 +80,7 @@ const Hero = () => {
             <line x1="12" y1="5" x2="12" y2="19"></line>
             <polyline points="19 12 12 19 5 12"></polyline>
           </svg>
-        </a>
+        </button>
       </div>
     </section>
   );
