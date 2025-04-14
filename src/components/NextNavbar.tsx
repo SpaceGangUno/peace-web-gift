@@ -164,9 +164,9 @@ const Navbar = () => {
           </a>
         </nav>
 
-        {/* Mobile Menu Button - Only shows Menu icon, opens the menu */}
+        {/* Mobile Menu Button - Only shows Menu icon, opens the menu. Hidden when menu is open. */}
         <button 
-          className="md:hidden p-2 z-[200]" 
+          className={`md:hidden p-2 z-[200] ${isMobileMenuOpen ? 'invisible' : ''}`} 
           onClick={toggleMobileMenu} 
           aria-label="Open menu"
         >

@@ -101,7 +101,16 @@ export default {
 			backgroundImage: {
 				'gold-gradient': 'linear-gradient(135deg, #f0d794 0%, #b88830 100%)',
 			},
+			// Removed duplicate backgroundImage entry above
+			textShadow: {
+				sm: '0 1px 2px var(--tw-shadow-color, rgba(0,0,0,0.5))',
+				DEFAULT: '0 2px 4px var(--tw-shadow-color, rgba(0,0,0,0.5))',
+				lg: '0 8px 16px var(--tw-shadow-color, rgba(0,0,0,0.5))',
+			},
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require('tailwindcss-textshadow')
+	],
 } satisfies Config;
