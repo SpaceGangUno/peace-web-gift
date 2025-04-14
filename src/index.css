@@ -213,3 +213,8 @@
     animation-duration: 3s;
   }
 }
+
+/* Force carousel items in the services section to stay opaque during transitions */
+.services-carousel [role="group"] {
+  opacity: 1 !important;
+}

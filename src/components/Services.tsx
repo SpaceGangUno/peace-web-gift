@@ -170,12 +170,12 @@ const ServiceCard = ({
             </span>
           )}
         </div>
-        {/* Added text-shadow-sm for better contrast during transitions */}
-        <h3 className={`text-2xl font-bookmania mb-3 ${service.backgroundImage ? 'text-gold-light text-shadow-sm' : 'text-emerald-green group-hover:text-gold-dark'} transition-colors`}>
+        {/* Added text-shadow-sm and opacity-100 for better contrast during transitions */}
+        <h3 className={`text-2xl font-bookmania mb-3 ${service.backgroundImage ? 'text-gold-light text-shadow-sm opacity-100' : 'text-emerald-green group-hover:text-gold-dark'} transition-colors`}>
           {service.title}
         </h3>
-        {/* Added text-shadow-sm for better contrast during transitions */}
-        <p className={`mb-6 flex-grow ${service.backgroundImage ? 'text-white/90 text-shadow-sm' : 'text-wasabi'}`}>
+        {/* Added text-shadow-sm and opacity-100 for better contrast during transitions */}
+        <p className={`mb-6 flex-grow ${service.backgroundImage ? 'text-white/90 text-shadow-sm opacity-100' : 'text-wasabi'}`}>
           {service.description}
         </p>
         {service.showConsultButton && (
