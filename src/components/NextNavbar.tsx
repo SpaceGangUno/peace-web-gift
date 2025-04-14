@@ -164,9 +164,9 @@ const Navbar = () => {
           </a>
         </nav>
 
-        {/* Mobile Menu Button with increased z-index */}
+        {/* Mobile Menu Button with higher z-index to ensure it's always accessible */}
         <button 
-          className="md:hidden p-2 z-[100]" 
+          className="md:hidden p-2 z-[200]" 
           onClick={toggleMobileMenu} 
           aria-label="Toggle menu"
         >
@@ -178,9 +178,9 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu - Fixed Full Screen Overlay */}
+      {/* Mobile Menu - Fixed Full Screen Overlay with higher z-index */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-sm z-[90] flex flex-col">
+        <div className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-sm z-[150] flex flex-col">
           <div className="container-custom py-3 sm:py-6 flex items-center justify-between sticky top-0 bg-white shadow-sm z-[100]">
             {/* Duplicate logo for better UX */}
             <LinkCompat href="/" className="flex items-center" onClick={closeMobileMenu}>
