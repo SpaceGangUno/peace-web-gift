@@ -13,7 +13,9 @@ const Contact = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bookmania mb-3 sm:mb-4">
               Get in <span className="gold-text">Touch</span>
             </h2>
-            {/* Removed the previous text */}
+            <p className="text-sm sm:text-base text-white/80 max-w-xl mx-auto">
+              We're here to listen and support you on your journey to healing and well-being.
+            </p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10">
