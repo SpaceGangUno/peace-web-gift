@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
@@ -54,10 +55,10 @@ const WaitingList = () => {
 
   const insuranceOptions = [
     { value: "private_pay", label: "Private Pay" },
+    { value: "quest", label: "Quest Behavioral Health" },
+    { value: "carelon", label: "Carelon Behavioral Health" },
+    { value: "kaiser", label: "Kaiser Permanente" },
     { value: "optum", label: "Optum/UHC" },
-    { value: "cigna", label: "Cigna" },
-    { value: "aetna", label: "Aetna" },
-    { value: "bcbs", label: "BCBS" },
   ];
 
   return (
