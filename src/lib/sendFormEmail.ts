@@ -26,9 +26,12 @@ export const sendFormEmail = async (formData: any, formType: 'contact' | 'waitin
             'Authorization': `Bearer ${supabaseAnonKey}`
           },
           body: JSON.stringify({
-            formType,
-            formData,
-            to: 'admin@thegiftofpeace.org'
+            to: 'admin@thegiftofpeace.org',
+            subject: `New ${formType} Form Submission`,
+            text: `Form Data:\n${JSON.stringify(formData, null, 2)}`,
+            // Pass original data too, in case backend needs it
+            formType, 
+            formData, 
           }),
           // Set a reasonable timeout to avoid hanging
           signal: AbortSignal.timeout(5000)
@@ -50,9 +53,12 @@ export const sendFormEmail = async (formData: any, formType: 'contact' | 'waitin
       console.log('Attempting fallback via supabase.functions.invoke...');
       const { data, error: invokeError } = await supabase.functions.invoke('send-form-email', {
         body: {
+          to: 'admin@thegiftofpeace.org',
+          subject: `New ${formType} Form Submission`,
+          text: `Form Data:\n${JSON.stringify(formData, null, 2)}`,
+          // Pass original data too
           formType,
           formData,
-          to: 'admin@thegiftofpeace.org'
         }
       });
 
