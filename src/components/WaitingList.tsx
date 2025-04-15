@@ -58,7 +58,11 @@ const WaitingList = () => {
     { value: "quest", label: "Quest Behavioral Health" },
     { value: "carelon", label: "Carelon Behavioral Health" },
     { value: "kaiser", label: "Kaiser Permanente" },
-    { value: "optum", label: "Optum/UHC" },
+    { value: "optum", label: "Optum" },
+    { value: "aetna", label: "Aetna" },
+    { value: "cigna", label: "Cigna" },
+    { value: "anthem", label: "Anthem EAP" },
+    { value: "uhc", label: "United Health Care" },
   ];
 
   return (
