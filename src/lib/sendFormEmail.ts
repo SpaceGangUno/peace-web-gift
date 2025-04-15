@@ -39,51 +39,68 @@ export const sendFormEmail = async (formData: any, formType: 'contact' | 'waitin
           return { success: true };
         }
         
-        console.log(`Direct endpoint returned status: ${response.status}`);
+        console.error(`Direct endpoint failed with status: ${response.status}`);
+        // If direct fetch fails, proceed to invoke
       } catch (fetchError) {
-        console.log('Direct fetch approach failed:', fetchError);
+        console.error('Direct fetch approach failed:', fetchError);
+        // If direct fetch fails, proceed to invoke
       }
-      
-      // Fall back to supabase.functions.invoke if direct fetch failed
-      await supabase.functions.invoke('send-form-email', {
+
+      // Fall back to supabase.functions.invoke if direct fetch failed or returned error
+      console.log('Attempting fallback via supabase.functions.invoke...');
+      const { data, error: invokeError } = await supabase.functions.invoke('send-form-email', {
         body: {
           formType,
           formData,
           to: 'admin@thegiftofpeace.org'
         }
       });
-      
-      console.log('Email sent successfully via functions.invoke');
+
+      if (invokeError) {
+        console.error('Supabase function invoke error:', invokeError);
+        // Both methods failed, fall back to local logging and return failure
+        throw invokeError; // Re-throw to be caught by the outer catch block
+      }
+
+      console.log('Email sent successfully via functions.invoke', data);
       return { success: true };
+
     } catch (supabaseError) {
-      // Log the error but don't throw - we'll fall back to local logging
-      console.log('Supabase function error (non-critical):', supabaseError);
+      // This catch block now handles errors from both direct fetch (if re-thrown)
+      // and functions.invoke
+      console.error('Failed to send email via Supabase:', supabaseError);
     }
-    
-    // Always provide a successful fallback for testing/development
-    // This ensures forms still work even if Supabase is down
+
+    // Fallback: Log locally if Supabase calls failed
     console.log('Form submission recorded locally:', {
       to: 'admin@thegiftofpeace.org',
       formType,
       formData
     });
     
-    // Return success to allow testing without actual email sending
-    return { 
-      success: true, 
-      message: 'Form submission recorded. Email delivery attempted.' 
+    // Return failure as email sending did not succeed
+    return {
+      success: false,
+      message: 'Form submission recorded locally, but failed to send email via Supabase.',
+      error: 'Supabase function call failed.' // Provide a generic error message
     };
+
   } catch (error) {
-    console.error('Unexpected error in sendFormEmail:', error);
-    
-    // Even in case of critical errors, we want the form to submit successfully
-    // for the user - we'll just log the submission locally
+    // Catch any truly unexpected errors during the process
+    console.error('Unexpected critical error in sendFormEmail:', error);
+
+    // Log locally as a last resort
     console.log('Emergency fallback - form submission recorded locally:', {
       to: 'admin@thegiftofpeace.org',
       formType,
       formData
     });
     
-    return { success: true, message: 'Form submission recorded' };
+    // Return failure
+    return {
+      success: false,
+      message: 'Form submission recorded locally due to an unexpected error.',
+      error: error instanceof Error ? error.message : 'Unknown error'
+    };
   }
 };
