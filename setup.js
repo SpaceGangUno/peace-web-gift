@@ -7,6 +7,9 @@ console.log('Installing Vite and related dependencies...');
 
 try {
   // Install Vite and React plugin as dev dependencies
+  console.log('Running npm install...');
+  execSync('npm install', { stdio: 'inherit' });
+  console.log('Installing Vite and related plugins...');
   execSync('npm install --save-dev vite@latest @vitejs/plugin-react-swc@latest lovable-tagger@latest', { stdio: 'inherit' });
   console.log('Successfully installed Vite and related dependencies');
   
