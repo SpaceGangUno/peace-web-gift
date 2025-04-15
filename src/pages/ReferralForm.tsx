@@ -1,6 +1,7 @@
+
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,6 +26,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { sendFormEmail } from "@/lib/sendFormEmail";
 
 const formSchema = z.object({
   referringProvider: z.string().min(1, "Referring provider is required"),
@@ -43,6 +45,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const ReferralForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -60,11 +63,19 @@ const ReferralForm = () => {
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    // In a real application, you would send this data to your backend
-    console.log("Form submitted:", data);
-    toast.success("Referral form submitted successfully! We'll be in touch soon.");
-    form.reset();
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+    try {
+      // Use the same email function for consistency across forms
+      await sendFormEmail(data, 'referral');
+      toast.success("Referral form submitted successfully! We'll be in touch soon.");
+      form.reset();
+    } catch (error) {
+      toast.error("There was an issue submitting your form. Please try again.");
+      console.error("Referral form error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -281,8 +292,14 @@ const ReferralForm = () => {
                 </div>
                 
                 <div className="pt-4 flex justify-center">
-                  <Button type="submit" variant="gold" size="lg" className="w-full max-w-md">
-                    Submit Referral
+                  <Button 
+                    type="submit" 
+                    variant="gold" 
+                    size="lg" 
+                    className="w-full max-w-md"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Submit Referral"}
                   </Button>
                 </div>
               </form>

@@ -13,9 +13,8 @@ const Contact = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bookmania mb-3 sm:mb-4">
               Get in <span className="gold-text">Touch</span>
             </h2>
-            <p className="text-white/80 text-sm sm:text-base">
-              Ready to start your journey toward peace and wellbeing? 
-              Reach out with any questions or to learn more about our services.
+            <p className="text-sm sm:text-base text-white/80 max-w-xl mx-auto">
+              Have a question? Reach out to us and we'll provide the support you need.
             </p>
           </div>
           

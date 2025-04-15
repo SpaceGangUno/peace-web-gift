@@ -25,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { sendFormEmail } from "@/lib/sendFormEmail";
 
 const formSchema = z.object({
   referringProvider: z.string().min(1, "Referring provider is required"),
@@ -60,11 +61,15 @@ const ReferralFormPage = () => {
     },
   });
 
-  const onSubmit = (data: FormValues) => {
-    // In a real application, you would send this data to your backend
-    console.log("Form submitted:", data);
-    toast.success("Referral form submitted successfully! We'll be in touch soon.");
-    form.reset();
+  const onSubmit = async (data: FormValues) => {
+    try {
+      await sendFormEmail(data, 'referral');
+      console.log("Form submitted:", data);
+      toast.success("Referral form submitted successfully! We'll be in touch soon.");
+      form.reset();
+    } catch (error) {
+      toast.error("Failed to submit referral. Please try again.");
+    }
   };
 
   return (

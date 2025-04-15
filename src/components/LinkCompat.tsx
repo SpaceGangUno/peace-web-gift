@@ -1,7 +1,7 @@
 
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import NextLink from "next/link";
 
@@ -12,15 +12,27 @@ interface LinkProps {
   onClick?: () => void;
 }
 
-/**
- * Compatibility Link component that works in both Next.js and React Router environments
- * Use this component during the migration period
- */
 const LinkCompat: React.FC<LinkProps> = ({ href, children, className = "", onClick }) => {
   const pathname = usePathname();
   
+  useEffect(() => {
+    // Check if we arrived with a hash in the URL
+    if (window.location.hash) {
+      const element = document.querySelector(window.location.hash);
+      if (element) {
+        // Add a small delay to ensure the page has fully loaded
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [pathname]);
+  
   // Handle fragment links within the same page
   const isFragmentLink = href.startsWith('#');
+  
+  // Handle links that should redirect to home page sections
+  const isHomeSectionLink = href.startsWith('/#');
   
   if (isFragmentLink) {
     return (
@@ -41,6 +53,18 @@ const LinkCompat: React.FC<LinkProps> = ({ href, children, className = "", onCli
     );
   }
   
+  if (isHomeSectionLink && pathname !== '/') {
+    return (
+      <a
+        href={href}
+        className={className}
+        onClick={onClick}
+      >
+        {children}
+      </a>
+    );
+  }
+  
   return (
     <NextLink href={href} className={className} onClick={onClick}>
       {children}
@@ -49,3 +73,4 @@ const LinkCompat: React.FC<LinkProps> = ({ href, children, className = "", onCli
 };
 
 export default LinkCompat;
+

@@ -1,4 +1,3 @@
-
 import {
   Accordion,
   AccordionContent,
@@ -26,7 +25,7 @@ const FAQ = () => {
     },
     {
       question: "Do you offer virtual sessions?",
-      answer: "Yes, we offer secure video therapy sessions for clients within our licensed practice states. Virtual therapy provides the same quality care as in-person sessions with the added convenience of attending from your home or other private location."
+      answer: "Yes, we offer secure video therapy sessions for clients 21 and older within our licensed practice states. Virtual therapy provides the same quality care as in-person sessions with the added convenience of attending from your home or other private location."
     },
     {
       question: "What if I need to cancel an appointment?",

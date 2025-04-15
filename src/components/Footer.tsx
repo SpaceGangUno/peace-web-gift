@@ -21,18 +21,18 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="#home" className="text-white/70 hover:text-gold transition-colors">
+            <Link to="/" className="text-white/70 hover:text-gold transition-colors">
               Home
-            </a>
-            <a href="#services" className="text-white/70 hover:text-gold transition-colors">
+            </Link>
+            <Link to="/#services" className="text-white/70 hover:text-gold transition-colors">
               Services
-            </a>
+            </Link>
             <Link to="/about-me" className="text-white/70 hover:text-gold transition-colors">
               About
             </Link>
-            <a href="#contact" className="text-white/70 hover:text-gold transition-colors">
+            <Link to="/#contact" className="text-white/70 hover:text-gold transition-colors">
               Contact
-            </a>
+            </Link>
           </div>
         </div>
         

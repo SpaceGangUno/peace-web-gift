@@ -38,7 +38,6 @@ const Navbar = () => {
     };
   }, []);
 
-  // Effect to handle body scrolling when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       // Prevent scrolling on the body when menu is open
@@ -54,7 +53,6 @@ const Navbar = () => {
     };
   }, [isMobileMenuOpen]);
 
-  // Function to handle smooth scrolling to sections
   const scrollToSection = (sectionId: string) => {
     // Close the mobile menu if it's open
     closeMobileMenu();
@@ -99,9 +97,7 @@ const Navbar = () => {
           </div>
         </LinkCompat>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-          {/* Home - Always go to top of home page */}
           <button
             onClick={() => {
               if (pathname !== '/') {
@@ -115,15 +111,13 @@ const Navbar = () => {
             Home
           </button>
           
-          {/* Services - Scroll to services section */}
-          <button
-            onClick={() => scrollToSection('services')}
+          <LinkCompat
+            href="/#services"
             className={`font-bookmania text-sm lg:text-base ${isScrolled ? 'text-emerald-green hover:text-gold' : 'text-creased-khaki hover:text-white'} transition-colors`}
           >
             Services
-          </button>
+          </LinkCompat>
           
-          {/* Books - Normal link */}
           <LinkCompat
             href="/books"
             className={`font-bookmania text-sm lg:text-base ${isScrolled ? 'text-emerald-green hover:text-gold' : 'text-creased-khaki hover:text-white'} transition-colors`}
@@ -131,7 +125,6 @@ const Navbar = () => {
             Books
           </LinkCompat>
           
-          {/* About - Normal link */}
           <LinkCompat
             href="/about-me"
             className={`font-bookmania text-sm lg:text-base ${isScrolled ? 'text-emerald-green hover:text-gold' : 'text-creased-khaki hover:text-white'} transition-colors`}
@@ -139,13 +132,12 @@ const Navbar = () => {
             About
           </LinkCompat>
           
-          {/* Contact - Scroll to contact section */}
-          <button
-            onClick={() => scrollToSection('contact')}
+          <LinkCompat
+            href="/#contact"
             className={`font-bookmania text-sm lg:text-base ${isScrolled ? 'text-emerald-green hover:text-gold' : 'text-creased-khaki hover:text-white'} transition-colors`}
           >
             Contact
-          </button>
+          </LinkCompat>
           
           <LinkCompat
             href="/schedule"
@@ -164,31 +156,25 @@ const Navbar = () => {
           </a>
         </nav>
 
-        {/* Mobile Menu Button - Only shows Menu icon, opens the menu. Hidden when menu is open. */}
         <button 
           className={`md:hidden p-2 z-[200] ${isMobileMenuOpen ? 'invisible' : ''}`} 
           onClick={toggleMobileMenu} 
           aria-label="Open menu"
         >
-          {/* Always show Menu icon */}
           <Menu className={`h-6 w-6 ${isScrolled ? 'text-emerald-green' : 'text-creased-khaki'}`} />
         </button>
       </div>
 
-      {/* Mobile Menu - Simplified Fixed Full Screen Overlay */}
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-sm z-[150] h-screen overflow-y-auto">
-           {/* Close Button - Positioned absolutely */}
-           <button 
-              className="absolute top-4 right-4 p-2 z-[200]" // Positioned top-right
-              onClick={toggleMobileMenu} 
-              aria-label="Close menu"
-            >
-               <X className={`h-8 w-8 text-emerald-green`} /> {/* Slightly larger close icon */}
-            </button>
-          {/* Content area - Full height with vertical centering */}
-          <div className="flex flex-col items-center justify-center space-y-6 p-6 h-full"> {/* Added h-full, justify-center */}
-            {/* Home - Always go to top of home page */}
+          <button 
+            className="absolute top-4 right-4 p-2 z-[200]" 
+            onClick={toggleMobileMenu} 
+            aria-label="Close menu"
+          >
+            <X className={`h-8 w-8 text-emerald-green`} />
+          </button>
+          <div className="flex flex-col items-center justify-center space-y-6 p-6 h-full">
             <button
               onClick={() => {
                 if (pathname !== '/') {
@@ -203,15 +189,14 @@ const Navbar = () => {
               Home
             </button>
             
-            {/* Services - Scroll to services section */}
-            <button
-              onClick={() => scrollToSection('services')}
+            <LinkCompat
+              href="/#services"
               className="font-bookmania text-xl text-emerald-green py-2"
+              onClick={closeMobileMenu}
             >
               Services
-            </button>
+            </LinkCompat>
             
-            {/* Books - Normal link */}
             <LinkCompat
               href="/books"
               className="font-bookmania text-xl text-emerald-green py-2"
@@ -220,7 +205,6 @@ const Navbar = () => {
               Books
             </LinkCompat>
             
-            {/* About - Normal link */}
             <LinkCompat
               href="/about-me"
               className="font-bookmania text-xl text-emerald-green py-2"
@@ -229,13 +213,13 @@ const Navbar = () => {
               About
             </LinkCompat>
             
-            {/* Contact - Scroll to contact section */}
-            <button
-              onClick={() => scrollToSection('contact')}
+            <LinkCompat
+              href="/#contact"
               className="font-bookmania text-xl text-emerald-green py-2"
+              onClick={closeMobileMenu}
             >
               Contact
-            </button>
+            </LinkCompat>
             
             <LinkCompat
               href="/schedule"

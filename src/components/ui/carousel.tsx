@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -60,7 +61,7 @@ const Carousel = React.forwardRef<
       {
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
-        dragFree: true,
+        dragFree: false, // Changed from true to false for more controlled movement
         watchDrag: true,
         loop: opts?.loop !== false, // Enable continuous rotation by default unless explicitly set to false
       },
@@ -159,14 +160,13 @@ const CarouselContent = React.forwardRef<
 
   return (
     <div ref={carouselRef} className="overflow-hidden">
-       <div
-         ref={ref}
-         className={cn(
-           "flex",
-           // Removed negative margin for horizontal orientation
-           orientation === "horizontal" ? "" : "-mt-4 flex-col", 
-           className
-         )}
+      <div
+        ref={ref}
+        className={cn(
+          "flex",
+          orientation === "horizontal" ? "ml-4" : "-mt-4 flex-col", // Added margin left for proper spacing
+          className
+        )}
         {...props}
       />
     </div>

@@ -55,14 +55,16 @@ const EvidenceBased = () => {
             opts={{
               align: "center",
               loop: true,
-              dragFree: true,
+              dragFree: false, // Make sliding more controlled
+              active: true, // Enable active state styling
+              watchDrag: true, // Ensure drag events are monitored
             }}
             className="w-full practices-carousel"
           >
-            <CarouselContent>
+            <CarouselContent className="-ml-2 md:ml-0"> {/* Adjusted margin to fix spacing */}
               {practices.map((practice, index) => (
-                <CarouselItem key={index} className={isMobile ? "md:basis-full" : "md:basis-4/5"}>
-                  <div className="p-1 h-full">
+                <CarouselItem key={index} className={isMobile ? "md:basis-full pl-2 md:pl-4" : "md:basis-4/5 pl-2 md:pl-4"}>
+                  <div className="p-0.5 h-full"> {/* Reduced padding for better spacing */}
                     <Card className="border-wasabi/30 shadow-md overflow-hidden h-full group hover:border-gold transition-all duration-300">
                       <div className={`grid grid-cols-1 ${isMobile ? '' : 'md:grid-cols-5'} h-full`}>
                         <div className={`${isMobile ? '' : 'md:col-span-2'} bg-emerald-green/5 flex items-center justify-center`}>
