@@ -13,10 +13,7 @@ const Contact = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bookmania mb-3 sm:mb-4">
               Get in <span className="gold-text">Touch</span>
             </h2>
-            <p className="text-white/80 text-sm sm:text-base">
-              Ready to start your journey toward peace and wellbeing? 
-              Reach out with any questions or to learn more about our services.
-            </p>
+            {/* Removed the previous text */}
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10">

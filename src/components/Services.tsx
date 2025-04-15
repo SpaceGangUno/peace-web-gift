@@ -1,10 +1,9 @@
-
 "use client";
 
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CalendarClock, ArrowRight, AlertCircle } from "lucide-react";
+import { CalendarClock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
@@ -14,8 +13,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const services = [
   {
@@ -107,13 +104,6 @@ const Services = () => {
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-          
-          <Alert variant="default" className="max-w-md mx-auto bg-emerald-green/10 border-gold/30 mt-4">
-            <AlertCircle className="h-4 w-4 text-gold" />
-            <AlertDescription className="text-xs sm:text-sm text-emerald-green ml-2">
-              Our services are exclusively for adults aged 21 and older.
-            </AlertDescription>
-          </Alert>
         </div>
       </div>
     </section>
