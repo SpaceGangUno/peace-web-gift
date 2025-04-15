@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
@@ -12,7 +11,7 @@ const WaitingList = () => {
     phone: "",
     preferredContact: "email",
     concerns: "",
-    insurance: "",
+    insurance: "private_pay",
     hasInsurance: "yes",
     region: "North Carolina",
   });
@@ -38,7 +37,7 @@ const WaitingList = () => {
         phone: "",
         preferredContact: "email",
         concerns: "",
-        insurance: "",
+        insurance: "private_pay",
         hasInsurance: "yes",
         region: "North Carolina",
       });
@@ -52,6 +51,17 @@ const WaitingList = () => {
       setIsSubmitting(false);
     }
   };
+
+  const insuranceOptions = [
+    { value: "private_pay", label: "Private Pay" },
+    { value: "aetna", label: "Aetna" },
+    { value: "bcbs", label: "Blue Cross Blue Shield" },
+    { value: "cigna", label: "Cigna" },
+    { value: "united", label: "United Healthcare" },
+    { value: "medicare", label: "Medicare" },
+    { value: "medicaid", label: "Medicaid" },
+    { value: "other", label: "Other Insurance" },
+  ];
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 border border-border max-w-xl mx-auto">
@@ -130,39 +140,24 @@ const WaitingList = () => {
         </div>
 
         <div>
-          <label htmlFor="hasInsurance" className="block font-bookmania mb-1 text-sm">
-            Do you have insurance?
+          <label htmlFor="insurance" className="block font-bookmania mb-1 text-sm">
+            Insurance / Payment Method
           </label>
           <select
-            id="hasInsurance"
-            name="hasInsurance"
-            value={formData.hasInsurance}
+            id="insurance"
+            name="insurance"
+            value={formData.insurance}
             onChange={handleChange}
             className="w-full px-4 py-2 rounded-md border border-input focus:border-gold focus:outline-none"
             disabled={isSubmitting}
           >
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            {insuranceOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
-
-        {formData.hasInsurance === "yes" && (
-          <div>
-            <label htmlFor="insurance" className="block font-bookmania mb-1 text-sm">
-              Insurance Provider
-            </label>
-            <input
-              type="text"
-              id="insurance"
-              name="insurance"
-              value={formData.insurance}
-              onChange={handleChange}
-              className="w-full px-4 py-2 rounded-md border border-input focus:border-gold focus:outline-none"
-              placeholder="e.g., Aetna, Cigna, BCBS"
-              disabled={isSubmitting}
-            />
-          </div>
-        )}
 
         <div>
           <label htmlFor="preferredContact" className="block font-bookmania mb-1 text-sm">
