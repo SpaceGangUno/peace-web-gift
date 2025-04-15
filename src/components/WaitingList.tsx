@@ -54,13 +54,10 @@ const WaitingList = () => {
 
   const insuranceOptions = [
     { value: "private_pay", label: "Private Pay" },
-    { value: "aetna", label: "Aetna" },
-    { value: "bcbs", label: "Blue Cross Blue Shield" },
+    { value: "optum", label: "Optum/UHC" },
     { value: "cigna", label: "Cigna" },
-    { value: "united", label: "United Healthcare" },
-    { value: "medicare", label: "Medicare" },
-    { value: "medicaid", label: "Medicaid" },
-    { value: "other", label: "Other Insurance" },
+    { value: "aetna", label: "Aetna" },
+    { value: "bcbs", label: "BCBS" },
   ];
 
   return (
