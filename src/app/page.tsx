@@ -1,6 +1,4 @@
 
-"use client";
-
 import React from "react";
 import Navbar from "@/components/NextNavbar";
 import Hero from "@/components/Hero";
@@ -18,7 +16,7 @@ const HomePage = () => {
       <Navbar />
       <main>
         <Hero />
-        <div className="space-y-6 sm:space-y-10 md:space-y-16">
+        <div className="space-y-4 sm:space-y-6 md:space-y-8">
           <Services />
           <About />
           <EvidenceBased />
