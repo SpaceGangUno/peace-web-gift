@@ -1,9 +1,10 @@
 
 import { useState, useEffect } from "react";
 import { Calendar } from "@/components/ui/calendar";
-import { format } from "date-fns";
+import { format, addDays } from "date-fns";
 import { useToast } from "@/hooks/use-toast";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Loader2 } from "lucide-react";
 
 const BookingCalendar = () => {
   const { toast } = useToast();
@@ -11,6 +12,9 @@ const BookingCalendar = () => {
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [time, setTime] = useState<string>("");
   const [showOtherInput, setShowOtherInput] = useState(false);
+  const [availableSlots, setAvailableSlots] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -37,7 +41,6 @@ const BookingCalendar = () => {
         
         if (parsedData.email) setFormData(prev => ({ ...prev, email: parsedData.email }));
         if (parsedData.phone) setFormData(prev => ({ ...prev, phone: parsedData.phone }));
-        
         if (parsedData.message) setFormData(prev => ({ ...prev, message: parsedData.message }));
         
         localStorage.removeItem('contactFormData');
@@ -46,10 +49,6 @@ const BookingCalendar = () => {
       }
     }
   }, []);
-
-  const availableTimes = [
-    "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
-  ];
 
   const stateOptions = ["North Carolina", "South Carolina", "Virginia", "Washington DC"];
   const insuranceOptions = [
@@ -80,14 +79,50 @@ const BookingCalendar = () => {
     }
   }, [formData.referralSource]);
 
+  const fetchAvailableSlots = async (selectedDate: Date) => {
+    setIsLoading(true);
+    setAvailableSlots([]);
+    
+    try {
+      const formattedDate = format(selectedDate, 'yyyy-MM-dd');
+      const response = await fetch(`https://rnlwovbygyomxzjzbqgv.supabase.co/functions/v1/available-slots?date=${formattedDate}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch available slots');
+      }
+      
+      const data = await response.json();
+      setAvailableSlots(data.slots || []);
+    } catch (error) {
+      console.error('Error fetching available slots:', error);
+      toast({
+        title: "Error",
+        description: "Unable to fetch available slots. Please try again.",
+        variant: "destructive",
+      });
+      setAvailableSlots([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const isWeekend = (date: Date) => {
     const day = date.getDay();
-    return day === 6;
+    return day === 0 || day === 6; // 0 is Sunday, 6 is Saturday
   };
 
   const handleDateChange = (selectedDate: Date | undefined) => {
     setDate(selectedDate);
     setTime("");
+    
+    if (selectedDate) {
+      fetchAvailableSlots(selectedDate);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -95,7 +130,7 @@ const BookingCalendar = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!date || !time) {
@@ -110,34 +145,69 @@ const BookingCalendar = () => {
     const finalReferralSource = formData.referralSource === "Other" 
       ? formData.otherReferralSource 
       : formData.referralSource;
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Format the date and time for the API
+      const formattedDate = format(date, 'yyyy-MM-dd');
+      const appointmentDateTime = `${formattedDate}T${time.replace(/ (AM|PM)$/, '')}:00`;
       
-    console.log("Form data submitted:", { 
-      ...formData, 
-      referralSource: finalReferralSource,
-      date, 
-      time 
-    });
-    
-    toast({
-      title: "Consultation Scheduled",
-      description: `Your consultation is set for ${format(date, 'MMMM d, yyyy')} at ${time}.`,
-      variant: "default",
-    });
-    
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      state: "",
-      insurance: "",
-      referralSource: "",
-      otherReferralSource: "",
-      message: "",
-    });
-    setDate(undefined);
-    setTime("");
-    setShowOtherInput(false);
+      const response = await fetch('https://rnlwovbygyomxzjzbqgv.supabase.co/functions/v1/create-appointment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          state: formData.state,
+          insurance: formData.insurance,
+          referralSource: finalReferralSource,
+          message: formData.message,
+          appointmentDateTime: appointmentDateTime,
+          timeSlot: time
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to schedule consultation');
+      }
+      
+      const result = await response.json();
+      
+      toast({
+        title: "Consultation Scheduled",
+        description: `Your consultation is set for ${format(date, 'MMMM d, yyyy')} at ${time}.`,
+        variant: "default",
+      });
+      
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        state: "",
+        insurance: "",
+        referralSource: "",
+        otherReferralSource: "",
+        message: "",
+      });
+      setDate(undefined);
+      setTime("");
+      setShowOtherInput(false);
+    } catch (error) {
+      console.error('Error scheduling consultation:', error);
+      toast({
+        title: "Error",
+        description: "Unable to schedule your consultation. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -165,7 +235,8 @@ const BookingCalendar = () => {
                     onSelect={handleDateChange}
                     disabled={(date) => 
                       date < new Date() || 
-                      isWeekend(date)
+                      isWeekend(date) ||
+                      date > addDays(new Date(), 60) // Only allow booking 60 days in advance
                     }
                     className="rounded-md border mx-auto"
                     showOutsideDays={false}
@@ -177,22 +248,35 @@ const BookingCalendar = () => {
                     <h3 className="font-bookmania text-base sm:text-lg mb-2 sm:mb-3">
                       Available Times for {format(date, 'MMMM d, yyyy')}
                     </h3>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                      {availableTimes.map((slot) => (
-                        <button
-                          key={slot}
-                          type="button"
-                          className={`py-2 px-3 sm:px-4 rounded-md text-center text-sm transition-all ${
-                            time === slot
-                              ? "bg-gold-gradient text-noir-vigne font-medium"
-                              : "bg-muted hover:bg-muted/80"
-                          }`}
-                          onClick={() => setTime(slot)}
-                        >
-                          {slot}
-                        </button>
-                      ))}
-                    </div>
+                    
+                    {isLoading ? (
+                      <div className="flex justify-center items-center py-8">
+                        <Loader2 className="h-6 w-6 animate-spin text-gold" />
+                        <span className="ml-2 text-sm text-muted-foreground">Loading available times...</span>
+                      </div>
+                    ) : availableSlots.length > 0 ? (
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        {availableSlots.map((slot) => (
+                          <button
+                            key={slot}
+                            type="button"
+                            className={`py-2 px-3 sm:px-4 rounded-md text-center text-sm transition-all ${
+                              time === slot
+                                ? "bg-gold-gradient text-noir-vigne font-medium"
+                                : "bg-muted hover:bg-muted/80"
+                            }`}
+                            onClick={() => setTime(slot)}
+                          >
+                            {slot}
+                          </button>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="text-center py-4 text-muted-foreground">
+                        <p>No available time slots for this date.</p>
+                        <p className="text-sm mt-2">Please select another date.</p>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -216,6 +300,7 @@ const BookingCalendar = () => {
                         onChange={handleChange}
                         className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                     
@@ -231,6 +316,7 @@ const BookingCalendar = () => {
                         onChange={handleChange}
                         className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -248,6 +334,7 @@ const BookingCalendar = () => {
                         onChange={handleChange}
                         className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                     
@@ -263,6 +350,7 @@ const BookingCalendar = () => {
                         onChange={handleChange}
                         className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -279,6 +367,7 @@ const BookingCalendar = () => {
                         onChange={handleChange}
                         className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm"
                         required
+                        disabled={isSubmitting}
                       >
                         <option value="">Select Your State</option>
                         {stateOptions.map((state) => (
@@ -298,6 +387,7 @@ const BookingCalendar = () => {
                         onChange={handleChange}
                         className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm"
                         required
+                        disabled={isSubmitting}
                       >
                         <option value="">Select Your Insurance</option>
                         {insuranceOptions.map((insurance) => (
@@ -318,6 +408,7 @@ const BookingCalendar = () => {
                       onChange={handleChange}
                       className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm"
                       required
+                      disabled={isSubmitting}
                     >
                       <option value="">Select An Option</option>
                       {referralOptions.map((source) => (
@@ -339,6 +430,7 @@ const BookingCalendar = () => {
                           className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm"
                           required={showOtherInput}
                           placeholder="Please specify how you heard about us"
+                          disabled={isSubmitting}
                         />
                       </div>
                     )}
@@ -357,6 +449,7 @@ const BookingCalendar = () => {
                       placeholder="Tell us your primary concerns and availability Monday through Friday"
                       className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md border border-input focus:border-gold focus:outline-none text-sm"
                       required
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
 
@@ -373,9 +466,17 @@ const BookingCalendar = () => {
                   
                   <button
                     type="submit"
-                    className="btn-primary w-full text-sm sm:text-base py-3"
+                    className={`btn-primary w-full text-sm sm:text-base py-3 flex justify-center items-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    disabled={isSubmitting}
                   >
-                    Schedule Consultation
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                        Scheduling...
+                      </>
+                    ) : (
+                      "Schedule Consultation"
+                    )}
                   </button>
                 </form>
               </div>
