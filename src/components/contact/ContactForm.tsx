@@ -28,28 +28,43 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log("handleSubmit called"); // Add log
     e.preventDefault();
     setIsSubmitting(true);
-    
+    console.log("Submitting form data:", formData); // Add log
+
     try {
-      await sendFormEmail(formData, 'contact');
-      
-      toast({
-        title: "Message Sent",
-        description: "We'll get back to you as soon as possible.",
-        variant: "default",
-      });
-      
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+      console.log("Calling sendFormEmail..."); // Add log
+      const result = await sendFormEmail(formData, 'contact');
+      console.log("sendFormEmail result:", result); // Add log
+
+      if (result.success) {
+        toast({
+          title: "Message Sent",
+          description: "We'll get back to you as soon as possible.",
+          variant: "default",
+        });
+        
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        // Use the error message from the result if available
+        const description = result.message || "Failed to send message. Please try again.";
+        toast({
+          title: "Error Sending Message",
+          description: description,
+          variant: "destructive",
+        });
+      }
     } catch (error) {
+      console.error("Error in handleSubmit:", error); // Add log for unexpected errors
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: "An unexpected error occurred. Please try again.",
         variant: "destructive",
       });
     } finally {
