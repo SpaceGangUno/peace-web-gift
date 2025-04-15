@@ -1,9 +1,9 @@
-
 "use client";
 
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import LinkCompat from "@/components/LinkCompat";
+import { sendFormEmail } from "@/lib/sendFormEmail";
 
 interface FormData {
   name: string;
@@ -14,6 +14,7 @@ interface FormData {
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -26,28 +27,36 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Here you would typically handle form submission to a server
-    console.log("Form data submitted:", formData);
-    
-    toast({
-      title: "Message Sent",
-      description: "We'll get back to you as soon as possible.",
-      variant: "default",
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
+    try {
+      await sendFormEmail(formData, 'contact');
+      
+      toast({
+        title: "Message Sent",
+        description: "We'll get back to you as soon as possible.",
+        variant: "default",
+      });
+      
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  // Store form data in localStorage when navigating to schedule page
   const handleScheduleClick = () => {
     localStorage.setItem('contactFormData', JSON.stringify(formData));
   };

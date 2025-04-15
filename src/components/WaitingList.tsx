@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { sendFormEmail } from "@/lib/sendFormEmail";
 
 const WaitingList = () => {
   const { toast } = useToast();
@@ -27,6 +28,8 @@ const WaitingList = () => {
     setIsSubmitting(true);
 
     try {
+      await sendFormEmail(formData, 'waiting-list');
+      
       toast({
         title: "Added to Waiting List",
         description: "We'll contact you when we start accepting new patients.",
