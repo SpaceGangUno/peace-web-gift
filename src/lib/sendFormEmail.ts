@@ -8,9 +8,13 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIU
 
 // If the environment variables aren't available, provide a fallback implementation
 export const sendFormEmail = async (formData: any, formType: 'contact' | 'waiting-list' | 'referral') => {
+  console.log('Attempting to send form email:', { formType, formData });
+
   try {
     // Initialize Supabase client with the environment variables
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    
+    console.log('Supabase client created successfully');
     
     // Call the Supabase Edge Function to send the email
     const { error } = await supabase.functions.invoke('send-form-email', {
@@ -21,7 +25,14 @@ export const sendFormEmail = async (formData: any, formType: 'contact' | 'waitin
       }
     });
 
-    if (error) throw error;
+    console.log('Supabase function invocation completed');
+
+    if (error) {
+      console.error('Error from Supabase function:', error);
+      throw error;
+    }
+
+    console.log('Email sent successfully');
     return { success: true };
   } catch (error) {
     console.error('Error sending form email:', error);
