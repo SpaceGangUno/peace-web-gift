@@ -34,8 +34,10 @@ const ContactForm = () => {
     console.log("Submitting form data:", formData); // Add log
 
     try {
+      console.log("Entering try block..."); // ADDED
       console.log("Calling sendFormEmail..."); // Add log
       const result = await sendFormEmail(formData, 'contact');
+      console.log("sendFormEmail call completed."); // ADDED
       console.log("sendFormEmail result:", result); // Add log
 
       if (result.success) {
@@ -61,6 +63,7 @@ const ContactForm = () => {
         });
       }
     } catch (error) {
+      console.error("Entering catch block..."); // ADDED
       console.error("Error in handleSubmit:", error); // Add log for unexpected errors
       toast({
         title: "Error",
@@ -68,7 +71,9 @@ const ContactForm = () => {
         variant: "destructive",
       });
     } finally {
+      console.log("Entering finally block..."); // ADDED
       setIsSubmitting(false);
+      console.log("Exiting finally block."); // ADDED
     }
   };
 
