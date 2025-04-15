@@ -12,6 +12,9 @@ const WaitingList = () => {
     phone: "",
     preferredContact: "email",
     concerns: "",
+    insurance: "",
+    hasInsurance: "yes",
+    region: "North Carolina",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -24,8 +27,6 @@ const WaitingList = () => {
     setIsSubmitting(true);
 
     try {
-      // For now, just show a success message
-      // Later this can be connected to Supabase to store the waiting list
       toast({
         title: "Added to Waiting List",
         description: "We'll contact you when we start accepting new patients.",
@@ -37,6 +38,9 @@ const WaitingList = () => {
         phone: "",
         preferredContact: "email",
         concerns: "",
+        insurance: "",
+        hasInsurance: "yes",
+        region: "North Carolina",
       });
     } catch (error) {
       toast({
@@ -105,6 +109,60 @@ const WaitingList = () => {
             />
           </div>
         </div>
+
+        <div>
+          <label htmlFor="region" className="block font-bookmania mb-1 text-sm">
+            Region
+          </label>
+          <select
+            id="region"
+            name="region"
+            value={formData.region}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded-md border border-input focus:border-gold focus:outline-none"
+            disabled={isSubmitting}
+          >
+            <option value="North Carolina">North Carolina</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="Washington DC">Washington DC</option>
+            <option value="Virginia">Virginia</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="hasInsurance" className="block font-bookmania mb-1 text-sm">
+            Do you have insurance?
+          </label>
+          <select
+            id="hasInsurance"
+            name="hasInsurance"
+            value={formData.hasInsurance}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded-md border border-input focus:border-gold focus:outline-none"
+            disabled={isSubmitting}
+          >
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+        {formData.hasInsurance === "yes" && (
+          <div>
+            <label htmlFor="insurance" className="block font-bookmania mb-1 text-sm">
+              Insurance Provider
+            </label>
+            <input
+              type="text"
+              id="insurance"
+              name="insurance"
+              value={formData.insurance}
+              onChange={handleChange}
+              className="w-full px-4 py-2 rounded-md border border-input focus:border-gold focus:outline-none"
+              placeholder="e.g., Aetna, Cigna, BCBS"
+              disabled={isSubmitting}
+            />
+          </div>
+        )}
 
         <div>
           <label htmlFor="preferredContact" className="block font-bookmania mb-1 text-sm">
