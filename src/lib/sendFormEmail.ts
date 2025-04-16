@@ -10,32 +10,25 @@ export const sendFormEmail = async (
   formType: 'contact' | 'waiting-list' | 'referral'
 ) => {
   try {
-    const payload = {
-      formData,
-      formType
-    };
-
     const response = await fetch(functionEndpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ formData, formType }),
     });
 
     if (response.ok) {
-      const res = await response.json();
-      return { success: true, message: res.message };
+      const data = await response.json();
+      return { success: true, message: data.message };
     } else {
-      const errorText = await response.text();
-      console.error('Failed to send:', errorText);
-      return { success: false, message: errorText };
+      const error = await response.text();
+      return { success: false, message: error };
     }
-  } catch (error) {
-    console.error('Unexpected error:', error);
+  } catch (err: any) {
     return {
       success: false,
-      message: 'Unexpected error occurred while sending the form.'
+      message: err?.message || 'Unexpected error occurred while sending form.',
     };
   }
 };
