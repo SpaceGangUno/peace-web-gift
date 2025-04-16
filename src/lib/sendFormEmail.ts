@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://rnlwovbygyomxzjzbqgv.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'your-anon-key-here'; // update this securely if needed
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'your-anon-key-here';
 const functionEndpoint = 'https://rnlwovbygyomxzjzbqgv.supabase.co/functions/v1/resend-contact-ts';
 
 export const sendFormEmail = async (
@@ -13,21 +13,13 @@ export const sendFormEmail = async (
   try {
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-    const payload = {
-      to: 'admin@thegiftofpeace.org',
-      subject: `New ${formType} Form Submission`,
-      text: `Form Type: ${formType}\n\nData:\n${JSON.stringify(formData, null, 2)}`,
-      formType,
-      formData
-    };
-
     const response = await fetch(functionEndpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${supabaseAnonKey}`
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ formType, formData }),
       signal: AbortSignal.timeout(5000)
     });
 
