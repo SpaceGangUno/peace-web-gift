@@ -33,6 +33,93 @@ export type Database = {
         }
         Relationships: []
       }
+      professional_referrals: {
+        Row: {
+          client_dob: string
+          client_email: string
+          client_gender: string
+          client_name: string
+          client_number: string
+          client_state: string
+          created_at: string | null
+          id: string
+          insurance_info: string
+          referral_contact: string
+          referral_email: string
+          referral_purpose: string
+          referring_provider: string
+        }
+        Insert: {
+          client_dob: string
+          client_email: string
+          client_gender: string
+          client_name: string
+          client_number: string
+          client_state: string
+          created_at?: string | null
+          id?: string
+          insurance_info: string
+          referral_contact: string
+          referral_email: string
+          referral_purpose: string
+          referring_provider: string
+        }
+        Update: {
+          client_dob?: string
+          client_email?: string
+          client_gender?: string
+          client_name?: string
+          client_number?: string
+          client_state?: string
+          created_at?: string | null
+          id?: string
+          insurance_info?: string
+          referral_contact?: string
+          referral_email?: string
+          referral_purpose?: string
+          referring_provider?: string
+        }
+        Relationships: []
+      }
+      waiting_list_submissions: {
+        Row: {
+          concerns: string
+          created_at: string | null
+          email: string
+          has_insurance: string
+          id: string
+          insurance: string
+          name: string
+          phone: string
+          preferred_contact: string
+          region: string
+        }
+        Insert: {
+          concerns: string
+          created_at?: string | null
+          email: string
+          has_insurance: string
+          id?: string
+          insurance: string
+          name: string
+          phone: string
+          preferred_contact: string
+          region: string
+        }
+        Update: {
+          concerns?: string
+          created_at?: string | null
+          email?: string
+          has_insurance?: string
+          id?: string
+          insurance?: string
+          name?: string
+          phone?: string
+          preferred_contact?: string
+          region?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

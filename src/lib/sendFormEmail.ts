@@ -1,4 +1,3 @@
-
 const functionEndpoint = 'https://rnlwovbygyomxzjzbqgv.supabase.co/functions/v1/resend-contact-ts';
 
 interface ContactFormData {
@@ -38,7 +37,7 @@ interface WaitingListFormData {
 type FormData = ContactFormData | ReferralFormData | WaitingListFormData;
 
 export const sendFormEmail = async (
-  formData: FormData | any,
+  formData: FormData,
   formType: 'contact' | 'waiting-list' | 'referral' = 'contact'
 ) => {
   try {
