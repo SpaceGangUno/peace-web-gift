@@ -1,8 +1,15 @@
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
+import { createClient } from "npm:@supabase/supabase-js";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")!;
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+
+const resend = new Resend(RESEND_API_KEY);
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -26,10 +33,20 @@ const handler = async (req: Request): Promise<Response> => {
     let emailContent = "";
     let subject = "";
 
-    // Format email content based on form type
+    // Insert into Supabase tables first based on formType
     switch (formType) {
       case "contact":
         subject = "New Contact Form Submission";
+
+        // Insert into contact_form_submissions table
+        await supabase.from("contact_form_submissions").insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          created_at: new Date().toISOString(),
+        });
+
         emailContent = `
           <h1>New Contact Form Submission</h1>
           <p><strong>Name:</strong> ${formData.name}</p>
@@ -41,6 +58,20 @@ const handler = async (req: Request): Promise<Response> => {
 
       case "waiting-list":
         subject = "New Waiting List Submission";
+
+        // Insert into waiting_list_submissions table
+        await supabase.from("waiting_list_submissions").insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          preferred_contact: formData.preferredContact,
+          concerns: formData.concerns,
+          insurance: formData.insurance,
+          has_insurance: formData.hasInsurance,
+          region: formData.region,
+          created_at: new Date().toISOString(),
+        });
+
         emailContent = `
           <h1>New Waiting List Submission</h1>
           <p><strong>Name:</strong> ${formData.name}</p>
@@ -56,6 +87,23 @@ const handler = async (req: Request): Promise<Response> => {
 
       case "referral":
         subject = "New Professional Referral";
+
+        // Insert into professional_referrals table
+        await supabase.from("professional_referrals").insert({
+          referring_provider: formData.referringProvider,
+          referral_contact: formData.referralContact,
+          referral_email: formData.referralEmail,
+          client_name: formData.clientName,
+          client_number: formData.clientNumber,
+          client_email: formData.clientEmail,
+          client_dob: formData.clientDOB,
+          client_gender: formData.clientGender,
+          client_state: formData.clientState,
+          insurance_info: formData.insuranceInfo,
+          referral_purpose: formData.referralPurpose,
+          created_at: new Date().toISOString(),
+        });
+
         emailContent = `
           <h1>New Professional Referral</h1>
           <h2>Referring Provider Information</h2>
@@ -85,6 +133,7 @@ const handler = async (req: Request): Promise<Response> => {
         );
     }
 
+    // Send email with resend after storing data
     const emailResponse = await resend.emails.send({
       from: "The Gift of Peace <admin@thegiftofpeace.org>",
       to: ["admin@thegiftofpeace.org"],
@@ -92,10 +141,10 @@ const handler = async (req: Request): Promise<Response> => {
       html: emailContent,
     });
 
-    console.log("Email sent successfully:", emailResponse);
+    console.log("Form data stored and email sent successfully:", emailResponse);
 
     return new Response(
-      JSON.stringify({ success: true, message: "Email sent successfully" }),
+      JSON.stringify({ success: true, message: "Form submitted and email sent successfully" }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error: any) {
@@ -112,3 +161,4 @@ const handler = async (req: Request): Promise<Response> => {
 };
 
 serve(handler);
+
