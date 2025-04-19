@@ -38,7 +38,7 @@ interface WaitingListFormData {
 type FormData = ContactFormData | ReferralFormData | WaitingListFormData;
 
 export const sendFormEmail = async (
-  formData: FormData,
+  formData: FormData | any,
   formType: 'contact' | 'waiting-list' | 'referral' = 'contact'
 ) => {
   try {
