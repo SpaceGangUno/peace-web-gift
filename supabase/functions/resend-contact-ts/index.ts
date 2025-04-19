@@ -11,7 +11,7 @@ const corsHeaders = {
 };
 
 interface FormData {
-  formType: 'contact' | 'waiting-list' | 'referral';
+  formType: "contact" | "waiting-list" | "referral";
   formData: any;
 }
 
@@ -23,24 +23,24 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const { formType, formData }: FormData = await req.json();
-    let emailContent;
-    let subject;
+    let emailContent = "";
+    let subject = "";
 
     // Format email content based on form type
     switch (formType) {
-      case 'contact':
-        subject = 'New Contact Form Submission';
+      case "contact":
+        subject = "New Contact Form Submission";
         emailContent = `
           <h1>New Contact Form Submission</h1>
           <p><strong>Name:</strong> ${formData.name}</p>
           <p><strong>Email:</strong> ${formData.email}</p>
-          <p><strong>Phone:</strong> ${formData.phone || 'Not provided'}</p>
+          <p><strong>Phone:</strong> ${formData.phone || "Not provided"}</p>
           <p><strong>Message:</strong> ${formData.message}</p>
         `;
         break;
-        
-      case 'waiting-list':
-        subject = 'New Waiting List Submission';
+
+      case "waiting-list":
+        subject = "New Waiting List Submission";
         emailContent = `
           <h1>New Waiting List Submission</h1>
           <p><strong>Name:</strong> ${formData.name}</p>
@@ -53,9 +53,9 @@ const handler = async (req: Request): Promise<Response> => {
           <p><strong>Concerns:</strong> ${formData.concerns}</p>
         `;
         break;
-        
-      case 'referral':
-        subject = 'New Professional Referral';
+
+      case "referral":
+        subject = "New Professional Referral";
         emailContent = `
           <h1>New Professional Referral</h1>
           <h2>Referring Provider Information</h2>
@@ -74,24 +74,35 @@ const handler = async (req: Request): Promise<Response> => {
           <p><strong>Referral Purpose:</strong> ${formData.referralPurpose}</p>
         `;
         break;
+
+      default:
+        return new Response(
+          JSON.stringify({
+            success: false,
+            message: "Unknown form type",
+          }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
     }
 
     const emailResponse = await resend.emails.send({
       from: "The Gift of Peace <admin@thegiftofpeace.org>",
       to: ["admin@thegiftofpeace.org"],
-      subject: subject,
+      subject,
       html: emailContent,
     });
 
     console.log("Email sent successfully:", emailResponse);
 
-    return new Response(JSON.stringify({ success: true, message: "Email sent successfully" }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  } catch (error) {
-    console.error("Error in resend-contact function:", error);
     return new Response(
-      JSON.stringify({ success: false, message: error.message }),
+      JSON.stringify({ success: true, message: "Email sent successfully" }),
+      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  } catch (error: any) {
+    console.error("Error in resend-contact function:", error);
+
+    return new Response(
+      JSON.stringify({ success: false, message: error?.message || "Internal Server Error" }),
       {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
