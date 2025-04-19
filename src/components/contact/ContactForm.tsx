@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -28,17 +29,17 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log("handleSubmit called"); // Add log
+    console.log("handleSubmit called"); 
     e.preventDefault();
     setIsSubmitting(true);
-    console.log("Submitting form data:", formData); // Add log
+    console.log("Sending this to Edge Function:", formData); // Added as requested
 
     try {
-      console.log("Entering try block..."); // ADDED
-      console.log("Calling sendFormEmail..."); // Add log
+      console.log("Entering try block...");
+      console.log("Calling sendFormEmail..."); 
       const result = await sendFormEmail(formData, 'contact');
-      console.log("sendFormEmail call completed."); // ADDED
-      console.log("sendFormEmail result:", result); // Add log
+      console.log("sendFormEmail call completed.");
+      console.log("sendFormEmail result:", result);
 
       if (result.success) {
         toast({
@@ -63,17 +64,17 @@ const ContactForm = () => {
         });
       }
     } catch (error) {
-      console.error("Entering catch block..."); // ADDED
-      console.error("Error in handleSubmit:", error); // Add log for unexpected errors
+      console.error("Entering catch block...");
+      console.error("Error in handleSubmit:", error);
       toast({
         title: "Error",
         description: "An unexpected error occurred. Please try again.",
         variant: "destructive",
       });
     } finally {
-      console.log("Entering finally block..."); // ADDED
+      console.log("Entering finally block...");
       setIsSubmitting(false);
-      console.log("Exiting finally block."); // ADDED
+      console.log("Exiting finally block.");
     }
   };
 

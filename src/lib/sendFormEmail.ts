@@ -1,3 +1,4 @@
+
 const functionEndpoint = 'https://rnlwovbygyomxzjzbqgv.supabase.co/functions/v1/resend-contact-ts';
 
 export const sendFormEmail = async (
@@ -7,15 +8,20 @@ export const sendFormEmail = async (
     phone?: string;
     message: string;
   },
-  formType: 'contact' | 'waiting-list' | 'referral'
+  formType: 'contact' | 'waiting-list' | 'referral' = 'contact'
 ) => {
   try {
+    console.log("Sending this to Edge Function:", formData);
+    
     const response = await fetch(functionEndpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ formData, formType }),
+      body: JSON.stringify({ 
+        formType,
+        formData 
+      }),
     });
 
     if (response.ok) {
@@ -26,6 +32,7 @@ export const sendFormEmail = async (
       return { success: false, message: error };
     }
   } catch (err: any) {
+    console.error("sendFormEmail error:", err);
     return {
       success: false,
       message: err?.message || 'Unexpected error occurred while sending form.',
