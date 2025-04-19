@@ -30,19 +30,28 @@ const handler = async (req: Request): Promise<Response> => {
     const { formType, formData }: FormData = await req.json();
     let emailContent = "";
     let subject = "";
+    let insertResult;
 
     // Insert into Supabase tables first based on formType
     switch (formType) {
       case "contact":
         subject = "New Contact Form Submission";
 
-        await supabase.from("contact_form_submissions").insert({
+        insertResult = await supabase.from("contact_form_submissions").insert({
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
           created_at: new Date().toISOString(),
         });
+
+        if (insertResult.error) {
+          console.error("Error inserting contact form submission:", insertResult.error);
+          return new Response(
+            JSON.stringify({ success: false, message: "Failed to store contact form data" }),
+            { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
 
         emailContent = `
           <h1>New Contact Form Submission</h1>
@@ -56,7 +65,7 @@ const handler = async (req: Request): Promise<Response> => {
       case "waiting-list":
         subject = "New Waiting List Submission";
 
-        await supabase.from("waiting_list_submissions").insert({
+        insertResult = await supabase.from("waiting_list_submissions").insert({
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
@@ -67,6 +76,14 @@ const handler = async (req: Request): Promise<Response> => {
           region: formData.region,
           created_at: new Date().toISOString(),
         });
+
+        if (insertResult.error) {
+          console.error("Error inserting waiting list submission:", insertResult.error);
+          return new Response(
+            JSON.stringify({ success: false, message: "Failed to store waiting list data" }),
+            { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
 
         emailContent = `
           <h1>New Waiting List Submission</h1>
@@ -84,7 +101,7 @@ const handler = async (req: Request): Promise<Response> => {
       case "referral":
         subject = "New Professional Referral";
 
-        await supabase.from("professional_referrals").insert({
+        insertResult = await supabase.from("professional_referrals").insert({
           referring_provider: formData.referringProvider,
           referral_contact: formData.referralContact,
           referral_email: formData.referralEmail,
@@ -98,6 +115,14 @@ const handler = async (req: Request): Promise<Response> => {
           referral_purpose: formData.referralPurpose,
           created_at: new Date().toISOString(),
         });
+
+        if (insertResult.error) {
+          console.error("Error inserting professional referral submission:", insertResult.error);
+          return new Response(
+            JSON.stringify({ success: false, message: "Failed to store referral form data" }),
+            { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
 
         emailContent = `
           <h1>New Professional Referral</h1>
@@ -128,6 +153,7 @@ const handler = async (req: Request): Promise<Response> => {
         );
     }
 
+    // Send email with resend after storing data
     const emailResponse = await resend.emails.send({
       from: "The Gift of Peace <admin@forms.thegiftofpeace.org>",
       to: ["admin@thegiftofpeace.org"],
