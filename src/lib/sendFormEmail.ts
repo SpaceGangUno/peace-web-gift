@@ -1,13 +1,44 @@
 
 const functionEndpoint = 'https://rnlwovbygyomxzjzbqgv.supabase.co/functions/v1/resend-contact-ts';
 
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone?: string;
+  message: string;
+}
+
+interface ReferralFormData {
+  referringProvider: string;
+  referralContact: string;
+  referralEmail: string;
+  clientName: string;
+  clientNumber: string;
+  clientEmail: string;
+  clientDOB: string;
+  clientGender: string;
+  clientState: string;
+  insuranceInfo: string;
+  referralPurpose: string;
+  [key: string]: string;
+}
+
+interface WaitingListFormData {
+  name: string;
+  email: string;
+  phone: string;
+  preferredContact: string;
+  concerns: string;
+  insurance: string;
+  hasInsurance: string;
+  region: string;
+  [key: string]: string;
+}
+
+type FormData = ContactFormData | ReferralFormData | WaitingListFormData;
+
 export const sendFormEmail = async (
-  formData: {
-    name: string;
-    email: string;
-    phone?: string;
-    message: string;
-  },
+  formData: FormData,
   formType: 'contact' | 'waiting-list' | 'referral' = 'contact'
 ) => {
   try {
