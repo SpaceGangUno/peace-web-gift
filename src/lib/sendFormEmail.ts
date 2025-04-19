@@ -1,3 +1,4 @@
+
 const functionEndpoint = 'https://rnlwovbygyomxzjzbqgv.supabase.co/functions/v1/resend-contact-ts';
 
 interface ContactFormData {
@@ -39,7 +40,7 @@ export const sendFormEmail = async (
   formType: 'contact' | 'waiting-list' | 'referral' = 'contact'
 ) => {
   try {
-    console.log("Sending this to Edge Function:", formData);
+    console.log("Sending this to Edge Function:", { formType, formData });
     
     const response = await fetch(functionEndpoint, {
       method: 'POST',
