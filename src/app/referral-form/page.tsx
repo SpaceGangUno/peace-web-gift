@@ -26,6 +26,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { sendFormEmail } from "@/lib/sendFormEmail";
+import { ReferralFormData } from "@/types/referral";
 
 const formSchema = z.object({
   referringProvider: z.string().min(1, "Referring provider is required"),
@@ -61,7 +62,7 @@ const ReferralFormPage = () => {
     },
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async (data: ReferralFormData) => {
     try {
       await sendFormEmail(data, 'referral');
       console.log("Form submitted:", data);

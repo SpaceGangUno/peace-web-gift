@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -27,6 +26,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { sendFormEmail } from "@/lib/sendFormEmail";
+import type { ReferralFormData } from "@/types/referral";
 
 const formSchema = z.object({
   referringProvider: z.string().min(1, "Referring provider is required"),
@@ -63,18 +63,14 @@ const ReferralForm = () => {
     },
   });
 
-  const onSubmit = async (data: FormValues) => {
-    setIsSubmitting(true);
+  const onSubmit = async (data: ReferralFormData) => {
     try {
-      // Use the same email function for consistency across forms
       await sendFormEmail(data, 'referral');
+      console.log("Form submitted:", data);
       toast.success("Referral form submitted successfully! We'll be in touch soon.");
       form.reset();
     } catch (error) {
-      toast.error("There was an issue submitting your form. Please try again.");
-      console.error("Referral form error:", error);
-    } finally {
-      setIsSubmitting(false);
+      toast.error("Failed to submit referral. Please try again.");
     }
   };
 
