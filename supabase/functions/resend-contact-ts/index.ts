@@ -8,13 +8,11 @@ const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 
 const resend = new Resend(RESEND_API_KEY);
-
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
 interface FormData {
@@ -135,7 +133,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email with resend after storing data
     const emailResponse = await resend.emails.send({
-      from: "The Gift of Peace <admin@thegiftofpeace.org>",
+      from: "The Gift of Peace <admin@forms.thegiftofpeace.org>",
       to: ["admin@thegiftofpeace.org"],
       subject,
       html: emailContent,
