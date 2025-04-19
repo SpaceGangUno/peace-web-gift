@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,26 +13,9 @@ import Schedule from "./pages/Schedule";
 import AboutMe from "./pages/AboutMe";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ReferralForm from "./pages/ReferralForm";
+import ClientPortalRedirect from "./pages/ClientPortalRedirect";
 
 const queryClient = new QueryClient();
-const CLIENT_PORTAL_URL = "https://thegiftofpeacecw.clientsecure.me/";
-
-const ClientPortalRedirect = () => {
-  useEffect(() => {
-    window.location.href = CLIENT_PORTAL_URL;
-  }, []);
-  
-  return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="bg-white shadow-md rounded-md p-6 text-center">
-        <p className="text-lg">Redirecting to client portal...</p>
-        <div className="mt-4 h-1.5 w-full bg-muted overflow-hidden rounded-full">
-          <div className="h-full bg-gold animate-pulse w-4/5 rounded-full"></div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -57,3 +40,4 @@ const App = () => (
 );
 
 export default App;
+
