@@ -19,7 +19,6 @@ interface ReferralFormData {
   clientState: string;
   insuranceInfo: string;
   referralPurpose: string;
-  [key: string]: string;
 }
 
 interface WaitingListFormData {
@@ -31,7 +30,6 @@ interface WaitingListFormData {
   insurance: string;
   hasInsurance: string;
   region: string;
-  [key: string]: string;
 }
 
 type FormData = ContactFormData | ReferralFormData | WaitingListFormData;

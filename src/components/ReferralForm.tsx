@@ -2,31 +2,17 @@
 "use client";
 
 import React from "react";
-import PageLayout from "@/components/PageLayout";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Form } from "@/components/ui/form";
 import { sendFormEmail } from "@/lib/sendFormEmail";
+import ProviderSection from "./referral/ProviderSection";
+import ClientSection from "./referral/ClientSection";
+import type { ReferralFormData } from "@/types/referral";
 
 const formSchema = z.object({
   referringProvider: z.string().min(1, "Referring provider is required"),
@@ -42,10 +28,8 @@ const formSchema = z.object({
   referralPurpose: z.string().min(1, "Purpose of referral is required"),
 });
 
-type FormValues = z.infer<typeof formSchema>;
-
 const ReferralForm = () => {
-  const form = useForm<FormValues>({
+  const form = useForm<ReferralFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       referringProvider: "",
@@ -62,7 +46,7 @@ const ReferralForm = () => {
     },
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async (data: ReferralFormData) => {
     try {
       await sendFormEmail(data, 'referral');
       console.log("Form submitted:", data);
@@ -96,194 +80,10 @@ const ReferralForm = () => {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="space-y-4">
-                  <h2 className="font-bookmania text-xl text-noir-vigne">Referring Provider Information</h2>
-                  
-                  <FormField
-                    control={form.control}
-                    name="referringProvider"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Referring Provider/Agency</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter provider or agency name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="referralContact"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Referral Contact Number</FormLabel>
-                          <FormControl>
-                            <Input placeholder="(000) 000-0000" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="referralEmail"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input placeholder="email@example.com" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                <ProviderSection form={form} />
+                <div className="border-t border-muted pt-6">
+                  <ClientSection form={form} />
                 </div>
-
-                <div className="space-y-4 pt-4 border-t border-muted">
-                  <h2 className="font-bookmania text-xl text-noir-vigne">Client Information</h2>
-                  
-                  <FormField
-                    control={form.control}
-                    name="clientName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Client Name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter client's name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="clientNumber"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Client Number</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Enter client's phone number" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="clientEmail"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Enter client's email address" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  
-                  <FormField
-                    control={form.control}
-                    name="clientDOB"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Date of Birth</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter client's date of birth" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="clientGender"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Gender</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter client's gender" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="clientState"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>State</FormLabel>
-                        <FormControl>
-                          <Select 
-                            onValueChange={field.onChange} 
-                            defaultValue={field.value}
-                          >
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select a state" />
-                              </SelectTrigger>
-                            </FormControl>
-                            <SelectContent>
-                              <SelectItem value="DC">Washington DC</SelectItem>
-                              <SelectItem value="VA">Virginia</SelectItem>
-                              <SelectItem value="NC">North Carolina</SelectItem>
-                              <SelectItem value="SC">South Carolina</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="insuranceInfo"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Insurance Information</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Enter insurance information" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  
-                  <FormField
-                    control={form.control}
-                    name="referralPurpose"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Purpose of Referral</FormLabel>
-                        <FormDescription>
-                          Please include type of counseling being sought, medication regimen, mental health treatment history, etc.
-                        </FormDescription>
-                        <FormControl>
-                          <Textarea
-                            placeholder="Enter purpose of referral..."
-                            className="min-h-[120px]"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                
                 <div className="pt-4 flex justify-center">
                   <Button type="submit" variant="gold" size="lg" className="w-full max-w-md">
                     Submit Referral
