@@ -36,7 +36,6 @@ const handler = async (req: Request): Promise<Response> => {
       case "contact":
         subject = "New Contact Form Submission";
 
-        // Insert into contact_form_submissions table
         await supabase.from("contact_form_submissions").insert({
           name: formData.name,
           email: formData.email,
@@ -57,7 +56,6 @@ const handler = async (req: Request): Promise<Response> => {
       case "waiting-list":
         subject = "New Waiting List Submission";
 
-        // Insert into waiting_list_submissions table
         await supabase.from("waiting_list_submissions").insert({
           name: formData.name,
           email: formData.email,
@@ -86,7 +84,6 @@ const handler = async (req: Request): Promise<Response> => {
       case "referral":
         subject = "New Professional Referral";
 
-        // Insert into professional_referrals table
         await supabase.from("professional_referrals").insert({
           referring_provider: formData.referringProvider,
           referral_contact: formData.referralContact,
@@ -131,7 +128,6 @@ const handler = async (req: Request): Promise<Response> => {
         );
     }
 
-    // Send email with resend after storing data
     const emailResponse = await resend.emails.send({
       from: "The Gift of Peace <admin@forms.thegiftofpeace.org>",
       to: ["admin@thegiftofpeace.org"],
@@ -159,4 +155,3 @@ const handler = async (req: Request): Promise<Response> => {
 };
 
 serve(handler);
-
