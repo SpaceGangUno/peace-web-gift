@@ -36,7 +36,7 @@ const Hero = () => {
           </div>
           
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bookmania font-light text-creased-khaki mb-2 sm:mb-3 animate-fade-in">
-            Find Your Destiny
+            Find Your Path to Inner Peace
           </h1>
           
           <p className="text-sm sm:text-base text-white/90 mb-4 sm:mb-5 animate-fade-in-slow">
