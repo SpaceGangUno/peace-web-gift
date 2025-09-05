@@ -15,18 +15,18 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ variant = "desktop" }) => {
 
   const cardClasses = variant === "mobile"
     ? "bg-wasabi/20 rounded-lg p-4 sm:p-6 h-full"
-    : "bg-wasabi/20 rounded-lg p-6 lg:p-8 h-full lg:grid lg:grid-cols-3 lg:gap-8 lg:items-center";
+    : "bg-wasabi/20 rounded-lg p-6 lg:p-8 h-full lg:flex lg:items-center lg:justify-between";
 
   return (
     <div className={containerClasses}>
       <div className={cardClasses}>
-        <div className="lg:col-span-2">
+        <div className="lg:flex-1">
           <h3 className="font-bookmania text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-6 gold-text">
             Contact Information
           </h3>
           
-          <div className="space-y-4 sm:space-y-6 lg:grid lg:grid-cols-3 lg:gap-6 lg:space-y-0">
-            <div className="flex items-start lg:flex-col lg:items-start">
+          <div className="space-y-4 sm:space-y-6 lg:flex lg:gap-12 lg:space-y-0">
+            <div className="flex items-start lg:flex-col lg:items-start lg:flex-1">
               <Mail className="text-gold mr-3 lg:mr-0 lg:mb-2 flex-shrink-0 h-5 w-5" />
               <div>
                 <p className="text-xs sm:text-sm lg:text-base text-white/70 mb-1">Email</p>
@@ -36,7 +36,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ variant = "desktop" }) => {
               </div>
             </div>
             
-            <div className="flex items-start lg:flex-col lg:items-start">
+            <div className="flex items-start lg:flex-col lg:items-start lg:flex-1">
               <Phone className="text-gold mr-3 lg:mr-0 lg:mb-2 flex-shrink-0 h-5 w-5" />
               <div>
                 <p className="text-xs sm:text-sm lg:text-base text-white/70 mb-1">Phone</p>
@@ -46,7 +46,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ variant = "desktop" }) => {
               </div>
             </div>
             
-            <div className="flex items-start lg:flex-col lg:items-start">
+            <div className="flex items-start lg:flex-col lg:items-start lg:flex-1">
               <CalendarClock className="text-gold mr-3 lg:mr-0 lg:mb-2 flex-shrink-0 h-5 w-5" />
               <div>
                 <p className="text-xs sm:text-sm lg:text-base text-white/70 mb-1">Office Hours</p>
@@ -58,7 +58,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ variant = "desktop" }) => {
           </div>
         </div>
         
-        <div className="mt-6 sm:mt-8 lg:mt-0 pt-4 sm:pt-6 lg:pt-0 border-t border-white/20 lg:border-t-0 lg:border-l lg:pl-8">
+        <div className="mt-6 sm:mt-8 lg:mt-0 pt-4 sm:pt-6 lg:pt-0 border-t border-white/20 lg:border-t-0 lg:border-l lg:pl-8 lg:flex lg:flex-col lg:justify-center lg:w-80">
           <p className="text-white/70 mb-3 text-xs sm:text-sm lg:text-base">
             For faster service:
           </p>
