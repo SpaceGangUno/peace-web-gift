@@ -30,7 +30,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ variant = "desktop" }) => {
               <Mail className="text-gold mr-3 lg:mr-0 lg:mb-2 flex-shrink-0 h-5 w-5" />
               <div>
                 <p className="text-xs sm:text-sm lg:text-base text-white/70 mb-1">Email</p>
-                <a href="mailto:admin@thegiftofpeace.org" className="text-white hover:text-gold text-sm sm:text-base lg:text-lg break-all">
+                <a href="mailto:admin@thegiftofpeace.org" className="text-white hover:text-gold text-sm sm:text-base lg:text-lg whitespace-nowrap">
                   admin@thegiftofpeace.org
                 </a>
               </div>
