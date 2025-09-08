@@ -70,9 +70,9 @@ const WaitingList = () => {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 border border-border max-w-xl mx-auto">
-      <h2 className="font-bookmania text-2xl mb-4">Join Our Waiting List</h2>
+      <h2 className="font-bookmania text-2xl mb-4">Stay Connected</h2>
       <p className="text-muted-foreground mb-6">
-        We're currently at capacity but would love to work with you in the future. Join our waiting list to be notified when we start accepting new patients.
+        Share your details below and we'll reach out with next steps and availability updates.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
