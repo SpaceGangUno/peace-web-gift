@@ -132,12 +132,7 @@ const Navbar = () => {
             About
           </LinkCompat>
           
-          <LinkCompat
-            href="/#contact"
-            className={`font-bookmania text-sm lg:text-base ${isScrolled ? 'text-emerald-green hover:text-gold' : 'text-creased-khaki hover:text-white'} transition-colors`}
-          >
-            Contact
-          </LinkCompat>
+          {/* Contact link removed as requested */}
           
           <LinkCompat
             href="/schedule"
@@ -213,13 +208,7 @@ const Navbar = () => {
               About
             </LinkCompat>
             
-            <LinkCompat
-              href="/#contact"
-              className="font-bookmania text-xl text-emerald-green py-2"
-              onClick={closeMobileMenu}
-            >
-              Contact
-            </LinkCompat>
+            {/* Contact link removed from mobile menu */}
             
             <LinkCompat
               href="/schedule"

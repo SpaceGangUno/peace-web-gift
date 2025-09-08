@@ -48,12 +48,7 @@ const DesktopNavbar: React.FC<DesktopNavbarProps> = ({ isScrolled }) => {
         About
       </Link>
 
-      <LinkCompat
-        href="/#contact"
-        className={`font-bookmania text-sm lg:text-base ${linkClass} transition-colors`}
-      >
-        Contact
-      </LinkCompat>
+      {/* Contact link removed as requested */}
 
       <Link
         to="/schedule"
@@ -75,4 +70,3 @@ const DesktopNavbar: React.FC<DesktopNavbarProps> = ({ isScrolled }) => {
 };
 
 export default DesktopNavbar;
-

@@ -57,13 +57,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ closeMobileMenu }) => {
           About
         </Link>
 
-        <LinkCompat
-          href="/#contact"
-          className="font-bookmania text-xl text-emerald-green py-2"
-          onClick={closeMobileMenu}
-        >
-          Contact
-        </LinkCompat>
+        {/* Contact link removed from mobile menu */}
 
         <Link
           to="/schedule"
@@ -88,4 +82,3 @@ const MobileNavbar: React.FC<MobileNavbarProps> = ({ closeMobileMenu }) => {
 };
 
 export default MobileNavbar;
-
