@@ -9,9 +9,11 @@ interface ContactInfoProps {
 }
 
 const ContactInfo: React.FC<ContactInfoProps> = ({ variant = "desktop" }) => {
-  const containerClasses = variant === "mobile" 
-    ? "block lg:hidden mt-8" 
-    : "order-1 lg:order-2 mb-6 lg:mb-0 hidden lg:block";
+  // Present a clean single-card layout. On mobile it spans full width.
+  // On desktop it centers with a comfortable max width.
+  const containerClasses = variant === "mobile"
+    ? "block lg:hidden mt-6"
+    : "hidden lg:block mx-auto max-w-xl";
 
   return (
     <div className={containerClasses}>
