@@ -70,7 +70,6 @@ const WaitingList = () => {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 border border-border max-w-xl mx-auto">
-      <h2 className="font-bookmania text-2xl mb-4">Stay Connected</h2>
       <p className="text-muted-foreground mb-6">
         Share your details below and we'll reach out with next steps and availability updates.
       </p>
@@ -210,7 +209,7 @@ const WaitingList = () => {
               Submitting...
             </>
           ) : (
-            "Join Waiting List"
+            "Submit"
           )}
         </button>
       </form>
