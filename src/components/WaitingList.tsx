@@ -28,12 +28,21 @@ const WaitingList = () => {
     setIsSubmitting(true);
 
     try {
-      await sendFormEmail(formData, 'waiting-list');
-      
-      toast({
-        title: "Added to Waiting List",
-        description: "We'll contact you when we start accepting new patients.",
-      });
+      const result = await sendFormEmail(formData, 'waiting-list');
+
+      if (result?.success) {
+        toast({
+          title: "Message Received",
+          description: "Thanks! We’ll follow up with you shortly.",
+        });
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: result?.message || "We couldn't send your message. Please try again.",
+          variant: "destructive",
+        });
+        return; // Don't clear fields on failure
+      }
       
       setFormData({
         name: "",
@@ -47,8 +56,8 @@ const WaitingList = () => {
       });
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Unable to join the waiting list. Please try again.",
+        title: "Unexpected Error",
+        description: "We couldn't send your message. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -71,7 +80,7 @@ const WaitingList = () => {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 border border-border max-w-xl mx-auto">
       <p className="text-muted-foreground mb-6">
-        Share your details below and we'll reach out with next steps and availability updates.
+        Share your details below and we’ll reach out with next steps and availability.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">

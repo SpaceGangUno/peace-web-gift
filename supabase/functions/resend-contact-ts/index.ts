@@ -63,7 +63,7 @@ const handler = async (req: Request): Promise<Response> => {
         break;
 
       case "waiting-list":
-        subject = "New Waiting List Submission";
+        subject = "New Patient Inquiry";
 
         insertResult = await supabase.from("waiting_list_submissions").insert({
           name: formData.name,
@@ -78,15 +78,15 @@ const handler = async (req: Request): Promise<Response> => {
         });
 
         if (insertResult.error) {
-          console.error("Error inserting waiting list submission:", insertResult.error);
+          console.error("Error inserting patient inquiry:", insertResult.error);
           return new Response(
-            JSON.stringify({ success: false, message: "Failed to store waiting list data" }),
+            JSON.stringify({ success: false, message: "Failed to store inquiry data" }),
             { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
           );
         }
 
         emailContent = `
-          <h1>New Waiting List Submission</h1>
+          <h1>New Patient Inquiry</h1>
           <p><strong>Name:</strong> ${formData.name}</p>
           <p><strong>Email:</strong> ${formData.email}</p>
           <p><strong>Phone:</strong> ${formData.phone}</p>
