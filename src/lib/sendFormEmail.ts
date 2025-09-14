@@ -1,5 +1,6 @@
+import { supabase } from "@/integrations/supabase/client";
 
-const functionEndpoint = 'https://rnlwovbygyomxzjzbqgv.supabase.co/functions/v1/resend-contact-ts';
+const functionName = 'resend-contact-ts';
 
 interface ContactFormData {
   name: string;
@@ -41,25 +42,17 @@ export const sendFormEmail = async (
 ) => {
   try {
     console.log("Sending this to Edge Function:", { formType, formData });
-    
-    const response = await fetch(functionEndpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ 
-        formType,
-        formData 
-      }),
+
+    const { data, error } = await supabase.functions.invoke(functionName, {
+      body: { formType, formData },
     });
 
-    if (response.ok) {
-      const data = await response.json();
-      return { success: true, message: data.message };
-    } else {
-      const error = await response.text();
-      return { success: false, message: error };
+    if (!error) {
+      return { success: true, message: (data as any)?.message ?? 'Submitted successfully' };
     }
+
+    // Supabase functions may return structured errors
+    return { success: false, message: (error as any)?.message || 'Function invocation failed' };
   } catch (err: any) {
     console.error("sendFormEmail error:", err);
     return {
@@ -68,4 +61,3 @@ export const sendFormEmail = async (
     };
   }
 };
-
